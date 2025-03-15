@@ -1,0 +1,92 @@
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    box-shadow: 0px 0px 250px 350px black;
+    background-color: black;
+}
+
+.fade-image {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    filter: brightness(0.4);
+    object-fit: cover;
+    transition: opacity 2s ease-in-out; /* เอฟเฟกต์ fade */
+    z-index: 1;
+}
+
+.fade-image.show {
+    opacity: 1;
+}
+
+@keyframes logo-title-effect {
+    0% { filter: drop-shadow(0px 0px 15px yellow); }
+    25% { filter: drop-shadow(0px 0px 5px gold); }
+    50% { filter: drop-shadow(0px 0px 10px yellow); }
+    75% { filter: drop-shadow(0px 0px 5px gold); }
+    100% { filter: drop-shadow(0px 0px 15px yellow); }
+}
+
+.slideshow-text {
+    z-index: 3;
+}
+
+.logo-title-effection {
+    animation: logo-title-effect 5s infinite;
+}
+
+.slideshow-inner-shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1%;
+    z-index: 5;
+    /* box-shadow: inset 0px -70px 90px 40px black; */
+    background-color: black;
+    box-shadow: 0px 0px 80px 100px black;
+}
+
+.focus-scrolling {
+    z-index: 5;
+    bottom: 8%;
+}
+
+#imgLarge {
+    z-index: 200;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.52);
+    /* padding-top: 2%; */
+    backdrop-filter: blur(5px);
+
+    img {
+        width: 70%;
+        box-shadow: 2px 2px 1px 1px black;
+        border-radius: 10px;
+        position: relative;
+        z-index: 202;
+    }
+
+    .largeImgBtnClose {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        z-index: 201;
+        cursor: pointer;
+    }
+}
+
+.newsMainBox {
+    background-image:url('../images/indexBackground.jpg'); 
+    background-size: cover;
+    background-color: #00000075;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 200px 200px black;
+}

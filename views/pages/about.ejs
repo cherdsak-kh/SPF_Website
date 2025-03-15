@@ -1,0 +1,83 @@
+<%- include('../components/header.ejs') %>
+
+    <div class="container position-relative z-3 mt-4 mb-5 text-white px-5" style="min-height: 100vh;">
+        <div class="container d-flex justify-content-center mb-5">
+            <img src="../images/spf_logo.png" class="img-fluid" alt="spf_logo" width="150">
+        </div>
+        
+        <h2 class="text-center fw-bold">เกี่ยวกับเรา</h2>
+        <div class="container px-5 pt-4">
+            <p class="lh-lg fs-5" style="text-align: justify;">&emsp;&emsp;&emsp;&emsp;&emsp; เราคือกลุ่มที่รวบรวมผู้เล่นที่มีความชื่นชอบในการสวมบทบาท และการจำลองการเล่นแบบทหารเสมือนจริง (MilSim) ในเกม Arma 3 กลุ่มของเรามุ่งเน้นความสมดุลระหว่าง ความจริงจัง และ ความสนุกสนาน โดยเน้นที่การทำงานเป็นทีม การสื่อสาร และ การวางแผนกลยุทธ์ในทุกภารกิจ</p>
+            <div class="row d-flex justify-content-center my-5">
+                <div class="card text-bg-light col-lg-9 p-1 m-1">
+                    <img src="../images/index/index-4.jpg" class="card-img img-fluid" alt="index-4" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-1.jpg" class="card-img img-fluid" alt="about-1" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-2.jpg" class="card-img img-fluid" alt="about-2" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-3.jpg" class="card-img img-fluid" alt="about-3" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+            </div>
+        </div>
+
+        <hr class="border border-light border-2 rounded opacity-50 mb-5">
+
+        <div class="container px-5 mt-4">
+            <h3 class="text-center fw-bold mb-4">SPF คืออะไร ?</h3>
+            <p class="lh-lg fs-5" style="text-align: justify;">&emsp;&emsp;&emsp;&emsp;&emsp; Sierra Penthera Force (SPF) เป็นชื่อหน่วยทางทหารสมมติที่ถูกสร้างขึ้นมาเพื่อใช้ในการเล่นภารกิจในเกม Arma 3 โดยหน่วยนี้เป็นส่วนหนึ่งของการจำลองสถานการณ์ทางทหารเสมือนจริง (MilSim) ซึ่งผู้เล่นจะได้สวมบทบาทเป็นสมาชิกของหน่วย SPF ที่ปฏิบัติภารกิจต่าง ๆ ในโลกของเกม โดยภารกิจเหล่านี้เน้นการทำงานเป็นทีม การสื่อสารที่มีประสิทธิภาพ และการวางแผนเชิงกลยุทธ์
+                <span>
+                    <button class="btn btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseText" aria-expanded="false" aria-controls="collapseText" id="toggleBtn" style="--bs-btn-padding-y: .2rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .70rem;">
+                        อ่านเพิ่มเติม
+                    </button>
+                </span>
+            </p>
+
+            <div id="collapseText" class="collapse">
+                <p class="lh-lg fs-5" style="text-align: justify;">&emsp;&emsp;&emsp;&emsp;&emsp; Sierra Penthera Force (SPF) ก่อตั้งขึ้นครั้งแรกในเดือนกรกฎาคม ปี 2018 โดยเป็นหน่วยรบพิเศษที่ถูกจัดตั้งขึ้นภายใต้กองทัพของประเทศสมมติ Kingdom of the Penthera ภารกิจแรกเริ่มของหน่วยนี้คือการตอบสนองต่อสถานการณ์ทางทหารที่เกิดขึ้นภายในประเทศ แต่ภายหลังจากการล่มสลายของ Kingdom of the Penthera หน่วย SPF ได้รวมตัวกันอีกครั้งเพื่อทำหน้าที่ในการรักษาความมั่นคงของประเทศ ฟื้นฟูสภาพบ้านเมือง และปฏิบัติการพิเศษเพื่อต่อต้านภัยคุกคามจากภายนอก</p>
+                <p class="lh-lg fs-5" style="text-align: justify;">&emsp;&emsp;&emsp;&emsp;&emsp; ในโลกของ Arma 3 หน่วย SPF ถูกสร้างขึ้นมาเพื่อใช้ในการปฏิบัติภารกิจต่าง ๆ ซึ่งทุกการเล่นจะเน้นการทำงานเป็นทีม การสื่อสารที่ดี และการคิดเชิงกลยุทธ์ โดยผู้เล่นจะได้มีส่วนร่วมในภารกิจที่ออกแบบมาอย่างละเอียด ซึ่งแต่ละภารกิจจะจำลองสถานการณ์ทางทหารที่เข้มข้นและสมจริง</p>
+            </div>
+
+            <div class="row d-flex justify-content-center my-5">
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-4.jpg" class="card-img img-fluid" alt="about-4" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-5.jpg" class="card-img img-fluid" alt="about-5" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-6.jpg" class="card-img img-fluid" alt="about-6" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+            </div>
+        </div>
+
+        <hr class="border border-light border-2 rounded opacity-50 mb-5">
+
+        <h3 class="text-center fw-bold">MilSim คืออะไร ?</h3>
+        <div class="container px-5 pt-4">
+            <p class="lh-lg fs-5" style="text-align: justify;">&emsp;&emsp;&emsp;&emsp;&emsp; MilSim หรือ Military Simulation คือการจำลองการรบเสมือนจริงในสภาพแวดล้อมเกม ซึ่งในกรณีของ SPF นั้น ผู้เล่นจะได้รับบทบาทเป็นสมาชิกของหน่วยทหารจำลองชื่อ Sierra Penthera Force (SPF) ที่ถูกสร้างขึ้นมาโดยเฉพาะสำหรับการทำภารกิจในโลกของเกม Arma 3 การเล่นในแบบ MilSim ของ SPF มุ่งเน้นไปที่ความสมจริงในการทำภารกิจ ไม่ว่าจะเป็นการสั่งการ การประสานงาน การใช้ยุทธวิธี และการคิดเชิงกลยุทธ์ ผู้เล่นจะต้องทำงานร่วมกันเป็นทีมเสมือนกับกองกำลังทหารจริง ๆ เพื่อให้ภารกิจสำเร็จลุล่วง</p>
+            <div class="row d-flex justify-content-center my-5">
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-7.jpg" class="card-img img-fluid" alt="about-7" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-8.jpg" class="card-img img-fluid" alt="about-8" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card text-bg-light col-lg-3 p-1 m-1">
+                    <img src="../images/about/about-9.jpg" class="card-img img-fluid" alt="about-9" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                </div>
+            </div>
+        </div>
+
+        <hr class="border border-light border-2 rounded opacity-50 mb-5">
+
+    </div>
+
+    <div id="imgLarge" class="position-fixed top-50 start-50 translate-middle d-none justify-content-center align-items-center"></div>
+
+    <script src="../js/aboutFunction.js"></script>
+
+<%- include('../components/footer.ejs') %>

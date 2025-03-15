@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "enName": "home",
+        "thName": "หน้าหลัก",
+        "title": "หน้าหลัก | SPF : Milsim Community",
+        "href": "/"
+    },
+    {
+        "id": 2,
+        "enName": "about",
+        "thName": "เกี่ยวกับเรา",
+        "title": "เกี่ยวกับเรา | SPF : Milsim Community",
+        "href": "/about"
+    },
+    {
+        "id": 3,
+        "enName": "rules",
+        "thName": "ข้อกําหนดและเงื่อนไข",
+        "title": "ข้อกําหนดและเงื่อนไข | SPF : Milsim Community",
+        "href": "/rules"
+    },
+    {
+        "id": 4,
+        "enName": "event",
+        "thName": "กิจกรรม",
+        "title": "กิจกรรม | SPF : Milsim Community",
+        "href": "/event"
+    },
+    {
+        "id": 5,
+        "enName": "articles",
+        "thName": "บทความ",
+        "title": "บทความ | SPF : Milsim Community",
+        "href": "/articles"
+    },
+    {
+        "id": 6,
+        "enName": "community",
+        "thName": "ชุมชน",
+        "title": "ชุมชน | SPF : Milsim Community",
+        "href": "/community"
+    },
+    {
+        "id": 7,
+        "enName": "gallery",
+        "thName": "แกลเลอรี",
+        "title": "แกลเลอรี | SPF : Milsim Community",
+        "href": "/gallery"
+    },
+    {
+        "id": 8,
+        "enName": "members",
+        "thName": "สมาชิก",
+        "title": "สมาชิก | SPF : Milsim Community",
+        "href": "/members"
+    },
+    {
+        "id": 9,
+        "enName": "contact",
+        "thName": "ติดต่อเรา",
+        "title": "ติดต่อเรา | SPF : Milsim Community",
+        "href": "/contact"
+    }
+]
