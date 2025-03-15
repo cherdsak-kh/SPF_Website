@@ -54,7 +54,7 @@ async function mongodbExecute() {
     }
 
     // * ดึงข้อมูลทั้งหมดจากคอลเลกชัน Events ที่ eventName มีคำว่า "MilSim" ด้วยการใส่ { eventName: /MilSim/ }
-    // const allData = client.db('SPF_Database').collection('Events');
+    // const allData = client.db('spf_database').collection('events');
     // const data = await allData.find({}).toArray();
 
     // Sort by dateTime in descending order
@@ -84,7 +84,7 @@ app.get('/', async (req, res) => {
 
     try {
         await client.connect()
-        const data = client.db('SPF_Database').collection('Menu')
+        const data = client.db('spf_database').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/index', {
@@ -112,7 +112,7 @@ app.get('/about', async (req, res) => {
 
     try {
         await client.connect()
-        const data = client.db('SPF_Database').collection('Menu')
+        const data = client.db('spf_database').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/about', {
@@ -140,7 +140,7 @@ app.get('/termsandconditions', async (req, res) => {
 
     try {
         await client.connect()
-        const data = client.db('SPF_Database').collection('Menu')
+        const data = client.db('spf_database').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/rules', {
@@ -168,7 +168,7 @@ app.get('/event', async (req, res) => {
 
     try {
         await client.connect()
-        const data1 = client.db('SPF_Database').collection('Menu')
+        const data1 = client.db('spf_database').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/event', {
@@ -196,7 +196,7 @@ app.get('/articles', async (req, res) => {
 
     try {
         await client.connect()
-        const data1 = client.db('SPF_Database').collection('Menu')
+        const data1 = client.db('spf_database').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/articles', {
@@ -224,7 +224,7 @@ app.get('/cookie-policy', async (req, res) => {
 
     try {
         await client.connect()
-        const data = client.db('SPF_Database').collection('Menu')
+        const data = client.db('spf_database').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/cookie-policy', {
@@ -284,7 +284,7 @@ io.on('connection', (socket) => {
             await client.connect();
             // console.log('== Send events data ==> Start');
 
-            const allData = client.db('SPF_Database').collection('Events');
+            const allData = client.db('spf_database').collection('events');
             const data = await allData.find({}).toArray();
 
             socket.emit('Events-data', data);  // Send the retrieved data to the client
@@ -303,7 +303,7 @@ io.on('connection', (socket) => {
         try {
             await client.connect();
 
-            const allData = client.db('SPF_Database').collection('Articles');
+            const allData = client.db('spf_database').collection('articles');
             const data = await allData.find({}).toArray();
 
             socket.emit('Articles-data', data);
