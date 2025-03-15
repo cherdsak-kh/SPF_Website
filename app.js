@@ -15,7 +15,7 @@ const getPath_Consoler = require('./public/function/getPath-Consoler')
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
-const port = 3000
+const port = process.env.PORT || 3000;
 const app = express()
 const server = createServer(app)
 const io = new Server(server)
