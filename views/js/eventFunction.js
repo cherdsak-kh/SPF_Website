@@ -89,7 +89,7 @@ socket.on('Events-data', (events) => {
 
             // ! ตรวจสอบวันที่ปัจจุบัน ถ้าใช่จะเข้าเงื่อนไข
             if (curDate.getDate() === day && curDate.getMonth() === month && curDate.getFullYear() === year) {
-                col.className = 'col text-center border border-secondary py-3 fw-bold';
+                col.className = 'col text-center border border-2 border-warning py-3 fw-bold';
             } else {
                 col.className = 'col text-center border border-secondary py-3 text-secondary';
             }
