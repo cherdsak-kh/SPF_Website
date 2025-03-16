@@ -8,10 +8,10 @@ socket.on('Articles-data', (articles) => {
 
     for (const article of articles) {
         let articleTopic = article.topic;
-        let articleAuthor = article.author;
-        let articleDateTime = new Date(article.dateTime);
+        // let articleAuthor = article.author;
+        // let articleDateTime = new Date(article.dateTime);
         let articleLink = article.linkSharing;
-        let articleId = 'article_' + countArticle;
+        // let articleId = 'article_' + countArticle;
 
         if (articleLink.includes('/view')) {
             articleLink = articleLink.replace('/view', '/preview');
