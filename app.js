@@ -40,7 +40,7 @@ app.use(express.json())
 /*
     - MongoDB CONNECTION.
 */
-const uri = "mongodb://cthg.hopto.org:27017/?directConnection=true&appName=mongosh+2.4.2"
+const uri = "mongodb://admin:%23spf-P%40ssw0rd%23@cthg.hopto.org:27017/?directConnection=true"
 const client = new MongoClient(uri)
 
 async function mongodbExecute() {
