@@ -534,14 +534,14 @@ socket.on('Events-data', (events) => {
                 `;
             }
             
-            // console.log(eventDateTime);
-            // console.log('-----------------------------------------------------------------');
-            // console.log('Yesterday ? : ' + isYesterday(eventDateTime));
-            // console.log('Today ? : ' + isToday(eventDateTime));
-            // console.log('Tomorrow ? : ' + isTomorrow(eventDateTime));
-            // console.log('Past ? : ' + isPast(eventDateTime));
-            // console.log('Future ? : ' + isFuture(eventDateTime));
-            // console.log('-----------------------------------------------------------------');
+            console.log(eventDateTime);
+            console.log('-----------------------------------------------------------------');
+            console.log('Yesterday ? : ' + isYesterday(eventDateTime));
+            console.log('Today ? : ' + isToday(eventDateTime));
+            console.log('Tomorrow ? : ' + isTomorrow(eventDateTime));
+            console.log('Past ? : ' + isPast(eventDateTime));
+            console.log('Future ? : ' + isFuture(eventDateTime));
+            console.log('-----------------------------------------------------------------');
 
             if (isToday(eventDateTime)) {
                 icmEvent_dateTime = `วันนี้เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
