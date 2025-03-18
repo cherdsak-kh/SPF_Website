@@ -502,6 +502,8 @@ socket.on('Events-data', (events) => {
         let icmEvent_author = '';
         let hasEvent = '';
 
+        const thaiWeekdays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+
         for (const event of icmEvents) {
             const eventDateTime = new Date(event.dateTime);
 
