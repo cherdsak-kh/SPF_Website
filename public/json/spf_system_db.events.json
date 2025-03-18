@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "6731c73734e60e47f98355a0"
+  },
+  "eventName": "Operation MilSim Community 1",
+  "author": "BentsuKun",
+  "type": "Mission Day",
+  "dateTime": "2025-03-15T20:30:00",
+  "eventImg": "img005.jpg"
+},
+{
+  "_id": {
+    "$oid": "6731c73734e60e47f98355a1"
+  },
+  "eventName": "Operation MilSim Community 2",
+  "author": "BentsuKun",
+  "type": "Event",
+  "dateTime": "2025-03-16T20:30:00",
+  "eventImg": "img005.jpg"
+},
+{
+  "_id": {
+    "$oid": "6731c73734e60e47f98355a2"
+  },
+  "eventName": "Operation MilSim Community 3",
+  "author": "BentsuKun",
+  "type": "Training",
+  "dateTime": "2025-03-22T20:30:00",
+  "eventImg": "img005.jpg"
+},
+{
+  "_id": {
+    "$oid": "6731c73734e60e47f98355a3"
+  },
+  "eventName": "Operation MilSim Community 4",
+  "author": "BentsuKun",
+  "type": "Mission Day",
+  "dateTime": "2025-03-23T20:30:00",
+  "eventImg": "img005.jpg"
+},
+{
+  "_id": {
+    "$oid": "6731c73734e60e47f98355a4"
+  },
+  "eventName": "Operation MilSim Community 5",
+  "author": "BentsuKun",
+  "type": "Event",
+  "dateTime": "2025-03-29T20:30:00",
+  "eventImg": "img005.jpg"
+}]

@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f0"
+  },
+  "enName": "home",
+  "thName": "หน้าหลัก",
+  "href": "/"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f1"
+  },
+  "enName": "about",
+  "thName": "เกี่ยวกับเรา",
+  "href": "/about"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f2"
+  },
+  "enName": "termsandconditions",
+  "thName": "ข้อกําหนดและเงื่อนไข",
+  "href": "/termsandconditions"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f3"
+  },
+  "enName": "event",
+  "thName": "กิจกรรม",
+  "href": "/event"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f4"
+  },
+  "enName": "articles",
+  "thName": "เอกสาร/คู่มือ",
+  "href": "/articles"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f6"
+  },
+  "enName": "gallery",
+  "thName": "แกลเลอรี",
+  "href": "/gallery"
+},
+{
+  "_id": {
+    "$oid": "6729fb3371ccc2f8abe045f8"
+  },
+  "enName": "contact",
+  "thName": "ติดต่อเรา",
+  "href": "/contact"
+}]
