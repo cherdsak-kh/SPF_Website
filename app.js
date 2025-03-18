@@ -43,6 +43,7 @@ app.use(express.json())
 const uri = "mongodb://admin:%23spf-P%40ssw0rd%23@cthg.hopto.org:27017/?directConnection=true"
 const client = new MongoClient(uri)
 
+// - เชื่อมต่อ MongoDB เพียงครั้งเดียวตอนเริ่มต้นเซิร์ฟเวอร์
 async function mongodbExecute() {
     // * Check connection.
     try {
@@ -70,7 +71,6 @@ async function mongodbExecute() {
     //     console.log(event.missionImg);
     // });
 
-    await client.close();
 }
 
 mongodbExecute().catch(console.dir);
@@ -83,7 +83,6 @@ app.get('/', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data = client.db('spf_system_db').collection('menu')
         const Menu = await data.find().toArray()
 
@@ -95,9 +94,6 @@ app.get('/', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -111,7 +107,6 @@ app.get('/about', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data = client.db('spf_system_db').collection('menu')
         const Menu = await data.find().toArray()
 
@@ -123,9 +118,6 @@ app.get('/about', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -139,7 +131,6 @@ app.get('/termsandconditions', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data = client.db('spf_system_db').collection('menu')
         const Menu = await data.find().toArray()
 
@@ -151,9 +142,6 @@ app.get('/termsandconditions', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -167,7 +155,6 @@ app.get('/event', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data1 = client.db('spf_system_db').collection('menu')
         const Menu = await data1.find().toArray()
 
@@ -179,9 +166,6 @@ app.get('/event', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -195,7 +179,6 @@ app.get('/articles', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data1 = client.db('spf_system_db').collection('menu')
         const Menu = await data1.find().toArray()
 
@@ -207,9 +190,6 @@ app.get('/articles', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -223,7 +203,6 @@ app.get('/cookie-policy', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        await client.connect()
         const data = client.db('spf_system_db').collection('menu')
         const Menu = await data.find().toArray()
 
@@ -235,9 +214,6 @@ app.get('/cookie-policy', async (req, res) => {
 
     } catch (err) {
         consoler('#ff4747', `MongoDB error: ${err}`)
-
-    } finally {
-        await client.close()
 
     }
 
@@ -281,7 +257,6 @@ io.on('connection', (socket) => {
 
     socket.on('request-events-data', async () => {
         try {
-            await client.connect();
             // console.log('== Send events data ==> Start');
 
             const allData = client.db('spf_system_db').collection('events');
@@ -292,8 +267,6 @@ io.on('connection', (socket) => {
             // console.log('== Send events data ==> End');
         } catch (err) {
             consoler('#ff4747', `== Send events data ==> Error : ${err}`);
-        } finally {
-            await client.close();
         }
     });
     
@@ -301,7 +274,6 @@ io.on('connection', (socket) => {
 
     socket.on('request-articles-data', async () => {
         try {
-            await client.connect();
 
             const allData = client.db('spf_system_db').collection('articles');
             const data = await allData.find({}).toArray();
@@ -310,8 +282,6 @@ io.on('connection', (socket) => {
             
         } catch (err) {
             consoler('#ff4747', `== Send articles data ==> Error : ${err}`);
-        } finally {
-            await client.close();
         }
     })
     
@@ -321,6 +291,16 @@ io.on('connection', (socket) => {
         // consoler('#ffffff', 'Socket.io : user disconnected.')
     })
 })
+
+// ------------------------------------------------------------------------------------------------------------------------->
+
+// - ปิดการเชื่อมต่อเมื่อเซิร์ฟเวอร์หยุดทำงาน
+process.on('SIGINT', async () => {
+    consoler('#ffdc00', `Closing MongoDB connection...`);
+    await client.close();
+    consoler('#ff0000', `MongoDB Disconnected.`);
+    process.exit(0);
+});
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
