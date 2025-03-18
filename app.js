@@ -287,6 +287,21 @@ io.on('connection', (socket) => {
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
+    socket.on('request-rules-data', async () => {
+        try {
+
+            const allData = client.db('spf_system_db').collection('rules');
+            const data = await allData.find({}).toArray();
+
+            socket.emit('rules-data', data);
+            
+        } catch (err) {
+            consoler('#ff4747', `== Send rules data ==> Error : ${err}`);
+        }
+    })
+    
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
     socket.on('disconnect', () => {
         // consoler('#ffffff', 'Socket.io : user disconnected.')
     })
