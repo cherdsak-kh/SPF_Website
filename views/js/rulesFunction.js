@@ -20,7 +20,8 @@ socket.emit('request-rules-data');
 
 socket.on('rules-data', (rules) => {
     
-    const rulesDisplay = rules;
+    const rulesDisplay = JSON.parse(JSON.stringify(rules));
+
     for(const rule of rulesDisplay) {
         if (rule.linkSharing.includes('/view')) {
             rule.linkSharing = rule.linkSharing.replace('/view', '/preview');
@@ -31,6 +32,7 @@ socket.on('rules-data', (rules) => {
     }
 
     // console.log(rulesDisplay);
+    // console.log(rules);
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
     const rulesDisplay_1 = document.getElementById('rule-display-1');

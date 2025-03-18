@@ -46,7 +46,10 @@ document.getElementById('calendarToggleBtn').onclick = () => {
 socket.emit('request-events-data');
 
 // Listen for the server's response with the events data
-socket.on('Events-data', (events) => {
+socket.on('Events-data', (getEvents) => {
+
+    // ! สร้างสำเนาของ events
+    const events = getEvents.map(event => ({ ...event }));
 
     // ! รับวันที่ปัจจุบัน
     const curDate = new Date();
