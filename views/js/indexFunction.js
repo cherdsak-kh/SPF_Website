@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------------------------------------------>
 
-if (document.title === 'หน้าหลัก | SPF : Milsim Community') {
+if (document.title === 'SPF : Milsim Community') {
 
     function scrollToView() {
         const element = document.getElementById('what-is-spf');

@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------------------------------------------>
 
-if (document.title === 'หน้าหลัก | SPF : Milsim Community') {
+if (document.title === 'SPF : Milsim Community') {
     const header = document.getElementById('header');
 
     window.addEventListener('scroll', function () {
