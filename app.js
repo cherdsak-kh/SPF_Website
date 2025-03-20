@@ -173,7 +173,31 @@ app.get('/event', async (req, res) => {
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
-// # Render community page.
+// # Render news page.
+app.get('/news', async (req, res) => {
+    
+    getPath_Consoler(req)
+
+    try {
+        const data1 = client.db('spf_system_db').collection('menu')
+        const Menu = await data1.find().toArray()
+
+        res.render('pages/news', {
+            pageName: Menu[4].enName,
+            pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
+            menu: Menu
+        })
+
+    } catch (err) {
+        consoler('#ff4747', `MongoDB error: ${err}`)
+
+    }
+
+})
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+// # Render articles page.
 app.get('/articles', async (req, res) => {
     
     getPath_Consoler(req)
@@ -183,8 +207,56 @@ app.get('/articles', async (req, res) => {
         const Menu = await data1.find().toArray()
 
         res.render('pages/articles', {
-            pageName: Menu[4].enName,
-            pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
+            pageName: Menu[5].enName,
+            pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
+            menu: Menu
+        })
+
+    } catch (err) {
+        consoler('#ff4747', `MongoDB error: ${err}`)
+
+    }
+
+})
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+// # Render gallery page.
+app.get('/gallery', async (req, res) => {
+    
+    getPath_Consoler(req)
+
+    try {
+        const data1 = client.db('spf_system_db').collection('menu')
+        const Menu = await data1.find().toArray()
+
+        res.render('pages/gallery', {
+            pageName: Menu[6].enName,
+            pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
+            menu: Menu
+        })
+
+    } catch (err) {
+        consoler('#ff4747', `MongoDB error: ${err}`)
+
+    }
+
+})
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+// # Render contact page.
+app.get('/contact', async (req, res) => {
+    
+    getPath_Consoler(req)
+
+    try {
+        const data1 = client.db('spf_system_db').collection('menu')
+        const Menu = await data1.find().toArray()
+
+        res.render('pages/contact', {
+            pageName: Menu[7].enName,
+            pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
             menu: Menu
         })
 
