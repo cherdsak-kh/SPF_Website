@@ -95,6 +95,30 @@
                 background-blend-mode: multiply;
                 background-position: 0px 0px;
             }
+
+            .header-box {
+                background-color: green;
+                position: relative;
+                min-height: 110vh;
+                /* bottom: -60px; */
+                top: 0;
+            }
+
+            #header {
+                position: sticky;
+            }
+
+            .slideshow-inner-shadow {
+                position: absolute;
+                bottom: 55px;
+                left: 0;
+                width: 100%;
+                height: 1%;
+                z-index: 15;
+                /* box-shadow: inset 0px -70px 90px 40px black; */
+                background-color: black;
+                box-shadow: 0px 0px 80px 100px black;
+            }
         </style>
 
         <link rel="stylesheet" href="../css/header.css">
@@ -103,27 +127,32 @@
 </head>
 <body>
 
-    <header id="header" class="p-3 bg-transparent bg-gradient text-white">
-        <div class="container border-bottom border-warning pb-2">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-3">
-                    <img src="../images/SPF_logo_sign.png" alt="SPF_logo_sign" width="50">
-                </a>
-
-                <ul class="nav nav-masthead col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <% for (let i in menu) { %>
-                        <li><a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : 'text-white' %>"><%= menu[i].thName %></a></li>
-                    <% } %>
-                </ul>
-
-                <div class="text-end">
-                    <!-- <button type="button" class="btn btn-outline-light me-2">เข้าสู่ระบบ</button> -->
-                    <!-- <button type="button" class="btn btn-warning">สมัครเข้าร่วม</button> -->
-                    <a class="btn btn-warning" href="/registration">สมัครเข้าร่วม</a>
+    <div class="header-box">
+        <header id="header" class="p-3 bg-transparent bg-gradient text-white">
+            <div class="container border-bottom border-warning pb-2">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-3">
+                        <img src="../images/SPF_logo_sign.png" alt="SPF_logo_sign" width="50">
+                    </a>
+    
+                    <ul class="nav nav-masthead col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <% for (let i in menu) { %>
+                            <li><a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : 'text-white' %>"><%= menu[i].thName %></a></li>
+                        <% } %>
+                    </ul>
+    
+                    <div class="text-end">
+                        <!-- <button type="button" class="btn btn-outline-light me-2">เข้าสู่ระบบ</button> -->
+                        <!-- <button type="button" class="btn btn-warning">สมัครเข้าร่วม</button> -->
+                        <a class="btn btn-warning" href="/registration">สมัครเข้าร่วม</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
+
+        <div class="slideshow-inner-shadow"></div>
+
+    </div>
 
     <script src="../js/header.js"></script>
     
