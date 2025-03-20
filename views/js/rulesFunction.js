@@ -37,12 +37,20 @@ socket.on('rules-data', (rules) => {
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
     const rulesDisplay_1 = document.getElementById('rule-display-1');
     rulesDisplay_1.innerHTML = `
-        <iframe src="${rulesDisplay[0].linkSharing}" width="75%" height="1200"></iframe>
+        <div class="row justify-content-center">
+            <div class="col-lg-9 p-2 bg-secondary rounded">
+                <iframe src="${rulesDisplay[0].linkSharing}" width="100%" height="1200"></iframe>
+            </div>
+        </div>
     `;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
     const rulesDisplay_2 = document.getElementById('rule-display-2');
     rulesDisplay_2.innerHTML = `
-        <iframe src="${rulesDisplay[1].linkSharing}" width="75%" height="1200"></iframe>
+        <div class="row justify-content-center">
+            <div class="col-lg-9 p-2 bg-secondary rounded">
+                <iframe src="${rulesDisplay[1].linkSharing}" width="100%" height="1200"></iframe>
+            </div>
+        </div>
     `;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
 

@@ -160,8 +160,6 @@ socket.on('Events-data', (getEvents) => {
             dateShow.appendChild(row);
         }
 
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     }
 
     // ! ฟังก์ชันเพื่อให้ชื่อวัน
@@ -572,24 +570,18 @@ socket.on('Events-data', (getEvents) => {
 
         if (hasEvent) {
             eventIncoming.innerHTML = `
-            
-                <div class="last-mission col-md-4 d-flex justify-content-center rounded-3 shadow">
-                    <img src="${icmEvent_image}" class="img-fluid" alt="last-mission-image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-md-8 p-4">
-                    <p class="text-danger fw-bold p-0 m-0">
-                        ${icmEvent_dateTime}
-                        <span class="ms-3 ps-3 border-start border-2 border-secondary text-white">
-                            ${icmEvent_type}
-                        </span>
-                    </p>
-                    <p class="fw-bold fs-1">${icmEvent_name}</p>
-                    <div class="row">
-                        <div class="col-sm-auto d-flex flex-wrap flex-row align-items-center">
-                            <div class="mission-owner rounded-circle border border-dark me-3 shadow">
-                                <img src="../images/img001.jpg" class="img-fluid" alt="avatar-owner-mission">
+
+                <div class="row px-3">
+                    <div class="card p-2 text-bg-secondary bg-transparent border-0">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="${icmEvent_image}" class="img-fluid rounded" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
                             </div>
-                            <p class="mb-0">สร้างโดย ${icmEvent_author}</p>
+                            <div class="col-lg-8 pt-3">
+                                <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">${icmEvent_dateTime} <span class="mx-3 border border-secondary"></span> <span class="text-white">${icmEvent_type}</span></div>
+                                <div class="card-body fs-1 fw-bold text-shadow pb-0">${icmEvent_name}</div>
+                                <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${icmEvent_author}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
