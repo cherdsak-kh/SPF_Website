@@ -241,28 +241,45 @@ socket.on('Events-data', (getEvents) => {
             const eventAuthor = event.author;
 
             if (event.type === 'Mission Day') {
-                eventType = '<span class="ms-3 ps-3 border-start border-2 border-secondary text-white"><i class="bi bi-circle-fill text-primary me-2"></i>Mission Day</span>';
+                eventType = `
+                
+                    <i class="bi bi-circle-fill text-primary me-2"></i>
+                    Mission Day
+                
+                `;
             } else if (event.type === 'Event') {
-                eventType = '<span class="ms-3 ps-3 border-start border-2 border-secondary text-white"><i class="bi bi-circle-fill text-warning me-2"></i>Event</span>';
+                eventType = `
+                
+                    <i class="bi bi-circle-fill text-warning me-2"></i>
+                    Event
+                
+                `;
             } else if (event.type === 'Training') {
-                eventType = '<span class="ms-3 ps-3 border-start border-2 border-secondary text-white"><i class="bi bi-circle-fill text-light me-2"></i>Training</span>';
+                eventType = `
+                
+                    <i class="bi bi-circle-fill text-light me-2"></i>
+                    Training
+                
+                `;
             }
 
             if (eventDate.getDate() === date && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                 eventOpen.innerHTML += `
-                    <div class="row g-1 px-3">
-                        <div class="last-mission col-md-4 d-flex justify-content-center rounded-3 shadow">
-                            <img src="${eventImg}" class="img-fluid" alt="last-mission-image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
-                        </div>
-                        <div class="col-md-8 p-4">
-                            <p class="text-danger fw-bold p-0 m-0">${eventDateTime}${eventType}</p>
-                            <p class="fw-bold fs-1">${eventName}</p>
+
+                    <div class="row px-3">
+                        <div class="card p-2 text-bg-secondary bg-transparent border-0">
                             <div class="row">
-                                <div class="col-sm-auto d-flex flex-wrap flex-row align-items-center">
-                                    <div class="mission-owner rounded-circle border border-dark me-3 shadow">
-                                        <img src="../images/img001.jpg" class="img-fluid" alt="avatar-owner-mission">
+                                <div class="col-lg-4">
+                                    <img src="${eventImg}" class="img-fluid rounded" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                                </div>
+                                <div class="col-lg-8 pt-3">
+                                    <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
+                                        ${eventDateTime} 
+                                        <span class="mx-3 border border-secondary"></span> 
+                                        <span class="text-white">${eventType}</span>
                                     </div>
-                                    <p class="mb-0">สร้างโดย ${eventAuthor}</p>
+                                    <div class="card-body fs-1 fw-bold text-shadow pb-0">${eventName}</div>
+                                    <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${eventAuthor}</div>
                                 </div>
                             </div>
                         </div>
@@ -422,25 +439,21 @@ socket.on('Events-data', (getEvents) => {
     
     
                 pastEvents.innerHTML += `
-    
-                    <div class="row g-1 px-3">
-                        <div class="last-mission col-md-4 d-flex justify-content-center rounded-3 shadow">
-                            <img src="${pastEvent_image}" class="img-fluid" alt="last-mission-image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
-                        </div>
-                        <div class="col-md-8 p-4">
-                            <p class="text-danger fw-bold p-0 m-0">
-                                ${pastEvent_dateTime}
-                                <span class="ms-3 ps-3 border-start border-2 border-secondary text-white">
-                                    ${pastEvent_type}
-                                </span>
-                            </p>
-                            <p class="fw-bold fs-1">${pastEvent_name}</p>
+
+                    <div class="row px-3">
+                        <div class="card p-2 text-bg-secondary bg-transparent border-0">
                             <div class="row">
-                                <div class="col-sm-auto d-flex flex-wrap flex-row align-items-center">
-                                    <div class="mission-owner rounded-circle border border-dark me-3 shadow">
-                                        <img src="../images/img001.jpg" class="img-fluid" alt="avatar-owner-mission">
+                                <div class="col-lg-4">
+                                    <img src="${pastEvent_image}" class="img-fluid rounded" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                                </div>
+                                <div class="col-lg-8 pt-3">
+                                    <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
+                                        ${pastEvent_dateTime} 
+                                        <span class="mx-3 border border-secondary"></span> 
+                                        <span class="text-white">${pastEvent_type}</span>
                                     </div>
-                                    <p class="mb-0">สร้างโดย ${pastEvent_author}</p>
+                                    <div class="card-body fs-1 fw-bold text-shadow pb-0">${pastEvent_name}</div>
+                                    <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${pastEvent_author}</div>
                                 </div>
                             </div>
                         </div>
@@ -578,7 +591,11 @@ socket.on('Events-data', (getEvents) => {
                                 <img src="${icmEvent_image}" class="img-fluid rounded" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
                             </div>
                             <div class="col-lg-8 pt-3">
-                                <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">${icmEvent_dateTime} <span class="mx-3 border border-secondary"></span> <span class="text-white">${icmEvent_type}</span></div>
+                                <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
+                                    ${icmEvent_dateTime} 
+                                    <span class="mx-3 border border-secondary"></span> 
+                                    <span class="text-white">${icmEvent_type}</span>
+                                </div>
                                 <div class="card-body fs-1 fw-bold text-shadow pb-0">${icmEvent_name}</div>
                                 <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${icmEvent_author}</div>
                             </div>
