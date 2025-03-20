@@ -31,6 +31,11 @@
   "href": "/event"
 },
 {
+  "enName": "news",
+  "thName": "ข่าวสาร",
+  "href": "/news"
+},
+{
   "_id": {
     "$oid": "6729fb3371ccc2f8abe045f4"
   },
