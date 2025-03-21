@@ -6,18 +6,29 @@
 
     <!-- - Preview Link Metadata - -->
     <meta property="og:title" content="<%= (pageName !== 'home') ? pageTitle : 'SPF : Milsim Community' %>" />
-    <meta property="og:description" content="Arma 3 Community ที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ซึ่งผสมผสานความสมจริงทางการทหารเข้ากับความสนุกในการเล่นเกม" />
+    <meta property="og:description" content="SPF Community - Arma 3 MilSim ที่รวมตัวผู้เล่นสาย Tactical FPS และ Roleplay">
     <meta property="og:image" content="<%= req.protocol + '://' + req.get('host') + '/images/spf_logo.png' %>" />
     <meta property="og:url" content="<%= req.protocol + '://' + req.get('host') + req.originalUrl %>" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="SPF : Arma Milsim Community" />
-    <meta name="description" content="Arma 3 Community ที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ซึ่งผสมผสานความสมจริงทางการทหารเข้ากับความสนุกในการเล่นเกม">
+    <meta name="description" content="SPF : Arma 3 Community ที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ร่วมมือกันแบบ Tactical FPS">
     <meta name="keywords" content="SPF, Arma, Milsim, Community, Arma 3, Military Simulation, MilSim, การเล่นเกม, สมจริง, ทหาร, สนุก, เล่นเกม">
     <meta name="author" content="SPF : Arma Milsim Community">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="google" content="nositelinkssearchbox">
     <meta name="google" content="notranslate">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SPF : Arma Milsim Community",
+            "description": "Arma 3 Community ที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim)",
+            "url": "<%= req.protocol + '://' + req.get('host') %>"
+        }
+    </script>
+        
 
     <!-- - Title - -->
     <title>
