@@ -89,7 +89,8 @@ app.get('/', async (req, res) => {
         res.render('pages/index', {
             pageName: Menu[0].enName,
             pageTitle: Menu[0].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -113,7 +114,8 @@ app.get('/about', async (req, res) => {
         res.render('pages/about', {
             pageName: Menu[1].enName,
             pageTitle: Menu[1].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -137,7 +139,8 @@ app.get('/termsandconditions', async (req, res) => {
         res.render('pages/rules', {
             pageName: Menu[2].enName,
             pageTitle: Menu[2].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -161,7 +164,8 @@ app.get('/event', async (req, res) => {
         res.render('pages/event', {
             pageName: Menu[3].enName,
             pageTitle: Menu[3].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -185,7 +189,8 @@ app.get('/news', async (req, res) => {
         res.render('pages/news', {
             pageName: Menu[4].enName,
             pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -209,7 +214,8 @@ app.get('/articles', async (req, res) => {
         res.render('pages/articles', {
             pageName: Menu[5].enName,
             pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -233,7 +239,8 @@ app.get('/gallery', async (req, res) => {
         res.render('pages/gallery', {
             pageName: Menu[6].enName,
             pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -257,7 +264,8 @@ app.get('/contact', async (req, res) => {
         res.render('pages/contact', {
             pageName: Menu[7].enName,
             pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
@@ -281,7 +289,8 @@ app.get('/cookie-policy', async (req, res) => {
         res.render('pages/cookie-policy', {
             pageName: 'cookie-policy',
             pageTitle: 'นโยบายการใช้คุกกี้ | SPF : MilSim Community',
-            menu: Menu
+            menu: Menu,
+            req: req
         })
 
     } catch (err) {
