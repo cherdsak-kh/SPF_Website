@@ -1,5 +1,10 @@
 // ------------------------------------------------------------------------------------------------------>
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+// ------------------------------------------------------------------------------------------------------>
+
 function showLargeImage(src) {
     const largeImg = document.getElementById('imgLarge')
     largeImg.classList.remove('d-none')
@@ -81,7 +86,7 @@ socket.on('Events-data', (getEvents) => {
         // ! เพิ่มคอลัมน์ว่างก่อนวันแรกของเดือน
         for (let i = 0; i < startDay; i++) {
             const col = document.createElement('div');
-            col.className = 'col text-center border border-secondary py-3';
+            col.className = 'col-lg text-center border border-secondary py-3';
             row.appendChild(col);
         }
 
@@ -92,9 +97,9 @@ socket.on('Events-data', (getEvents) => {
 
             // ! ตรวจสอบวันที่ปัจจุบัน ถ้าใช่จะเข้าเงื่อนไข
             if (curDate.getDate() === day && curDate.getMonth() === month && curDate.getFullYear() === year) {
-                col.className = 'col text-center border border-2 border-warning py-3 fw-bold';
+                col.className = 'col-lg text-center border border-2 border-warning py-3 fw-bold';
             } else {
-                col.className = 'col text-center border border-secondary py-3 text-secondary';
+                col.className = 'col-lg text-center border border-secondary py-3 text-secondary';
             }
 
             col.innerHTML = `
@@ -106,15 +111,15 @@ socket.on('Events-data', (getEvents) => {
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.type === 'Mission Day') {
                         col.innerHTML += `
-                            <span style="font-size: 0.9rem"><i class="bi bi-circle-fill text-primary"></i></span>
+                            <i class="bi bi-circle-fill text-primary"></i>
                         `;
                     } else if (event.type === 'Event') {
                         col.innerHTML += `
-                            <span style="font-size: 0.9rem"><i class="bi bi-circle-fill text-warning"></i></span>
+                            <i class="bi bi-circle-fill text-warning"></i>
                         `;
                     } else if (event.type === 'Training') {
                         col.innerHTML += `
-                            <span style="font-size: 0.9rem"><i class="bi bi-circle-fill text-light"></i></span>
+                            <i class="bi bi-circle-fill text-light"></i>
                         `;
                     }
 
@@ -151,7 +156,7 @@ socket.on('Events-data', (getEvents) => {
         // ! เพิ่มคอลัมน์ว่างหลังวันสุดท้ายของเดือน
         for (let i = lastDay.getDay(); i < 6; i++) {
             const col = document.createElement('div');
-            col.className = 'col text-center border border-secondary py-3';
+            col.className = 'col-lg text-center border border-secondary py-3';
             row.appendChild(col);
         }
 
@@ -219,10 +224,10 @@ socket.on('Events-data', (getEvents) => {
         eventOpen.innerHTML = '';
         eventOpen.innerHTML += `
             <div class="row px-2">
-                <div class="col d-flex align-items-center">
+                <div class="col-lg d-flex align-items-center">
                     <h4 class="fw-bold m-0">${formatDateThai(dateSelect)}</h4>
                 </div>
-                <div class="col-sm-1 d-flex justify-content-end align-items-center">
+                <div class="col-lg-1 d-flex justify-content-end align-items-center">
                     <div data-bs-theme="dark">
                         <button id="close-event-coming" type="button" class="btn-close" aria-label="Close"></button>
                     </div>
@@ -487,7 +492,7 @@ socket.on('Events-data', (getEvents) => {
             pastEvents.innerHTML = `
     
                 <div class="row g-1 px-3">
-                    <div class="col d-flex justiy-content-center flex-column p-5">
+                    <div class="col-lg d-flex justiy-content-center flex-column p-5">
                         <h1 class="text-center mb-4"><i class="bi bi-calendar2-x"></i></h1>
                         <h5 class="text-center">ไม่มีกิจกรรมที่ผ่านมา</h5>
                     </div>
@@ -607,7 +612,7 @@ socket.on('Events-data', (getEvents) => {
         } else {
             eventIncoming.innerHTML = `
             
-                <div class="col d-flex justiy-content-center flex-column p-5">
+                <div class="col-lg d-flex justiy-content-center flex-column p-5">
                     <h1 class="text-center mb-4"><i class="bi bi-calendar2-x"></i></h1>
                     <h5 class="text-center">ไม่มีกิจกรรมที่กำลังจะเกิดขึ้น</h5>
                 </div>
