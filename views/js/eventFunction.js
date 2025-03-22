@@ -1,33 +1,5 @@
 // ------------------------------------------------------------------------------------------------------>
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-// ------------------------------------------------------------------------------------------------------>
-
-function showLargeImage(src) {
-    const largeImg = document.getElementById('imgLarge')
-    largeImg.classList.remove('d-none')
-    largeImg.classList.add('d-flex')
-    largeImg.innerHTML = ''; 
-
-    const imgShow = document.createElement('img')
-    imgShow.src = src
-
-    const btnClose = document.createElement('button')
-    btnClose.innerHTML = '<i class="bi bi-x-lg"></i>'
-    btnClose.className = 'largeImgBtnClose btn btn-outline-danger'
-    btnClose.onclick = () => {
-        largeImg.classList.remove('d-flex')
-        largeImg.classList.add('d-none')
-    }
-
-    largeImg.appendChild(imgShow)
-    largeImg.appendChild(btnClose)
-}
-
-// ------------------------------------------------------------------------------------------------------>
-
 let timesClicked = 1;
 document.getElementById('calendarToggleBtn').onclick = () => { 
     if (timesClicked === 1) {
@@ -110,14 +82,32 @@ socket.on('Events-data', (getEvents) => {
                 const eventDate = new Date(event.dateTime);
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.type === 'Mission Day') {
+                        col.setAttribute('data-bs-toggle', 'tooltip');
+                        col.setAttribute('data-bs-placement', 'top');
+                        col.setAttribute('data-bs-title', 'Mission Day');
+                        // Initialize Bootstrap tooltip after setting attributes
+                        new bootstrap.Tooltip(col);
+
                         col.innerHTML += `
                             <i class="bi bi-circle-fill text-primary"></i>
                         `;
                     } else if (event.type === 'Event') {
+                        col.setAttribute('data-bs-toggle', 'tooltip');
+                        col.setAttribute('data-bs-placement', 'top');
+                        col.setAttribute('data-bs-title', 'Event');
+                        // Initialize Bootstrap tooltip after setting attributes
+                        new bootstrap.Tooltip(col);
+
                         col.innerHTML += `
                             <i class="bi bi-circle-fill text-warning"></i>
                         `;
                     } else if (event.type === 'Training') {
+                        col.setAttribute('data-bs-toggle', 'tooltip');
+                        col.setAttribute('data-bs-placement', 'top');
+                        col.setAttribute('data-bs-title', 'Training');
+                        // Initialize Bootstrap tooltip after setting attributes
+                        new bootstrap.Tooltip(col);
+
                         col.innerHTML += `
                             <i class="bi bi-circle-fill text-light"></i>
                         `;
@@ -277,7 +267,7 @@ socket.on('Events-data', (getEvents) => {
                                 <div class="col-lg-4">
                                     <img src="${eventImg}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
                                 </div>
-                                <div class="col-lg-8 pt-3">
+                                <div class="col-lg-8 d-flex justify-content-center flex-column">
                                     <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
                                         ${eventDateTime} 
                                         <span class="mx-3 border border-secondary"></span> 
@@ -451,7 +441,7 @@ socket.on('Events-data', (getEvents) => {
                                 <div class="col-lg-4">
                                     <img src="${pastEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
                                 </div>
-                                <div class="col-lg-8 pt-3">
+                                <div class="col-lg-8 d-flex justify-content-center flex-column">
                                     <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
                                         ${pastEvent_dateTime} 
                                         <span class="mx-3 border border-secondary"></span> 
@@ -595,7 +585,7 @@ socket.on('Events-data', (getEvents) => {
                             <div class="col-lg-4">
                                 <img src="${icmEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
                             </div>
-                            <div class="col-lg-8 pt-3">
+                            <div class="col-lg-8 d-flex justify-content-center flex-column">
                                 <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
                                     ${icmEvent_dateTime} 
                                     <span class="mx-3 border border-secondary"></span> 

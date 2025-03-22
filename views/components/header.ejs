@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,7 +144,7 @@
                 height: 1%;
                 z-index: 15;
                 /* box-shadow: inset 0px -70px 90px 40px black; */
-                background-color: black;
+                /* background-color: black; */
                 box-shadow: 0px 0px 80px 100px black;
             }
         </style>
@@ -156,26 +156,52 @@
 <body>
 
     <div class="header-box">
-        <header id="header" class="p-3 bg-transparent bg-gradient text-white">
-            <div class="container border-bottom border-warning pb-2">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-3">
-                        <img src="../images/SPF_logo_sign.png" alt="SPF_logo_sign" width="50">
+        <header id="header" class="bg-transparent">
+            <nav class="container-lg navbar navbar-expand-lg pb-0">
+                <div class="container-fluid">
+                    
+                    <a class="navbar-brand text-center" href="/">
+                        <img src="../images/SPF_logo_sign.png" class="img-fluid" alt="SPF_logo_sign" width="50">
                     </a>
-    
-                    <ul class="nav nav-masthead col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <% for (let i in menu) { %>
-                            <li><a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : 'text-white' %>"><%= menu[i].thName %></a></li>
-                        <% } %>
-                    </ul>
-    
-                    <div class="text-end">
-                        <!-- <button type="button" class="btn btn-outline-light me-2">เข้าสู่ระบบ</button> -->
-                        <!-- <button type="button" class="btn btn-warning">สมัครเข้าร่วม</button> -->
-                        <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+                            <% for (let i in menu) { %>
+                                <li class="nav-item">
+                                    <a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : '' %>" aria-current="page"><%= menu[i].thName %></a>
+                                </li>
+                            <% } %>
+
+                        </ul>
+                        
+                        <div class="d-flex">
+                            <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+            <div class="hr-menu container-lg pb-2">
+                <div class="row">
+                    <div class="col-lg-12 mx-auto">
+                        <hr class="m-0 border border-1 border-warning rounded opacity-75">
                     </div>
                 </div>
             </div>
+
+            <style>
+                @media (max-width: 992px) { /* Adjust for smaller screens */
+                    .hr-menu {
+                        margin-top: 0.5rem; /* Add more margin-top when nav collapses */
+                    }
+                }
+            </style>
         </header>
 
         <div class="slideshow-inner-shadow"></div>

@@ -21,11 +21,10 @@ if (document.title === 'SPF : Milsim Community') {
 
 // ------------------------------------------------------------------------------------------------------>
 
-document.addEventListener('DOMContentLoaded', function () {
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-        new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-});
+if (document.documentElement.getAttribute('data-bs-theme') === 'light') {
+    document.getElementById('header').classList.add('bg-body-tertiary');
+} else {
+    document.getElementById('header').classList.remove('bg-body-tertiary');
+}
 
 // ------------------------------------------------------------------------------------------------------>
