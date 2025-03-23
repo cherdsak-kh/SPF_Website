@@ -56,7 +56,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 
     <!-- - CSS Structure - -->
-    <link rel="stylesheet" href="../css/structure.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
 
     <!-- - CSS Pages - -->
@@ -71,140 +71,146 @@
         const socket = io();
     </script>
 
-    <!-- - Set style if page not index - -->
-    <% if (pageName !== 'home') { %>
-        <style>
-            body {
-                background-color: #0000009d;
-                background-image:url('../images/indexBackground.jpg');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                background-blend-mode: multiply;
-                background-position: 0px 0px;
-            }
+    <style>
+        .big-box {
+            height: 0;
+            position: relative;
+            background-color: #f0f0f0;
+            margin-bottom: 95px;
+        }
 
-            #header {
-                backdrop-filter: blur(20px);
-            }
+        .box {
+            width: 100%;
+        }
+    </style>
 
-            header {
-                /* position: fixed; */
-                /* top: 0; */
-                /* left: 0; */
-                width: 100%;
-                background-color: white;
-                color: black;
-                /*transition: transform 1s ease, opacity 1s ease; /* เพิ่มการเปลี่ยนแปลงการเลื่อนและความโปร่งใส */
-                z-index: 100;
-                /*transform: translateY(-100%); /* ซ่อน header ด้วยการเลื่อนขึ้น */
-                opacity: 0; /* ซ่อนด้วยความโปร่งใส */
-                box-shadow: 0px 0px 100px 100px black;
+    <% if (pageName === 'home')  { %>
+    <style>
+        .big-box {
+            height: 100vh;
+            margin-bottom: 0px;
+        }
 
+        .nav-box {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: transform 1s ease, opacity 1s ease;
+        }
 
-                img {
-                    filter: drop-shadow(0px 0px 5px yellow)
-                }
-            }
-
-            header.visible {
-                transform: translateY(0); /* เลื่อน header ลงมาแสดง */
-                opacity: 1; /* ทำให้แสดงด้วยการปรับความโปร่งใส */
-            }
-        </style>
-    <% } else { %>
-        <style>
-            body {
-                background-color: #0000009d;
-                background-image:url('../images/indexBackground.jpg');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                background-blend-mode: multiply;
-                background-position: 0px 0px;
-            }
-
-            .header-box {
-                /* background-color: green; */
-                position: relative;
-                min-height: 110vh;
-                /* bottom: -60px; */
-                top: 0;
-            }
-
-            #header {
-                position: sticky;
-            }
-
-            .slideshow-inner-shadow {
-                position: absolute;
-                bottom: 70px;
-                left: 0;
-                width: 100%;
-                height: 1%;
-                z-index: 15;
-                /* box-shadow: inset 0px -70px 90px 40px black; */
-                background-color: black;
-                box-shadow: 0px 0px 80px 100px black;
-            }
-        </style>
-
-        <link rel="stylesheet" href="../css/header.css">
+        .nav-box.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
     <% } %>
 
 </head>
 <body>
 
-    <div class="header-box">
-        <header id="header" class="bg-transparent">
-            <nav class="container-lg navbar navbar-expand-lg pb-0">
-                <div class="container-fluid">
-                    
-                    <a class="navbar-brand text-center" href="/">
-                        <img src="../images/SPF_logo_sign.png" class="img-fluid" alt="SPF_logo_sign" width="50">
-                    </a>
+    <div class="big-box position-relative">
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <% if (pageName === 'home')  { %>
+        <div class="box position-absolute top-0 start-0 vh-100 bg-dark text-white d-flex justify-content-center align-items-center z-1 overflow-hidden">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_01.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_02.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_03.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_04.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_05.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_06.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_07.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_08.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_09.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_10.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_11.webp" alt="Slide Show Image">
+            <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_12.webp" alt="Slide Show Image">
+        </div>
 
-                    <div class="collapse navbar-collapse" id="navbarScroll">
-                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <div class="box position-absolute top-0 start-0 vh-100 bg-transparent text-white d-flex justify-content-center align-items-center align-content-center z-2 flex-wrap">
+            <div class="col-lg-12 w-100 text-center">
+                <img class="spf-logo logo-title-effect mb-4" src="../images/spf_logo.png" alt="spf_logo" width="15%">
+            </div>
 
-                            <% for (let i in menu) { %>
-                                <li class="nav-item">
-                                    <a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : '' %>" aria-current="page"><%= menu[i].thName %></a>
-                                </li>
-                            <% } %>
-
-                        </ul>
-                        
-                        <div class="d-flex">
-                            <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
-                        </div>
-                    </div>
-
+            <div class="col-lg-12 w-100 text-center">
+                <div class="w-75 bg-gradient rounded-top-5 mx-auto p-3">
+                    <h1 class="text-shadow fw-bolder fs-1">SPF : MilSim Community</h1>
+                    <h3 class="text-shadow fs-5">Arma 3 Community ที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ซึ่งผสมผสานความสมจริงทางการทหารเข้ากับความสนุกในการเล่นเกม</h3>
                 </div>
-            </nav>
+            </div>
 
-            <div class="hr-menu container-lg pb-2">
-                <div class="row">
-                    <div class="col-lg-12 mx-auto">
-                        <hr class="m-0 border border-1 border-warning rounded opacity-75">
-                    </div>
+            <div class="col-lg-12 w-100 text-center">
+                <hr class="border border-2 border-warning rounded opacity-50 my-4 w-75 mx-auto">
+                <div class="scroll-to-view mx-auto" style="width: 20%;">
+                    <button class="btn btn-lg btn-outline-light w-100" onclick="scrollToView()"><i class="bi bi-chevron-double-down"></i></button>
                 </div>
             </div>
 
             <style>
                 @media (max-width: 992px) { /* Adjust for smaller screens */
-                    .hr-menu {
-                        margin-top: 0.5rem; /* Add more margin-top when nav collapses */
+                    .spf-logo {
+                        width: 25%;
+                    }
+
+                    .scroll-to-view {
+                        width: 15%;
                     }
                 }
             </style>
-        </header>
 
-        <div class="slideshow-inner-shadow"></div>
+        </div>
+
+        <div class="box position-absolute bottom-0 start-0 bg-black text-white d-flex justify-content-center align-items-center align-content-center z-3" style="box-shadow: 0px 80px 180px 230px black;"></div>
+
+        <% } %>
+
+        <div id="nav_box" class="box nav-box position-sticky top-0 start-0 bg-transparent text-white d-flex justify-content-center align-items-center z-3" style="backdrop-filter: blur(20px); box-shadow: 0px 20px 100px 50px black;">
+            <div class="col-lg-12 container-fluid">
+                <nav class="navbar navbar-expand-lg pb-0 w-75 mx-auto">
+                    <div class="container-fluid">
+                        
+                        <a class="navbar-brand text-center" href="/">
+                            <img src="../images/SPF_logo_sign.png" class="img-fluid" alt="SPF_logo_sign" width="50">
+                        </a>
+        
+                       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <div class="collapse navbar-collapse" id="navbarScroll">
+                            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        
+                                <% for (let i in menu) { %>
+                                    <li class="nav-item">
+                                        <a href="<%= menu[i].href %>" class="nav-link px-3 <%= (pageName === menu[i].enName) ? 'text-warning' : '' %>" aria-current="page"><%= menu[i].thName %></a>
+                                    </li>
+                                <% } %>
+        
+                            </ul>
+                            
+                            <div class="d-flex">
+                                <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
+                            </div>
+                        </div>
+        
+                    </div>
+                </nav>
+        
+                <div class="hr-menu pb-2 w-75 mx-auto">
+                    <div class="row">
+                        <div class="col-lg-12 mx-auto">
+                            <hr class="m-0 border border-1 border-warning rounded opacity-75">
+                        </div>
+                    </div>
+                </div>
+        
+                <style>
+                    @media (max-width: 992px) { /* Adjust for smaller screens */
+                        .hr-menu {
+                            margin-top: 0.5rem; /* Add more margin-top when nav collapses */
+                        }
+                    }
+                </style>
+            </div>
+        </div>
 
     </div>
 

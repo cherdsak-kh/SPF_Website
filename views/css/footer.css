@@ -1,8 +1,8 @@
 footer {
-    box-shadow: 0px 0px 250px 350px black;
+    /* box-shadow: 0px 0px 250px 350px black; */
     backdrop-filter: blur(20px);
-    position: relative;
-    z-index: 0;
+    /* position: relative; */
+    /* z-index: 0; */
 }
 
 .footer-contact {
@@ -20,5 +20,30 @@ footer {
 
     to {
         transform: scale(1)
+    }
+}
+
+#imgLarge {
+    z-index: 200;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.52);
+    /* padding-top: 2%; */
+    backdrop-filter: blur(5px);
+
+    img {
+        width: 70%;
+        box-shadow: 2px 2px 1px 1px black;
+        border-radius: 10px;
+        position: relative;
+        z-index: 202;
+    }
+
+    .largeImgBtnClose {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        z-index: 201;
+        cursor: pointer;
     }
 }
