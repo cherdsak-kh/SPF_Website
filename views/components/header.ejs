@@ -107,7 +107,7 @@
 </head>
 <body>
 
-    <div id="header" class="big-box position-relative">
+    <div id="header" class="big-box position-relative" style="z-index: 1000;">
 
         <% if (pageName === 'home')  { %>
         <div class="box position-absolute top-0 start-0 vh-100 bg-dark text-white d-flex justify-content-center align-items-center overflow-hidden" style="z-index: 1;">
@@ -146,25 +146,25 @@
                 </div>
             </div>
 
-            <style>
-                @media (max-width: 992px) { /* less than 992px */
-                    .spf-logo {
-                        width: 25%;
-                    }
-
-                    .scroll-to-view {
-                        width: 15%;
-                    }
-                }
-            </style>
-
         </div>
+
+        <style>
+            @media (max-width: 992px) { /* less than 992px */
+                .spf-logo {
+                    width: 25%;
+                }
+
+                .scroll-to-view {
+                    width: 15%;
+                }
+            }
+        </style>
 
         <% } %>
 
-        <div id="nav_box" class="box nav-box position-sticky top-0 start-0 bg-transparent text-white d-flex justify-content-center align-items-center" style="z-index: 4; backdrop-filter: blur(20px); box-shadow: 0px 20px 100px 50px black;">
+        <div id="nav_box" class="box nav-box position-sticky top-0 start-0 text-white d-flex justify-content-center align-items-center" style="z-index: 4; backdrop-filter: blur(20px); box-shadow: 0px 20px 100px 50px black;">
             <div class="col-lg-12 container-fluid">
-                <nav class="navbar navbar-expand-lg pb-0 w-75 mx-auto">
+                <nav class="navbar navbar-expand-lg pb-0 w-75 mx-auto text-center">
                     <div class="container-fluid">
                         
                         <a class="navbar-brand text-center" href="/">
@@ -186,7 +186,7 @@
         
                             </ul>
                             
-                            <div class="d-flex">
+                            <div class="d-flex justify-content-center">
                                 <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
                             </div>
                         </div>
@@ -201,16 +201,27 @@
                         </div>
                     </div>
                 </div>
-        
-                <style>
-                    @media (max-width: 992px) { /* Adjust for smaller screens */
-                        .hr-menu {
-                            margin-top: 0.5rem; /* Add more margin-top when nav collapses */
-                        }
-                    }
-                </style>
+
             </div>
         </div>
+
+        <style>
+            @media (max-width: 992px) { /* Adjust for smaller screens */
+                #nav_box {
+                    background-color: black;
+                }
+
+                .hr-menu {
+                    margin-top: 0.5rem; /* Add more margin-top when nav collapses */
+                }
+            }
+
+            @media (min-width: 992px) { /* Adjust for smaller screens */
+                #nav_box {
+                    background-color: transparent;
+                }
+            }
+        </style>
 
     </div>
 
