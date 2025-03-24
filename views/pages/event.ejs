@@ -11,7 +11,7 @@
                 <div class="col d-flex align-items-center">
                     <h4 class="fw-bold p-0 m-0">กิจกรรมที่กำลังจะมาถึง</h4>
                 </div>
-                <div class="col-md-3 text-end">
+                <div class="col-md-3 text-end calendar-button">
                     <!-- <a class="btn btn-primary" href="#">สร้างกิจกรรม</a> -->
                     <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#eventCalendar" aria-expanded="false" aria-controls="collapseText" id="calendarToggleBtn"><i class="bi bi-calendar-week"></i> ปฏิทินกิจกรรม</i></button>
                 </div>
@@ -72,6 +72,14 @@
 
         </div>
     </div>
+
+    <style>
+        @media (max-width: 992px) { /* less than 992px */
+            .calendar-button {
+                display: none;
+            }
+        }
+    </style>
 
     <script src="../js/eventFunction.js"></script>
 
