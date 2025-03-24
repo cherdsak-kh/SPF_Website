@@ -265,7 +265,7 @@ socket.on('Events-data', (getEvents) => {
                         <div class="card p-2 text-bg-secondary bg-transparent border-0">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <img src="${eventImg}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                                    <img src="${eventImg}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
                                 </div>
                                 <div class="col-lg-8 d-flex justify-content-center flex-column">
                                     <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
@@ -439,7 +439,7 @@ socket.on('Events-data', (getEvents) => {
                         <div class="card p-2 text-bg-secondary bg-transparent border-0">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <img src="${pastEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                                    <img src="${pastEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
                                 </div>
                                 <div class="col-lg-8 d-flex justify-content-center flex-column">
                                     <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
@@ -583,7 +583,7 @@ socket.on('Events-data', (getEvents) => {
                     <div class="card p-2 text-bg-secondary bg-transparent border-0">
                         <div class="row">
                             <div class="col-lg-4">
-                                <img src="${icmEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="showLargeImage(this.src)" style="cursor: pointer;">
+                                <img src="${icmEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
                             </div>
                             <div class="col-lg-8 d-flex justify-content-center flex-column">
                                 <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">

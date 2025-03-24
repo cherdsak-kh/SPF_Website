@@ -5,43 +5,41 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 // ------------------------------------------------------------------------------------------------------>
 
-function showLargeImage(src) {
-    const largeImg = document.getElementById('imgLarge');
-    largeImg.classList.remove('d-none');
-    largeImg.classList.add('d-flex');
-    largeImg.innerHTML = '';
+function imgPreview(src) {
+    const imgPreviewBox = document.getElementById('image-preview-box');
+    imgPreviewBox.classList.remove('d-none');
+    imgPreviewBox.classList.add('d-flex');
+    imgPreviewBox.innerHTML = '';
 
     // Disable scroll bar
     document.body.style.overflow = 'hidden';
 
-    const imgShow = document.createElement('img');
-    imgShow.src = src;
-    imgShow.style.animationName = 'zoom';
-    imgShow.style.animationDuration = '0.6s';
-    imgShow.style.maxWidth = '90%'; // Ensure responsiveness
-    imgShow.style.maxHeight = '90%'; // Ensure responsiveness
-    imgShow.style.objectFit = 'contain'; // Maintain aspect ratio
+    imgPreviewBox.innerHTML = `
+    
+        <div class="col-lg-10 rounded overflow-hidden">
+            <div class="show-image position-relative">
+                <img src="${src}" class="w-100 image-preview" alt="image-preview">
+                <button id="image-preview-close" type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close"></button>
+            </div>
+        </div>
+    `;
 
-    const btnClose = document.createElement('button');
-    btnClose.innerHTML = '<i class="bi bi-x-lg"></i>';
-    btnClose.className = 'largeImgBtnClose btn btn-outline-danger';
-    btnClose.onclick = closeLargeImage;
+    const imagePreviewClose = document.getElementById('image-preview-close');
+    imagePreviewClose.onclick = closeImagePreview;
 
-    largeImg.onclick = (event) => {
-        if (event.target === largeImg) {
-            closeLargeImage();
+    imgPreviewBox.onclick = (event) => {
+        if (event.target === imgPreviewBox) {
+            closeImagePreview();
         }
     };
 
-    function closeLargeImage() {
-        largeImg.classList.remove('d-flex');
-        largeImg.classList.add('d-none');
+    function closeImagePreview() {
+        imgPreviewBox.classList.remove('d-flex');
+        imgPreviewBox.classList.add('d-none');
+        imgPreviewBox.innerHTML = '';
         // Enable scroll bar
         document.body.style.overflow = 'auto';
     }
-
-    largeImg.appendChild(imgShow);
-    largeImg.appendChild(btnClose);
 }
 
 // ------------------------------------------------------------------------------------------------------>
