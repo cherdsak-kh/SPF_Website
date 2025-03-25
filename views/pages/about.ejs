@@ -1,28 +1,31 @@
 <%- include('../components/header.ejs') %>
 
-    <div class="container position-relative mt-4 mb-5 px-5 pt-5 bg-transparent bg-gradient rounded" style="min-height: 100vh; z-index: 5;">
-
-        <div class="row mb-5">
-            <div class="col-lg-12 mx-auto text-center">
+    <div class="container position-relative z-2 text-center px-2 bg-gradient rounded">
+        <div class="row">
+            <div class="col-lg-12 my-5 text-center">
                 <img src="../images/spf_logo.png" class="img-fluid" alt="spf_logo" width="200">
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-12 px-5">
-                <h1 class="text-center fw-bold">เกี่ยวกับเรา</h1>
-                <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">เราคือกลุ่มผู้เล่นที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ซึ่งผสมผสานความสมจริงทางการทหารเข้ากับความสนุกในการเล่นเกม กลุ่มของเรามุ่งมั่นสร้างบรรยากาศการเล่นที่มีคุณภาพ ผ่านการทำงานเป็นทีม การสื่อสารที่มีประสิทธิภาพ และการวางแผนกลยุทธ์ในทุกภารกิจ</p>
-                <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">เราให้ความสำคัญกับความสมดุลระหว่าง ความจริงจัง และความสนุกสนาน โดยเน้นการร่วมมือและความเข้าใจในหมู่สมาชิก เพื่อสร้างประสบการณ์การเล่นที่สนุกและน่าจดจำ ไม่ว่าคุณจะเป็นผู้เล่นใหม่หรือผู้เล่นมากประสบการณ์ SPF พร้อมเปิดรับทุกคนที่ต้องการเข้ามาเป็นส่วนหนึ่งของกลุ่มที่ให้ความสำคัญกับทั้งการพัฒนาทักษะและการสร้างมิตรภาพผ่านการเล่นเกม</p>
+        <div class="row px-lg-5">
+            <div class="col-lg-12 mb-5">
+                <h2 class="text-shadow fw-bold">เกี่ยวกับเรา</h2>
+            </div>
+            <div class="col-lg-12 mb-3 px-lg-5">
+                <p class="fs-5 text-justify" style="text-indent: 10%;">
+                    เราคือกลุ่มผู้เล่นที่ชอบการเล่นเกมในรูปแบบ Military Simulation (MilSim) ซึ่งผสมผสานความสมจริงทางการทหารเข้ากับความสนุกในการเล่นเกม กลุ่มของเรามุ่งมั่นสร้างบรรยากาศการเล่นที่มีคุณภาพ ผ่านการทำงานเป็นทีม การสื่อสารที่มีประสิทธิภาพ และการวางแผนกลยุทธ์ในทุกภารกิจ
+                </p>
+                <p class="fs-5 text-justify" style="text-indent: 10%;">
+                    เราให้ความสำคัญกับความสมดุลระหว่าง ความจริงจัง และความสนุกสนาน โดยเน้นการร่วมมือและความเข้าใจในหมู่สมาชิก เพื่อสร้างประสบการณ์การเล่นที่สนุกและน่าจดจำ ไม่ว่าคุณจะเป็นผู้เล่นใหม่หรือผู้เล่นมากประสบการณ์ SPF พร้อมเปิดรับทุกคนที่ต้องการเข้ามาเป็นส่วนหนึ่งของกลุ่มที่ให้ความสำคัญกับทั้งการพัฒนาทักษะและการสร้างมิตรภาพผ่านการเล่นเกม
+                </p>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div id="about-img-slide-1" class="carousel slide rounded overflow-hidden p-1 card" data-bs-ride="carousel">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 p-0 px-3">
+                <div id="about-slide-1" class="carousel slide rounded overflow-hidden p-1 card" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#about-img-slide-1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#about-img-slide-1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#about-img-slide-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#about-slide-1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#about-slide-1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#about-slide-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -35,12 +38,12 @@
                             <img src="../images/about/about-3.jpg" class="d-block w-100 rounded" alt="image-slide" onclick="imgPreview(this.src)">
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#about-img-slide-1"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#about-slide-1"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#about-img-slide-1"
+                    <button class="carousel-control-next" type="button" data-bs-target="#about-slide-1"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
@@ -48,86 +51,92 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-6 mx-auto d-flex justify-content-center flex-row">
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-1.jpg" class="img-fluid" alt="about-1" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-2.jpg" class="img-fluid" alt="about-2" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-3.jpg" class="img-fluid" alt="about-3" onclick="imgPreview(this.src)" style="cursor: pointer;">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 p-0 mb-3 px-4">
+                <div class="row">
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-1.jpg" class="card-img img-fluid" alt="about-1" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-2.jpg" class="card-img img-fluid" alt="about-2" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-3.jpg" class="card-img img-fluid" alt="about-3" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
                 </div>
             </div>
         </div>
-
-        <hr class="border border-2 rounded opacity-50 my-5">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-center fw-bold mb-4">SPF คืออะไร ?</h2>
-                <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">
+        <hr class="border border-2 border-light rounded opacity-50">
+        <div class="row px-lg-5">
+            <div class="col-lg-12 my-5">
+                <h2 class="text-shadow fw-bold">SPF คืออะไร ?</h2>
+            </div>
+            <div class="col-lg-12 mb-3 px-lg-5">
+                <p class="fs-5 text-justify" style="text-indent: 10%;">
                     Sierra Penthera Force (SPF) เป็นชื่อหน่วยทางทหารสมมติที่ถูกสร้างขึ้นมาเพื่อใช้ในการเล่นภารกิจในเกม Arma 3 โดยหน่วยนี้เป็นส่วนหนึ่งของการจำลองสถานการณ์ทางทหารเสมือนจริง (MilSim) ซึ่งผู้เล่นจะได้สวมบทบาทเป็นสมาชิกของหน่วย SPF ที่ปฏิบัติภารกิจต่าง ๆ ในโลกของเกม โดยภารกิจเหล่านี้เน้นการทำงานเป็นทีม การสื่อสารที่มีประสิทธิภาพ และการวางแผนเชิงกลยุทธ์
                     <button class="btn btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#spf-more" aria-expanded="false" aria-controls="spf-more" id="toggleBtn" style="--bs-btn-padding-y: .2rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .70rem;">
                         อ่านเพิ่มเติม
                     </button>
                 </p>
                 <div id="spf-more" class="collapse">
-                    <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">Sierra Penthera Force (SPF) ก่อตั้งขึ้นครั้งแรกในเดือนกรกฎาคม ปี 2018 โดยเป็นหน่วยรบพิเศษที่ถูกจัดตั้งขึ้นภายใต้กองทัพของประเทศสมมติ Kingdom of the Penthera ภารกิจแรกเริ่มของหน่วยนี้คือการตอบสนองต่อสถานการณ์ทางทหารที่เกิดขึ้นภายในประเทศ แต่ภายหลังจากการล่มสลายของ Kingdom of the Penthera หน่วย SPF ได้รวมตัวกันอีกครั้งเพื่อทำหน้าที่ในการรักษาความมั่นคงของประเทศ ฟื้นฟูสภาพบ้านเมือง และปฏิบัติการพิเศษเพื่อต่อต้านภัยคุกคามจากภายนอก</p>
-                    <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">ในโลกของ Arma 3 หน่วย SPF ถูกสร้างขึ้นมาเพื่อใช้ในการปฏิบัติภารกิจต่าง ๆ ซึ่งทุกการเล่นจะเน้นการทำงานเป็นทีม การสื่อสารที่ดี และการคิดเชิงกลยุทธ์ โดยผู้เล่นจะได้มีส่วนร่วมในภารกิจที่ออกแบบมาอย่างละเอียด ซึ่งแต่ละภารกิจจะจำลองสถานการณ์ทางทหารที่เข้มข้นและสมจริง</p>
+                    <p class="fs-5 text-justify" style="text-indent: 10%;">
+                        Sierra Penthera Force (SPF) ก่อตั้งขึ้นครั้งแรกในเดือนกรกฎาคม ปี 2018 โดยเป็นหน่วยรบพิเศษที่ถูกจัดตั้งขึ้นภายใต้กองทัพของประเทศสมมติ Kingdom of the Penthera ภารกิจแรกเริ่มของหน่วยนี้คือการตอบสนองต่อสถานการณ์ทางทหารที่เกิดขึ้นภายในประเทศ แต่ภายหลังจากการล่มสลายของ Kingdom of the Penthera หน่วย SPF ได้รวมตัวกันอีกครั้งเพื่อทำหน้าที่ในการรักษาความมั่นคงของประเทศ ฟื้นฟูสภาพบ้านเมือง และปฏิบัติการพิเศษเพื่อต่อต้านภัยคุกคามจากภายนอก
+                    </p>
+                    <p class="fs-5 text-justify" style="text-indent: 10%;">
+                        ในโลกของ Arma 3 หน่วย SPF ถูกสร้างขึ้นมาเพื่อใช้ในการปฏิบัติภารกิจต่าง ๆ ซึ่งทุกการเล่นจะเน้นการทำงานเป็นทีม การสื่อสารที่ดี และการคิดเชิงกลยุทธ์ โดยผู้เล่นจะได้มีส่วนร่วมในภารกิจที่ออกแบบมาอย่างละเอียด ซึ่งแต่ละภารกิจจะจำลองสถานการณ์ทางทหารที่เข้มข้นและสมจริง
+                    </p>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-6 overflow-hidden text-center mx-auto">
                 <iframe class="card p-1 rounded-3 w-100" src="https://www.youtube.com/embed/WrbHBHAcflc?si=357E5J-d418Xryvj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="aspect-ratio: 16/9;"></iframe>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-6 mx-auto d-flex justify-content-center flex-row">
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-4.jpg" class="img-fluid" alt="about-4" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-5.jpg" class="img-fluid" alt="about-5" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-6.jpg" class="img-fluid" alt="about-6" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-            </div>
-        </div>
-
-        <hr class="border border-2 rounded opacity-50 my-5">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-center fw-bold">MilSim คืออะไร ?</h2>
-                <p class="lh-lg fs-5 text-justify" style="text-indent: 10%;">MilSim หรือ Military Simulation คือการจำลองการรบเสมือนจริงในสภาพแวดล้อมเกม ซึ่งในกรณีของ SPF นั้น ผู้เล่นจะได้รับบทบาทเป็นสมาชิกของหน่วยทหารจำลองชื่อ Sierra Penthera Force (SPF) ที่ถูกสร้างขึ้นมาโดยเฉพาะสำหรับการทำภารกิจในโลกของเกม Arma 3 การเล่นในแบบ MilSim ของ SPF มุ่งเน้นไปที่ความสมจริงในการทำภารกิจ ไม่ว่าจะเป็นการสั่งการ การประสานงาน การใช้ยุทธวิธี และการคิดเชิงกลยุทธ์ ผู้เล่นจะต้องทำงานร่วมกันเป็นทีมเสมือนกับกองกำลังทหารจริง ๆ เพื่อให้ภารกิจสำเร็จลุล่วง</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6 mx-auto d-flex justify-content-center flex-row">
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-7.jpg" class="img-fluid" alt="about-7" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-8.jpg" class="img-fluid" alt="about-8" onclick="imgPreview(this.src)" style="cursor: pointer;">
-                </div>
-                <div class="col-lg-4 card text p-1 m-1">
-                    <img src="../images/about/about-9.jpg" class="img-fluid" alt="about-9" onclick="imgPreview(this.src)" style="cursor: pointer;">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 p-0 mb-3 px-3">
+                <div class="row">
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-4.jpg" class="card-img img-fluid" alt="about-4" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-5.jpg" class="card-img img-fluid" alt="about-5" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-6.jpg" class="card-img img-fluid" alt="about-6" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
                 </div>
             </div>
         </div>
-
-        <hr class="border border-2 rounded opacity-50 my-5">
-
+        <hr class="border border-2 border-light rounded opacity-50">
+        <div class="row px-lg-5">
+            <div class="col-lg-12 my-5">
+                <h2 class="text-shadow fw-bold">MilSim คืออะไร ?</h2>
+            </div>
+            <div class="col-lg-12 mb-3 px-lg-5">
+                <p class="fs-5 text-justify" style="text-indent: 10%;">
+                    MilSim หรือ Military Simulation คือการจำลองการรบเสมือนจริงในสภาพแวดล้อมเกม ซึ่งในกรณีของ SPF นั้น ผู้เล่นจะได้รับบทบาทเป็นสมาชิกของหน่วยทหารจำลองชื่อ Sierra Penthera Force (SPF) ที่ถูกสร้างขึ้นมาโดยเฉพาะสำหรับการทำภารกิจในโลกของเกม Arma 3 การเล่นในแบบ MilSim ของ SPF มุ่งเน้นไปที่ความสมจริงในการทำภารกิจ ไม่ว่าจะเป็นการสั่งการ การประสานงาน การใช้ยุทธวิธี และการคิดเชิงกลยุทธ์ ผู้เล่นจะต้องทำงานร่วมกันเป็นทีมเสมือนกับกองกำลังทหารจริง ๆ เพื่อให้ภารกิจสำเร็จลุล่วง
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 p-0 mb-3 px-3">
+                <div class="row">
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-7.jpg" class="card-img img-fluid" alt="about-7" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-8.jpg" class="card-img img-fluid" alt="about-8" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                    <div class="card text col-lg p-1 m-1">
+                        <img src="../images/about/about-9.jpg" class="card-img img-fluid" alt="about-9" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="border border-2 border-light rounded opacity-50">
     </div>
 
-    <script src="../js/aboutFunction.js"></script>
+    <!-- <script src="../js/aboutFunction.js"></script> -->
 
 <%- include('../components/footer.ejs') %>
