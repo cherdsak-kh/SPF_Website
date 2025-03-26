@@ -1,19 +1,3 @@
-document.getElementById('rule_2').classList.add('d-none');
-
-document.getElementById('rule_1_btn').onclick = () => {
-    document.getElementById('rule_1_btn').classList.add('active');
-    document.getElementById('rule_2_btn').classList.remove('active');
-    document.getElementById('rule_1').classList.remove('d-none');
-    document.getElementById('rule_2').classList.add('d-none');
-};
-
-document.getElementById('rule_2_btn').onclick = () => {
-    document.getElementById('rule_2_btn').classList.add('active');
-    document.getElementById('rule_1_btn').classList.remove('active');
-    document.getElementById('rule_2').classList.remove('d-none');
-    document.getElementById('rule_1').classList.add('d-none');
-};
-
 // ------------------------------------------------------------------------------------------------------>
 
 socket.emit('request-rules-data');
@@ -35,21 +19,17 @@ socket.on('rules-data', (rules) => {
     // console.log(rules);
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
-    const rulesDisplay_1 = document.getElementById('rule-display-1');
+    const rulesDisplay_1 = document.getElementById('rule-1');
     rulesDisplay_1.innerHTML = `
-        <div class="row justify-content-center">
-            <div class="col-lg-9 p-2 bg-dark rounded">
-                <iframe src="${rulesDisplay[0].linkSharing}" width="100%" height="1200"></iframe>
-            </div>
+        <div class="col-lg-9 bg-dark rounded-2 p-1 pb-0 mx-auto mt-3 overflow-hidden">
+            <iframe src="${rulesDisplay[0].linkSharing}" width="100%" height="1200"></iframe>
         </div>
     `;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
-    const rulesDisplay_2 = document.getElementById('rule-display-2');
+    const rulesDisplay_2 = document.getElementById('rule-2');
     rulesDisplay_2.innerHTML = `
-        <div class="row justify-content-center">
-            <div class="col-lg-9 p-2 bg-dark rounded">
-                <iframe src="${rulesDisplay[1].linkSharing}" width="100%" height="1200"></iframe>
-            </div>
+        <div class="col-lg-9 bg-dark rounded-2 p-1 pb-0 mx-auto mt-3 overflow-hidden">
+            <iframe src="${rulesDisplay[1].linkSharing}" width="100%" height="1200"></iframe>
         </div>
     `;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
