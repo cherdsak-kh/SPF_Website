@@ -1,10 +1,77 @@
 <%- include('../components/header.ejs') %>
 
-    <div class="container position-relative mt-3 pb-5 px-5" style="z-index: 5;">
-        
-        <div class="container text-shadow mb-5">
-            <hr class="border border-2 rounded opacity-0 mb-3">
+    <div class="container position-relative z-2 text-center px-2 rounded">
+        <div class="row bg-gradient m-0 pt-4 pb-5 px-2 rounded">
+            <div class="row p-0 m-0">
+                <div class="col-lg-6 text-lg-start mb-3 mb-lg-0">
+                    <h3 class="fw-bold text-shadow my-auto">กิจกรรมที่กำลังจะมาถึง</h3>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#eventCalendar" aria-expanded="false" aria-controls="collapseText" id="calendarToggleBtn"><i class="bi bi-calendar-week"></i> ปฏิทินกิจกรรม</i></button>
+                </div>
+            </div>
+            <hr class="border border-2 border-light rounded opacity-50 my-2">
+            <div class="row p-0 m-0 flex-lg-nowrap">
+                <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-sm-1 ">
+                    <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img">
+                </div>
+                <div class="col-lg card text-shadow">
+                    <div class="row card-header">
+                        <div class="col-lg-8 text-danger fw-bold p-0">
+                            <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                        </div>
+                        <div class="col-lg-4 fw-bold my-auto p-0">
+                            [ Event ]
+                        </div>
+                    </div>
+                    <div class="row card-body">
+                        <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                        <p class="text-lg-start p-0">...</p>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-8 text-danger fw-bold p-0">
+                            <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="border border-2 border-light rounded opacity-50 my-2">
+            <div class="row my-5 mx-0 p-0">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-shadow">ปฏิทินกิจกรรม</h2>
+                </div>
+            </div>
+            <div class="row mx-0 px-2">
+                <div class="col-lg-6 text-lg-start my-auto p-0 mb-3 mb-lg-0">
+                    <h4 class="my-auto" id="calendar-month">ตุลาคม 2567</h4>
+                </div>
+                <div class="col-lg-6 text-lg-end p-0">
+                    <button id="prevMonthBtn" class="btn btn-secondary me-1" type="button"><i class="bi bi-arrow-left-circle"></i></button>
+                    <button id="nextMonthBtn" class="btn btn-secondary ms-1" type="button"><i class="bi bi-arrow-right-circle"></i></button>
+                </div>
+            </div>
+            <div class="row mx-0 p-0 mt-3 flex-nowrap">
+                <div class="col text-center border border-secondary py-3 overflow-hidden">อาทิตย์</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">จันทร์</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">อังคาร</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">พุธ</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">พฤหัสบดี</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">ศุกร์</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">เสาร์</div>
+            </div>
+            <div class="row row mx-0 p-0 flex-nowrap">
+                <div class="col text-center border border-secondary py-3 overflow-hidden">1</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">2</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">3</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">4</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">5</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">6</div>
+                <div class="col text-center border border-secondary py-3 overflow-hidden">7</div>
+            </div>
         </div>
+    </div>
+
+    <div class="container position-relative mt-3 pb-5 px-5" style="z-index: 5;">
 
         <div class="event-box card text-white mb-3 p-4 border-none">
             <div class="row">
@@ -74,7 +141,7 @@
     </div>
 
     <style>
-        @media (max-width: 992px) { /* less than 992px */
+        @media (max-width: 1020px) { /* less than 992px */
             .calendar-button {
                 display: none;
             }
