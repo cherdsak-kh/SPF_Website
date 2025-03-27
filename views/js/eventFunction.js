@@ -89,7 +89,7 @@ socket.on('Events-data', (getEvents) => {
 
             // ! ตรวจสอบวันที่ปัจจุบัน ถ้าใช่จะเข้าเงื่อนไข
             if (curDate.getDate() === day && curDate.getMonth() === month && curDate.getFullYear() === year) {
-                col.className = 'col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5 bg-warning-subtle text-warning-emphasis';
+                col.className = 'col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5 fw-bold text-warning';
             } else {
                 col.className = 'col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5';
             }
@@ -117,10 +117,10 @@ socket.on('Events-data', (getEvents) => {
                     }
 
                     col.onmouseover = () => {
-                        col.classList.add('fw-bold', 'bg-gradient');
+                        col.classList.add('bg-gradient');
                     }
                     col.onmouseout = () => {
-                        col.classList.remove('fw-bold', 'bg-gradient');
+                        col.classList.remove('bg-gradient');
                     }
                     col.style = 'cursor: pointer;';
 
