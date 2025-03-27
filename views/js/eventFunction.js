@@ -3,6 +3,7 @@
 let timesClicked = 1;
 const calendarButton = document.getElementById('calendarToggleBtn');
 const calendarButtonClose = document.getElementById('event-calendar-close');
+
 calendarButton.onclick = () => { 
     if (timesClicked === 1) {
         const element = document.getElementById('event-calendar-main');
@@ -22,7 +23,7 @@ calendarButton.onclick = () => {
 calendarButtonClose.onclick = () => { 
     if (timesClicked === 1) {
         const element = document.getElementById('calendarToggleBtn');
-        const yOffset = -50;
+        const yOffset = -500;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         
         window.scrollTo({
@@ -493,7 +494,7 @@ socket.on('Events-data', (getEvents) => {
                 <!-- - Past events : Empty - -->
                 <div class="row p-0 m-0 flex-lg-nowrap">
                     <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
-                        <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                        <h2 class="mb-3 fs-1"><i class="bi bi-calendar-x"></i></h2>
                         <h4>ไม่มีกิจกรรมที่ผ่านมา</h4>
                     </div>
                 </div>
@@ -612,7 +613,7 @@ socket.on('Events-data', (getEvents) => {
                 <!-- - Event coming soon empty. - -->
                 <div class="row p-0 m-0 flex-lg-nowrap">
                     <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
-                        <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                        <h2 class="mb-3 fs-1"><i class="bi bi-calendar-x"></i></h2>
                         <h4>ไม่มีกิจกรรมที่กำลังจะเกิดขึ้น</h4>
                     </div>
                 </div>
