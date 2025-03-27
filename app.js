@@ -102,43 +102,18 @@ app.get('/', async (req, res) => {
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
-// # Render about page.
-app.get('/about', async (req, res) => {
-
-    getPath_Consoler(req)
-
-    try {
-        const data = client.db('spf_system_db').collection('menu')
-        const Menu = await data.find().toArray()
-
-        res.render('pages/about', {
-            pageName: Menu[1].enName,
-            pageTitle: Menu[1].thName + ' | SPF : Milsim Community',
-            menu: Menu,
-            req: req
-        })
-
-    } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
-
-    }
-
-})
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
-
-// # Render rules page.
-app.get('/termsandconditions', async (req, res) => {
+// # Render news page.
+app.get('/news', async (req, res) => {
     
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf_system_db').collection('menu')
-        const Menu = await data.find().toArray()
+        const data1 = client.db('spf_system_db').collection('menu')
+        const Menu = await data1.find().toArray()
 
-        res.render('pages/rules', {
-            pageName: Menu[2].enName,
-            pageTitle: Menu[2].thName + ' | SPF : Milsim Community',
+        res.render('pages/news', {
+            pageName: Menu[1].enName,
+            pageTitle: Menu[1].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         })
@@ -162,6 +137,31 @@ app.get('/event', async (req, res) => {
         const Menu = await data1.find().toArray()
 
         res.render('pages/event', {
+            pageName: Menu[2].enName,
+            pageTitle: Menu[2].thName + ' | SPF : Milsim Community',
+            menu: Menu,
+            req: req
+        })
+
+    } catch (err) {
+        consoler('#ff4747', `MongoDB error: ${err}`)
+
+    }
+
+})
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+// # Render gallery page.
+app.get('/media', async (req, res) => {
+    
+    getPath_Consoler(req)
+
+    try {
+        const data1 = client.db('spf_system_db').collection('menu')
+        const Menu = await data1.find().toArray()
+
+        res.render('pages/media', {
             pageName: Menu[3].enName,
             pageTitle: Menu[3].thName + ' | SPF : Milsim Community',
             menu: Menu,
@@ -177,8 +177,8 @@ app.get('/event', async (req, res) => {
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
-// # Render news page.
-app.get('/news', async (req, res) => {
+// # Render streaming page.
+app.get('/streaming', async (req, res) => {
     
     getPath_Consoler(req)
 
@@ -186,9 +186,34 @@ app.get('/news', async (req, res) => {
         const data1 = client.db('spf_system_db').collection('menu')
         const Menu = await data1.find().toArray()
 
-        res.render('pages/news', {
+        res.render('pages/streaming', {
             pageName: Menu[4].enName,
             pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
+            menu: Menu,
+            req: req
+        })
+
+    } catch (err) {
+        consoler('#ff4747', `MongoDB error: ${err}`)
+
+    }
+
+})
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+// # Render rules page.
+app.get('/serverrules', async (req, res) => {
+    
+    getPath_Consoler(req)
+
+    try {
+        const data = client.db('spf_system_db').collection('menu')
+        const Menu = await data.find().toArray()
+
+        res.render('pages/rules', {
+            pageName: Menu[5].enName,
+            pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         })
@@ -212,8 +237,8 @@ app.get('/articles', async (req, res) => {
         const Menu = await data1.find().toArray()
 
         res.render('pages/articles', {
-            pageName: Menu[5].enName,
-            pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
+            pageName: Menu[6].enName,
+            pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         })
@@ -227,18 +252,18 @@ app.get('/articles', async (req, res) => {
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
-// # Render gallery page.
-app.get('/gallery', async (req, res) => {
-    
+// # Render about page.
+app.get('/about', async (req, res) => {
+
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
-        const Menu = await data1.find().toArray()
+        const data = client.db('spf_system_db').collection('menu')
+        const Menu = await data.find().toArray()
 
-        res.render('pages/gallery', {
-            pageName: Menu[6].enName,
-            pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
+        res.render('pages/about', {
+            pageName: Menu[7].enName,
+            pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         })
@@ -262,8 +287,8 @@ app.get('/contact', async (req, res) => {
         const Menu = await data1.find().toArray()
 
         res.render('pages/contact', {
-            pageName: Menu[7].enName,
-            pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
+            pageName: Menu[8].enName,
+            pageTitle: Menu[8].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         })

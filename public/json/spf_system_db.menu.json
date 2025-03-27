@@ -1,61 +1,47 @@
-[{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f0"
+[
+  {
+    "enName": "Home",
+    "thName": "หน้าหลัก",
+    "href": "/"
   },
-  "enName": "home",
-  "thName": "หน้าหลัก",
-  "href": "/"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f1"
+  {
+    "enName": "News",
+    "thName": "ประกาศจากทีมงาน",
+    "href": "/news"
   },
-  "enName": "about",
-  "thName": "เกี่ยวกับเรา",
-  "href": "/about"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f2"
+  {
+    "enName": "Event",
+    "thName": "กิจกรรม",
+    "href": "/event"
   },
-  "enName": "termsandconditions",
-  "thName": "ข้อกําหนดและเงื่อนไข",
-  "href": "/termsandconditions"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f3"
+  {
+    "enName": "Gallery and Video",
+    "thName": "แกลเลอรี",
+    "href": "/media"
   },
-  "enName": "event",
-  "thName": "กิจกรรม",
-  "href": "/event"
-},
-{
-  "enName": "news",
-  "thName": "ข่าวสาร",
-  "href": "/news"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f4"
+  {
+    "enName": "Streaming",
+    "thName": "ถ่ายทอดสด",
+    "href": "/streaming"
   },
-  "enName": "articles",
-  "thName": "เอกสาร/คู่มือ",
-  "href": "/articles"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f6"
+  {
+    "enName": "Server Rules",
+    "thName": "กฎระเบียบเซิร์ฟเวอร์",
+    "href": "/serverrules"
   },
-  "enName": "gallery",
-  "thName": "แกลเลอรี",
-  "href": "/gallery"
-},
-{
-  "_id": {
-    "$oid": "6729fb3371ccc2f8abe045f8"
+  {
+    "enName": "Articles",
+    "thName": "เอกสาร/คู่มือ",
+    "href": "/articles"
   },
-  "enName": "contact",
-  "thName": "ติดต่อเรา",
-  "href": "/contact"
-}]
+  {
+    "enName": "About Us",
+    "thName": "รู้จักกับเรา",
+    "href": "/about"
+  },
+  {
+    "enName": "Contact",
+    "thName": "ติดต่อทีมงาน",
+    "href": "/contact"
+  }
+]

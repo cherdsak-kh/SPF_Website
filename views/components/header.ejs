@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- - Preview Link Metadata / SEO - -->
-    <meta property="og:title" content="<%= (pageName !== 'home') ? pageTitle : 'SPF : Milsim Community' %>" />
+    <meta property="og:title" content="<%= (pageName !== 'Home') ? pageTitle : 'SPF : Milsim Community' %>" />
     <meta property="og:description" content="SPF Community - Arma 3 MilSim ที่รวมตัวผู้เล่นสาย Tactical FPS และ Roleplay">
     <meta property="og:image" content="<%= req.protocol + '://' + req.get('host') + '/images/spf_logo.png' %>" />
     <meta property="og:url" content="<%= req.protocol + '://' + req.get('host') + req.originalUrl %>" />
@@ -32,7 +32,7 @@
 
     <!-- - Title - -->
     <title>
-        <%= (pageName !== 'home') ? pageTitle : 'SPF : Milsim Community' %>
+        <%= (pageName !== 'Home') ? pageTitle : 'SPF : Milsim Community' %>
     </title>
 
     <!-- - Icon site - -->
@@ -84,7 +84,7 @@
         }
     </style>
  
-    <% if (pageName === 'home')  { %>
+    <% if (pageName === 'Home')  { %>
     <style>
         .big-box {
             height: 100vh;
@@ -107,9 +107,9 @@
 </head>
 <body>
 
-    <div id="header" class="<%= (pageName === 'home') ? 'big-box position-relative z-1' : 'mb-2 position-relative z-1' %>">
+    <div id="header" class="<%= (pageName === 'Home') ? 'big-box position-relative z-1' : 'mb-2 position-relative z-1' %>">
 
-        <% if (pageName === 'home')  { %>
+        <% if (pageName === 'Home')  { %>
         <div class="box position-absolute top-0 start-0 vh-100 bg-dark text-white d-flex justify-content-center align-items-center overflow-hidden" style="z-index: 1;">
             <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_01.webp" alt="Slide Show Image">
             <img class="fade-img w-100 position-absolute img-fluid fade-img-close" src="https://tmr.cthcloud.com/IMAGES/image_slide/img_02.webp" alt="Slide Show Image">
@@ -187,7 +187,7 @@
                             </ul>
                             
                             <div class="d-flex justify-content-center my-sm-2">
-                                <a class="btn btn-warning" href="/termsandconditions">สมัครเข้าร่วม</a>
+                                <a class="btn btn-warning" href="/serverrules">สมัครเข้าร่วม</a>
                             </div>
                         </div>
         
