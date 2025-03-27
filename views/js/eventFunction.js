@@ -79,9 +79,7 @@ socket.on('Events-data', (getEvents) => {
         // ! เพิ่มคอลัมน์ว่างก่อนวันแรกของเดือน
         for (let i = 0; i < startDay; i++) {
             const col = document.createElement('div');
-            col.className = 'col text-center border border-secondary py-5 overflow-hidden fs-5';
-            col.style.color = 'transparent';
-            col.innerHTML = `0`;
+            col.className = 'col border border-secondary';
             row.appendChild(col);
         }
 
@@ -154,9 +152,7 @@ socket.on('Events-data', (getEvents) => {
         // ! เพิ่มคอลัมน์ว่างหลังวันสุดท้ายของเดือน
         for (let i = lastDay.getDay(); i < 6; i++) {
             const col = document.createElement('div');
-            col.className = 'col text-center border border-secondary py-5 overflow-hidden fs-5';
-            col.style.color = 'transparent';
-            col.innerHTML = `0`;
+            col.className = 'col border border-secondary';
             row.appendChild(col);
         }
 
