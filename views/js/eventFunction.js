@@ -253,7 +253,8 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
             const eventDate = new Date(event.dateTime);
-            const eventImg = '../images/' + event.eventImg;
+            // const eventImg = '../images/' + event.eventImg;
+            const eventImg = event.eventImg;
             const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${eventDate.getMinutes()} น.`;
             let eventType = '';
             let eventTypeClass = '';
@@ -279,7 +280,7 @@ socket.on('Events-data', (getEvents) => {
                     <!-- - Event calendar on click. : Content - -->
                     <div class="row p-0 m-0 flex-lg-nowrap">
                         <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
-                            <img src="${eventImg}" alt="event-soon" class="card-img my-auto">
+                            <img src="${eventImg}" alt="event image" class="card-img my-auto" onclick="imgPreview(this.src)" style="cursor: pointer;">
                         </div>
                         <div class="col-lg card text-shadow">
                             <div class="row card-header">
@@ -409,7 +410,8 @@ socket.on('Events-data', (getEvents) => {
             for (const event of newPastEvents) {
 
                 const eventDateTime = new Date(event.dateTime); 
-                let pastEvent_image = '../images/' + event.eventImg;
+                // let pastEvent_image = '../images/' + event.eventImg;
+                let pastEvent_image = event.eventImg;
                 let pastEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
                 let pastEvent_type = '';
                 let pastEvent_name = event.eventName;
@@ -435,7 +437,7 @@ socket.on('Events-data', (getEvents) => {
                     <!-- - Past events : Content 1 - -->
                     <div class="row p-0 m-0 flex-lg-nowrap">
                         <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
-                            <img src="${pastEvent_image}" alt="event-soon" class="card-img my-auto">
+                            <img src="${pastEvent_image}" alt="event image" class="card-img my-auto" onclick="imgPreview(this.src)" style="cursor: pointer;">
                         </div>
                         <div class="col-lg card text-shadow">
                             <div class="row card-header">
@@ -527,7 +529,8 @@ socket.on('Events-data', (getEvents) => {
             const eventDateTime = new Date(event.dateTime);
 
             icmEvent_dateTime = '';
-            icmEvent_image = '../images/' + event.eventImg;
+            // icmEvent_image = '../images/' + event.eventImg;
+            icmEvent_image = event.eventImg;
             icmEvent_type = '';
             icmEvent_name = event.eventName;
             icmEvent_author = event.author;
@@ -581,7 +584,7 @@ socket.on('Events-data', (getEvents) => {
                 <!-- - Event coming soon content. - -->
                 <div class="row p-0 m-0 flex-lg-nowrap">
                     <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
-                        <img src="${icmEvent_image}" alt="event-soon" class="card-img my-auto">
+                        <img src="${icmEvent_image}" alt="event image" class="card-img my-auto" onclick="imgPreview(this.src)" style="cursor: pointer;">
                     </div>
                     <div class="col-lg card text-shadow">
                         <div class="row card-header">
