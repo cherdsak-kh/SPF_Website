@@ -1,21 +1,41 @@
 // ------------------------------------------------------------------------------------------------------>
 
 let timesClicked = 1;
-document.getElementById('calendarToggleBtn').onclick = () => { 
+const calendarButton = document.getElementById('calendarToggleBtn');
+const calendarButtonClose = document.getElementById('event-calendar-close');
+calendarButton.onclick = () => { 
     if (timesClicked === 1) {
-        timesClicked = 2;
-        const element = document.getElementById('eventCalendar');
-        const yOffset = -15;
+        const element = document.getElementById('event-calendar-main');
+        const yOffset = -5;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         
         window.scrollTo({
-            top: y,
-            behavior: 'smooth'
+        top: y,
+        behavior: 'smooth'
         });
+        timesClicked = 1;
     } else {
         timesClicked = 1;
     }
 };
+
+calendarButtonClose.onclick = () => { 
+    if (timesClicked === 1) {
+        const element = document.getElementById('calendarToggleBtn');
+        const yOffset = -50;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        
+        window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+        });
+        timesClicked = 1;
+    } else {
+        timesClicked = 1;
+    }
+};
+
+
 
 // ------------------------------------------------------------------------------------------------------>
 
@@ -28,16 +48,16 @@ socket.on('Events-data', (getEvents) => {
     // ! สร้างสำเนาของ events
     const events = getEvents.map(event => ({ ...event }));
 
-    // ! รับวันที่ปัจจุบัน
+    // ! รับวันเดือนปีปัจจุบัน
     const curDate = new Date();
-    let currentYear = curDate.getFullYear(); // ปีเริ่มต้น
-    let currentMonth = curDate.getMonth(); // ตุลาคม (0-based index)
+    let currentYear = curDate.getFullYear();
+    let currentMonth = curDate.getMonth();
 
     // ! ฟังก์ชันแสดงวันที่ในปฏิทิน
     function renderCalendar(year, month, events) {
 
-        const dateShow = document.getElementById('dateShow');
-        const monthDisplay = document.getElementById('monthDisplay');
+        const dateShow = document.getElementById('calendar-date');
+        const monthDisplay = document.getElementById('calendar-month');
         dateShow.innerHTML = ''; // ล้างวันที่เก่า
 
         // ! สร้างวันแรกของเดือน
@@ -53,82 +73,69 @@ socket.on('Events-data', (getEvents) => {
 
         // ! สร้างแถวแรกที่ว่างเปล่าสำหรับวันที่ก่อนหน้าเดือน
         let row = document.createElement('div');
-        row.className = 'row';
+        row.className = 'row mx-0 p-0 flex-nowrap';
 
         // ! เพิ่มคอลัมน์ว่างก่อนวันแรกของเดือน
         for (let i = 0; i < startDay; i++) {
             const col = document.createElement('div');
-            col.className = 'col-lg text-center border border-secondary py-3';
+            col.className = 'col text-center border border-secondary py-5 overflow-hidden fs-5';
+            col.style.color = 'transparent';
+            col.innerHTML = `0`;
             row.appendChild(col);
         }
 
         // ! เพิ่มวันที่ลงในปฏิทิน
         for (let day = 1; day <= totalDays; day++) {
             const col = document.createElement('div');
-            col.style = 'min-height: 100px;';
 
             // ! ตรวจสอบวันที่ปัจจุบัน ถ้าใช่จะเข้าเงื่อนไข
             if (curDate.getDate() === day && curDate.getMonth() === month && curDate.getFullYear() === year) {
-                col.className = 'col-lg text-center border border-2 border-warning py-3 fw-bold';
+                col.className = 'col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5 bg-warning-subtle text-warning-emphasis';
             } else {
-                col.className = 'col-lg text-center border border-secondary py-3 text-secondary';
+                col.className = 'col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5';
             }
 
-            col.innerHTML = `
-                <p>${day}</p>
-            `;
+            col.innerHTML = `${day}`;
 
             for (const event of events) {
                 const eventDate = new Date(event.dateTime);
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.type === 'Mission Day') {
-                        col.setAttribute('data-bs-toggle', 'tooltip');
-                        col.setAttribute('data-bs-placement', 'top');
-                        col.setAttribute('data-bs-title', 'Mission Day');
-                        // Initialize Bootstrap tooltip after setting attributes
-                        new bootstrap.Tooltip(col);
-
+                        col.classList.add('position-relative');
                         col.innerHTML += `
-                            <i class="bi bi-circle-fill text-primary"></i>
+                            <span class="position-absolute bottom-0 start-0 w-100 bg-primary bg-opacity-50 fs-6 text-white rounded-top">Mission Day</span>
                         `;
                     } else if (event.type === 'Event') {
-                        col.setAttribute('data-bs-toggle', 'tooltip');
-                        col.setAttribute('data-bs-placement', 'top');
-                        col.setAttribute('data-bs-title', 'Event');
-                        // Initialize Bootstrap tooltip after setting attributes
-                        new bootstrap.Tooltip(col);
-
+                        col.classList.add('position-relative');
                         col.innerHTML += `
-                            <i class="bi bi-circle-fill text-warning"></i>
+                            <span class="position-absolute bottom-0 start-0 w-100 bg-warning bg-opacity-50 fs-6 text-white rounded-top">Event</span>
                         `;
                     } else if (event.type === 'Training') {
-                        col.setAttribute('data-bs-toggle', 'tooltip');
-                        col.setAttribute('data-bs-placement', 'top');
-                        col.setAttribute('data-bs-title', 'Training');
-                        // Initialize Bootstrap tooltip after setting attributes
-                        new bootstrap.Tooltip(col);
-
+                        col.classList.add('position-relative');
                         col.innerHTML += `
-                            <i class="bi bi-circle-fill text-light"></i>
+                            <span class="position-absolute bottom-0 start-0 w-100 bg-light bg-opacity-50 fs-6 text-white rounded-top">Training</span>
                         `;
                     }
 
                     col.onmouseover = () => {
-                        col.style.backdropFilter = 'blur(50px)';
-                        col.classList.add('text-white');
+                        col.classList.add('fw-bold', 'bg-gradient');
                     }
                     col.onmouseout = () => {
-                        col.style.backdropFilter = '';
-                        col.classList.remove('text-white');
+                        col.classList.remove('fw-bold', 'bg-gradient');
                     }
-                    col.style = 'min-height: 100px; cursor: pointer;';
+                    col.style = 'cursor: pointer;';
 
                     // ! สร้างเหตุการณ์เมื่อคลิกที่วันที่ที่มีกิจกรรม
                     col.onclick = () => { 
                         eventOpening(year, month, day, events) 
-                        document.getElementById('event-open').scrollIntoView({
-                            behavior: 'smooth'
-                        })
+                        const element = document.getElementById('calendar-event-click');
+                        const yOffset = -45;
+                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({
+                        top: y,
+                        behavior: 'smooth'
+                        });
                     };
                 }
             }
@@ -139,14 +146,16 @@ socket.on('Events-data', (getEvents) => {
             if ((startDay + day) % 7 === 0) {
                 dateShow.appendChild(row);
                 row = document.createElement('div');
-                row.className = 'row';
+                row.className = 'row mx-0 p-0 flex-nowrap';
             }
         }
 
         // ! เพิ่มคอลัมน์ว่างหลังวันสุดท้ายของเดือน
         for (let i = lastDay.getDay(); i < 6; i++) {
             const col = document.createElement('div');
-            col.className = 'col-lg text-center border border-secondary py-3';
+            col.className = 'col text-center border border-secondary py-5 overflow-hidden fs-5';
+            col.style.color = 'transparent';
+            col.innerHTML = `0`;
             row.appendChild(col);
         }
 
@@ -206,25 +215,39 @@ socket.on('Events-data', (getEvents) => {
         renderCalendar(currentYear, currentMonth, events);
     }
 
+    // ! ฟังก์ชันแสดงรูปแบบของวันที่
+    function formatDateThai(date) {
+        
+        //const dayName = getDayName(date.getDay());
+        const day = date.getDate();
+        const monthName = getMonthName(date.getMonth());
+        const year = date.getFullYear() + 543; // ปรับเป็น พ.ศ.
+        //const hours = date.getHours().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
+        //const minutes = date.getMinutes().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
+        //const seconds = date.getSeconds().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
+        
+        return `${day} ${monthName} ${year}`;
+    }
+
     // ! ฟังก์ชันแสดงกิจกรรมเมื่อคลิกวันที่ที่มีกิจกรรม
     function eventOpening(year, month, date, events) {
         const dateSelect = new Date(year, month, date)
         
-        const eventOpen = document.getElementById('event-open');
+        const eventOpen = document.getElementById('calendar-event-click');
         eventOpen.innerHTML = '';
         eventOpen.innerHTML += `
-            <div class="row px-2">
-                <div class="col-lg d-flex align-items-center">
-                    <h4 class="fw-bold m-0">${formatDateThai(dateSelect)}</h4>
+            
+            <!-- - Event calendar on click. : Title / Close box - -->
+            <div class="row p-0 m-0 mt-5 flex-nowrap">
+                <div class="col text-start">
+                    <h5 class="fw-bold text-shadow my-auto">${formatDateThai(dateSelect)}</h5>
                 </div>
-                <div class="col-lg-1 d-flex justify-content-end align-items-center">
-                    <div data-bs-theme="dark">
-                        <button id="close-event-coming" type="button" class="btn-close" aria-label="Close"></button>
-                    </div>
+                <div class="col text-end">
+                    <button id="calendar-event-click-close" type="button" class="btn-close" aria-label="Close"></button>
                 </div>
             </div>
 
-            <hr>
+            <hr class="border border-1 border-light rounded opacity-50 my-2">
         `;
 
         for (const event of events) {
@@ -232,87 +255,69 @@ socket.on('Events-data', (getEvents) => {
             const eventImg = '../images/' + event.eventImg;
             const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${eventDate.getMinutes()} น.`;
             let eventType = '';
+            let eventTypeClass = '';
             const eventName = event.eventName;
             const eventAuthor = event.author;
 
             if (event.type === 'Mission Day') {
-                eventType = `
-                
-                    <i class="bi bi-circle-fill text-primary me-2"></i>
-                    Mission Day
-                
-                `;
+                eventType = `Mission Day`;
+                eventTypeClass = 'bg-primary';
+
             } else if (event.type === 'Event') {
-                eventType = `
-                
-                    <i class="bi bi-circle-fill text-warning me-2"></i>
-                    Event
-                
-                `;
+                eventType = `Event`;
+                eventTypeClass = 'bg-warning';
+
             } else if (event.type === 'Training') {
-                eventType = `
-                
-                    <i class="bi bi-circle-fill text-light me-2"></i>
-                    Training
-                
-                `;
+                eventType = `Training`;
+                eventTypeClass = 'bg-secondary';
             }
 
             if (eventDate.getDate() === date && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                 eventOpen.innerHTML += `
 
-                    <div class="row px-3">
-                        <div class="card p-2 text-bg-secondary bg-transparent border-0">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="${eventImg}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    <!-- - Event calendar on click. : Content - -->
+                    <div class="row p-0 m-0 flex-lg-nowrap">
+                        <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                            <img src="${eventImg}" alt="event-soon" class="card-img my-auto">
+                        </div>
+                        <div class="col-lg card text-shadow">
+                            <div class="row card-header">
+                                <div class="col-lg-9 text-danger fw-bold p-0 mb-2 mb-lg-0">
+                                    <p class="my-auto text-lg-start">${eventDateTime}</p>
                                 </div>
-                                <div class="col-lg-8 d-flex justify-content-center flex-column">
-                                    <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
-                                        ${eventDateTime} 
-                                        <span class="mx-3 border border-secondary"></span> 
-                                        <span class="text-white">${eventType}</span>
-                                    </div>
-                                    <div class="card-body fs-1 fw-bold text-shadow pb-0">${eventName}</div>
-                                    <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${eventAuthor}</div>
+                                <div class="col-lg-3 fw-bold my-auto p-0 ${eventTypeClass} bg-gradient bg-opacity-50 rounded-top">
+                                    ${eventType}
+                                </div>
+                            </div>
+                            <div class="row card-body">
+                                <h2 class="text-lg-start fw-bold p-0">${eventName}</h2>
+                                <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                </p>
+                            </div>
+                            <div class="row card-footer">
+                                <div class="col-lg-8 fw-bold p-0">
+                                    <p class="text-lg-start my-auto"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${eventAuthor}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <hr>
                 `;
             }
         }
 
         // ! ปุ่มปิดการแสดงกิจกรรมจากที่คลิกวันที่
-        document.getElementById('close-event-coming').onclick = () => {
-            document.getElementById('event-open').innerHTML = '';
-            const element = document.getElementById('eventCalendar');
-            const yOffset = -15;
+        document.getElementById('calendar-event-click-close').onclick = () => {
+            document.getElementById('calendar-event-click').innerHTML = '';
+            const element = document.getElementById('event-calendar-main');
+            const yOffset = -5;
             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
             
             window.scrollTo({
-                top: y,
-                behavior: 'smooth'
+            top: y,
+            behavior: 'smooth'
             });
         }
-    }
-
-    // ! ฟังก์ชันแสดงรูปแบบของวันที่
-    function formatDateThai(date) {
-        const days = ["วันอาทิตย์", "วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัสบดี", "วันศุกร์", "วันเสาร์"];
-        const months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
-        
-        const dayName = days[date.getDay()];
-        const day = date.getDate();
-        const monthName = months[date.getMonth()];
-        const year = date.getFullYear() + 543; // ปรับเป็น พ.ศ.
-        const hours = date.getHours().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
-        const minutes = date.getMinutes().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
-        const seconds = date.getSeconds().toString().padStart(2, '0'); // ให้เป็น 2 หลัก
-        
-        return `${day} ${monthName} ${year}`;
     }
 
     // เรียกฟังก์ชันแสดงปฏิทินตุลาคม 2567
@@ -377,19 +382,19 @@ socket.on('Events-data', (getEvents) => {
 
     // -------------------------------------------------------------------------------------------------->
 
-    const eventDesc = events.slice(); // สร้างสำเนาของ events
+    const eventDesc = getEvents.map(event => ({ ...event }));
     eventDesc.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime)); // Sort by Desc
 
     let numEvents = 3;
 
     function renderPastEvent(events, numDisplay) {
-        const pastEvents = document.getElementById('past-events');
+        const pastEvents = document.getElementById('past-event-content');
         pastEvents.innerHTML = '';
 
         let iLoop = 1;
         const newPastEvents = [];
 
-        for (const event of eventDesc) {
+        for (const event of events) {
             const eventDateTime = new Date(event.dateTime);
             if (isPast(eventDateTime)) {
                 newPastEvents.push(event);
@@ -408,53 +413,53 @@ socket.on('Events-data', (getEvents) => {
                 let pastEvent_type = '';
                 let pastEvent_name = event.eventName;
                 let pastEvent_author = event.author;
+                let pastTypeClass = '';
     
                 if (event.type === 'Mission Day') {
-                    pastEvent_type = `
-                    
-                        <i class="bi bi-circle-fill text-primary me-2"></i>
-                        Mission Day
-                    
-                    `;
+                    pastEvent_type = `Mission Day`;
+                    pastTypeClass = 'bg-primary';
+
                 } else if (event.type === 'Event') {
-                    pastEvent_type = `
-                    
-                        <i class="bi bi-circle-fill text-warning me-2"></i>
-                        Event
-                    
-                    `;
+                    pastEvent_type = `Event`;
+                    pastTypeClass = 'bg-warning';
+
                 } else if (event.type === 'Training') {
-                    pastEvent_type = `
-                    
-                        <i class="bi bi-circle-fill text-light me-2"></i>
-                        Training
-                    
-                    `;
+                    pastEvent_type = `Training`;
+                    pastTypeClass = 'bg-secondary';
                 }
     
     
                 pastEvents.innerHTML += `
 
-                    <div class="row px-3">
-                        <div class="card p-2 text-bg-secondary bg-transparent border-0">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="${pastEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                    <!-- - Past events : Content 1 - -->
+                    <div class="row p-0 m-0 flex-lg-nowrap">
+                        <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                            <img src="${pastEvent_image}" alt="event-soon" class="card-img my-auto">
+                        </div>
+                        <div class="col-lg card text-shadow">
+                            <div class="row card-header">
+                                <div class="col-lg-8 text-danger fw-bold p-0 mb-2 mb-lg-0">
+                                    <p class="my-auto text-lg-start">${pastEvent_dateTime}</p>
                                 </div>
-                                <div class="col-lg-8 d-flex justify-content-center flex-column">
-                                    <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
-                                        ${pastEvent_dateTime} 
-                                        <span class="mx-3 border border-secondary"></span> 
-                                        <span class="text-white">${pastEvent_type}</span>
-                                    </div>
-                                    <div class="card-body fs-1 fw-bold text-shadow pb-0">${pastEvent_name}</div>
-                                    <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${pastEvent_author}</div>
+                                <div class="col-lg-4 fw-bold my-auto p-0 ${pastTypeClass} bg-gradient bg-opacity-50 rounded-top">
+                                    ${pastEvent_type}
+                                </div>
+                            </div>
+                            <div class="row card-body">
+                                <h2 class="text-lg-start fw-bold p-0">${pastEvent_name}</h2>
+                                <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                </p>
+                            </div>
+                            <div class="row card-footer">
+                                <div class="col-lg-8 fw-bold p-0">
+                                    <p class="text-lg-start my-auto"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${pastEvent_author}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
-                    <hr>
+
+                    <hr class="border border-1 border-light rounded opacity-50 my-2">
                 
                 `;
     
@@ -466,29 +471,34 @@ socket.on('Events-data', (getEvents) => {
     
             if (iLoop <= newPastEvents.length) {
                 pastEvents.innerHTML += `
-                    <div class="d-grid gap-2">
-                        <button id="past-event-btn-more" class="btn btn-outline-secondary" type="button">ดูเพิ่มเติม</button>
+
+                    <!-- - Past events : Button more past events - -->
+                    <div class="row p-0 m-0">
+                        <div class="col-lg-12 text-center p-0 mt-2">
+                            <button id="button-more-past-event" class="btn btn-outline-light w-100" type="button">ดูเพิ่มเติม</button>
+                        </div>
                     </div>
                 `;
     
                 // กำหนด onclick handler ให้กับปุ่มเมื่อสร้างแล้ว
-                document.getElementById('past-event-btn-more').onclick = () => {
+                document.getElementById('button-more-past-event').onclick = () => {
                     numEvents += 2;
-                    renderPastEvent(eventDesc, numEvents);
+                    renderPastEvent(events, numEvents);
                 };
             }
 
         } else {
             pastEvents.innerHTML = `
     
-                <div class="row g-1 px-3">
-                    <div class="col-lg d-flex justiy-content-center flex-column p-5">
-                        <h1 class="text-center mb-4"><i class="bi bi-calendar2-x"></i></h1>
-                        <h5 class="text-center">ไม่มีกิจกรรมที่ผ่านมา</h5>
+                <!-- - Past events : Empty - -->
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                        <h4>ไม่มีกิจกรรมที่ผ่านมา</h4>
                     </div>
                 </div>
 
-                <hr>
+                <hr class="border border-1 border-light rounded opacity-50 my-2">
             
             `;
         }
@@ -498,12 +508,13 @@ socket.on('Events-data', (getEvents) => {
 
     // -------------------------------------------------------------------------------------------------->
 
-    const icmEvents = events;
+    const icmEvents = getEvents.map(event => ({ ...event }));
 
-    function icmEventDisplay() {
+    function icmEventDisplay(events) {
 
-        const eventIncoming = document.getElementById('event-incoming');
+        const eventIncoming = document.getElementById('event-soon-content');
         eventIncoming.innerHTML = '';
+        let icmTypeClass = '';
         let icmEvent_dateTime = '';
         let icmEvent_image = '';
         let icmEvent_type = '';
@@ -511,10 +522,7 @@ socket.on('Events-data', (getEvents) => {
         let icmEvent_author = '';
         let hasEvent = '';
 
-        const thaiWeekdays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
-        const thaiMonths = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
-
-        for (const event of icmEvents) {
+        for (const event of events) {
             const eventDateTime = new Date(event.dateTime);
 
             icmEvent_dateTime = '';
@@ -524,26 +532,16 @@ socket.on('Events-data', (getEvents) => {
             icmEvent_author = event.author;
 
             if (event.type === 'Mission Day') {
-                icmEvent_type = `
-                
-                    <i class="bi bi-circle-fill text-primary me-2"></i>
-                    Mission Day
-                
-                `;
+                icmEvent_type = `Mission Day`;
+                icmTypeClass = 'bg-primary';
+
             } else if (event.type === 'Event') {
-                icmEvent_type = `
-                
-                    <i class="bi bi-circle-fill text-warning me-2"></i>
-                    Event
-                
-                `;
+                icmEvent_type = `Event`;
+                icmTypeClass = 'bg-warning';
+
             } else if (event.type === 'Training') {
-                icmEvent_type = `
-                
-                    <i class="bi bi-circle-fill text-light me-2"></i>
-                    Training
-                
-                `;
+                icmEvent_type = `Training`;
+                icmTypeClass = 'bg-secondary';
             }
             
             // console.log(eventDateTime);
@@ -566,7 +564,7 @@ socket.on('Events-data', (getEvents) => {
                 break;
 
             } else if (isFuture(eventDateTime)) {
-                icmEvent_dateTime = `วัน${thaiWeekdays[eventDateTime.getDay()]}ที่ ${eventDateTime.getDate()} ${thaiMonths[eventDateTime.getMonth()]} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
+                icmEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
                 hasEvent = true;
                 break;
 
@@ -579,20 +577,29 @@ socket.on('Events-data', (getEvents) => {
         if (hasEvent) {
             eventIncoming.innerHTML = `
 
-                <div class="row px-3">
-                    <div class="card p-2 text-bg-secondary bg-transparent border-0">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="${icmEvent_image}" class="img-fluid rounded shadow" alt="image" onclick="imgPreview(this.src)" style="cursor: pointer;">
+                <!-- - Event coming soon content. - -->
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <img src="${icmEvent_image}" alt="event-soon" class="card-img my-auto">
+                    </div>
+                    <div class="col-lg card text-shadow">
+                        <div class="row card-header">
+                            <div class="col-lg-8 text-danger fw-bold p-0 mb-2 mb-lg-0">
+                                <p class="my-auto text-lg-start">${icmEvent_dateTime}</p>
                             </div>
-                            <div class="col-lg-8 d-flex justify-content-center flex-column">
-                                <div class="card-header text-danger fw-bold fs-6 border-secondary text-shadow">
-                                    ${icmEvent_dateTime} 
-                                    <span class="mx-3 border border-secondary"></span> 
-                                    <span class="text-white">${icmEvent_type}</span>
-                                </div>
-                                <div class="card-body fs-1 fw-bold text-shadow pb-0">${icmEvent_name}</div>
-                                <div class="card-footer fs-5 border-0 text-shadow"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${icmEvent_author}</div>
+                            <div class="col-lg-4 fw-bold my-auto p-0 ${icmTypeClass} bg-gradient bg-opacity-50 rounded-top">
+                                ${icmEvent_type}
+                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h2 class="text-lg-start fw-bold p-0">${icmEvent_name}</h2>
+                            <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                            </p>
+                        </div>
+                        <div class="row card-footer">
+                            <div class="col-lg-8 fw-bold p-0">
+                                <p class="text-lg-start my-auto"><i class="bi bi-person-circle me-2"></i> สร้างโดย ${icmEvent_author}</p>
                             </div>
                         </div>
                     </div>
@@ -602,9 +609,12 @@ socket.on('Events-data', (getEvents) => {
         } else {
             eventIncoming.innerHTML = `
             
-                <div class="col-lg d-flex justiy-content-center flex-column p-5">
-                    <h1 class="text-center mb-4"><i class="bi bi-calendar2-x"></i></h1>
-                    <h5 class="text-center">ไม่มีกิจกรรมที่กำลังจะเกิดขึ้น</h5>
+                <!-- - Event coming soon empty. - -->
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                        <h4>ไม่มีกิจกรรมที่กำลังจะเกิดขึ้น</h4>
+                    </div>
                 </div>
             
             `;
@@ -612,7 +622,7 @@ socket.on('Events-data', (getEvents) => {
 
     }
 
-    icmEventDisplay();
+    icmEventDisplay(icmEvents);
 
 })
 
