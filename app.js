@@ -40,7 +40,7 @@ app.use(express.json())
 /*
     - MongoDB CONNECTION.
 */
-const uri = "mongodb+srv://admin:%23SPF.P%40ssw0rds@cluster0.mb713yi.mongodb.net/"
+const uri = "mongodb+srv://admin:%23SPF.P%40ssw0rds@cluster0.mb713yi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const client = new MongoClient(uri)
 
 // - เชื่อมต่อ MongoDB เพียงครั้งเดียวตอนเริ่มต้นเซิร์ฟเวอร์
