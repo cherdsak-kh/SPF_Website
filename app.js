@@ -40,7 +40,7 @@ app.use(express.json())
 /*
     - MongoDB CONNECTION.
 */
-const uri = "mongodb://admin:%23spf-P%40ssw0rd%23@cthg.hopto.org:27017/?directConnection=true"
+const uri = "mongodb+srv://admin:%23SPF.P%40ssw0rds@cluster0.mb713yi.mongodb.net/spf-milsim-db?retryWrites=true&w=majority"
 const client = new MongoClient(uri)
 
 // - เชื่อมต่อ MongoDB เพียงครั้งเดียวตอนเริ่มต้นเซิร์ฟเวอร์
@@ -55,7 +55,7 @@ async function mongodbExecute() {
     }
 
     // * ดึงข้อมูลทั้งหมดจากคอลเลกชัน Events ที่ eventName มีคำว่า "MilSim" ด้วยการใส่ { eventName: /MilSim/ }
-    // const allData = client.db('spf_system_db').collection('events');
+    // const allData = client.db('spf-milsim-db').collection('events');
     // const data = await allData.find({}).toArray();
 
     // Sort by dateTime in descending order
@@ -83,7 +83,7 @@ app.get('/', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf_system_db').collection('menu')
+        const data = client.db('spf-milsim-db').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/index', {
@@ -108,7 +108,7 @@ app.get('/news', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/news', {
@@ -133,7 +133,7 @@ app.get('/event', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/event', {
@@ -158,7 +158,7 @@ app.get('/media', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/media', {
@@ -183,7 +183,7 @@ app.get('/streaming', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/streaming', {
@@ -208,7 +208,7 @@ app.get('/serverrules', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf_system_db').collection('menu')
+        const data = client.db('spf-milsim-db').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/rules', {
@@ -233,7 +233,7 @@ app.get('/articles', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/articles', {
@@ -258,7 +258,7 @@ app.get('/about', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf_system_db').collection('menu')
+        const data = client.db('spf-milsim-db').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/about', {
@@ -283,7 +283,7 @@ app.get('/contact', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf_system_db').collection('menu')
+        const data1 = client.db('spf-milsim-db').collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/contact', {
@@ -308,7 +308,7 @@ app.get('/cookie-policy', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf_system_db').collection('menu')
+        const data = client.db('spf-milsim-db').collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/cookie-policy', {
@@ -365,7 +365,7 @@ io.on('connection', (socket) => {
         try {
             // console.log('== Send events data ==> Start');
 
-            const allData = client.db('spf_system_db').collection('events');
+            const allData = client.db('spf-milsim-db').collection('events');
             const data = await allData.find({}).toArray();
 
             socket.emit('Events-data', data);  // Send the retrieved data to the client
@@ -381,7 +381,7 @@ io.on('connection', (socket) => {
     socket.on('request-articles-data', async () => {
         try {
 
-            const allData = client.db('spf_system_db').collection('articles');
+            const allData = client.db('spf-milsim-db').collection('articles');
             const data = await allData.find({}).toArray();
 
             socket.emit('Articles-data', data);
@@ -396,7 +396,7 @@ io.on('connection', (socket) => {
     socket.on('request-rules-data', async () => {
         try {
 
-            const allData = client.db('spf_system_db').collection('rules');
+            const allData = client.db('spf-milsim-db').collection('rules');
             const data = await allData.find({}).toArray();
 
             socket.emit('rules-data', data);

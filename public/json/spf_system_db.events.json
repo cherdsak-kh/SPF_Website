@@ -38,7 +38,28 @@
     "eventName": "Operation MilSim Community 6",
     "author": "BentsuKun",
     "type": "Training",
-    "dateTime": "2025-03-30T20:30:00",
+    "dateTime": "2025-04-01T20:30:00",
+    "eventImg": "img005.jpg"
+  },
+  {
+    "eventName": "Operation MilSim Community 7",
+    "author": "BentsuKun",
+    "type": "Mission Day",
+    "dateTime": "2025-04-02T20:30:00",
+    "eventImg": "img005.jpg"
+  },
+  {
+    "eventName": "Operation MilSim Community 8",
+    "author": "BentsuKun",
+    "type": "Event",
+    "dateTime": "2025-04-03T20:30:00",
+    "eventImg": "img005.jpg"
+  },
+  {
+    "eventName": "Operation MilSim Community 9",
+    "author": "BentsuKun",
+    "type": "Training",
+    "dateTime": "2025-04-04T20:30:00",
     "eventImg": "img005.jpg"
   }
 ]
