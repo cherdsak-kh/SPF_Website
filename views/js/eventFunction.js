@@ -481,7 +481,7 @@ socket.on('Events-data', (getEvents) => {
     
                 // กำหนด onclick handler ให้กับปุ่มเมื่อสร้างแล้ว
                 document.getElementById('button-more-past-event').onclick = () => {
-                    numEvents += 2;
+                    numEvents += 3;
                     renderPastEvent(events, numEvents);
                 };
             }
