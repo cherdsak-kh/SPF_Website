@@ -3,6 +3,7 @@
 */
 // ------------------------------------------------------------------------------------------------------------------------->
 
+require('dotenv').config();
 const express = require('express')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
@@ -15,7 +16,7 @@ const getPath_Consoler = require('./public/function/getPath-Consoler')
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || process.env.LOCAL_PORT;
 const app = express()
 const server = createServer(app)
 const io = new Server(server)
@@ -40,9 +41,10 @@ app.use(express.json())
 /*
     - MongoDB CONNECTION.
 */
-// const uri = "mongodb+srv://admin:%23SPF.P%40ssw0rds@cluster0.mb713yi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/spf-milsim-db"
+
+const uri = process.env.MONGODB_URI || process.env.LOCAL_MONGODB_URI;
 const client = new MongoClient(uri)
+const dbName = process.env.DB_NAME || process.env.LOCAL_DB_NAME;
 
 // - เชื่อมต่อ MongoDB เพียงครั้งเดียวตอนเริ่มต้นเซิร์ฟเวอร์
 async function mongodbExecute() {
@@ -56,7 +58,7 @@ async function mongodbExecute() {
     }
 
     // * ดึงข้อมูลทั้งหมดจากคอลเลกชัน Events ที่ eventName มีคำว่า "MilSim" ด้วยการใส่ { eventName: /MilSim/ }
-    // const allData = client.db('spf-milsim-db').collection('events');
+    // const allData = client.db(dbName).collection('events');
     // const data = await allData.find({}).toArray();
 
     // Sort by dateTime in descending order
@@ -84,7 +86,7 @@ app.get('/', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf-milsim-db').collection('menu')
+        const data = client.db(dbName).collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/index', {
@@ -109,7 +111,7 @@ app.get('/news', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/news', {
@@ -134,7 +136,7 @@ app.get('/event', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/event', {
@@ -159,7 +161,7 @@ app.get('/media', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/media', {
@@ -184,7 +186,7 @@ app.get('/streaming', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/streaming', {
@@ -209,7 +211,7 @@ app.get('/serverrules', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf-milsim-db').collection('menu')
+        const data = client.db(dbName).collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/rules', {
@@ -234,7 +236,7 @@ app.get('/articles', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/articles', {
@@ -259,7 +261,7 @@ app.get('/about', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf-milsim-db').collection('menu')
+        const data = client.db(dbName).collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/about', {
@@ -284,7 +286,7 @@ app.get('/contact', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db('spf-milsim-db').collection('menu')
+        const data1 = client.db(dbName).collection('menu')
         const Menu = await data1.find().toArray()
 
         res.render('pages/contact', {
@@ -309,7 +311,7 @@ app.get('/cookie-policy', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db('spf-milsim-db').collection('menu')
+        const data = client.db(dbName).collection('menu')
         const Menu = await data.find().toArray()
 
         res.render('pages/cookie-policy', {
@@ -366,7 +368,7 @@ io.on('connection', (socket) => {
         try {
             // console.log('== Send events data ==> Start');
 
-            const allData = client.db('spf-milsim-db').collection('events');
+            const allData = client.db(dbName).collection('events');
             const data = await allData.find({}).toArray();
 
             socket.emit('Events-data', data);  // Send the retrieved data to the client
@@ -382,7 +384,7 @@ io.on('connection', (socket) => {
     socket.on('request-articles-data', async () => {
         try {
 
-            const allData = client.db('spf-milsim-db').collection('articles');
+            const allData = client.db(dbName).collection('articles');
             const data = await allData.find({}).toArray();
 
             socket.emit('Articles-data', data);
@@ -397,7 +399,7 @@ io.on('connection', (socket) => {
     socket.on('request-rules-data', async () => {
         try {
 
-            const allData = client.db('spf-milsim-db').collection('rules');
+            const allData = client.db(dbName).collection('rules');
             const data = await allData.find({}).toArray();
 
             socket.emit('rules-data', data);
