@@ -7,7 +7,8 @@ require('dotenv').config();
 const express = require('express')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
-const { MongoClient } = require("mongodb");
+const fs = require('fs');
+const path = require('path');
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
@@ -28,56 +29,25 @@ app.use(express.static('views'))
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-  
+
 // ------------------------------------------------------------------------------------------------------------------------->
 
+const menuPath = path.join(__dirname, 'public', 'json', 'menu.json');
+const menuData = fs.readFileSync(menuPath, 'utf-8');
+const Menu = JSON.parse(menuData);
+  
+// ------------------------------------------------------------------------------------------------------------------------->
 /*
 
     - DATABASE CONNECTION.
 
 */
-
 // ------------------------------------------------------------------------------------------------------------------------->
 /*
+
     - MongoDB CONNECTION.
+
 */
-
-const uri = process.env.MONGODB_URI || process.env.LOCAL_MONGODB_URI;
-const client = new MongoClient(uri)
-const dbName = process.env.DB_NAME || process.env.LOCAL_DB_NAME;
-
-// - เชื่อมต่อ MongoDB เพียงครั้งเดียวตอนเริ่มต้นเซิร์ฟเวอร์
-async function mongodbExecute() {
-    // * Check connection.
-    try {
-        await client.connect();
-        consoler('#49ff00', `Server is connected to mongodb successfully.`);
-    } catch (err) {
-        consoler('#ff4747', `Server connecting to mongodb failed: ${err}`);
-        return;
-    }
-
-    // * ดึงข้อมูลทั้งหมดจากคอลเลกชัน Events ที่ eventName มีคำว่า "MilSim" ด้วยการใส่ { eventName: /MilSim/ }
-    // const allData = client.db(dbName).collection('events');
-    // const data = await allData.find({}).toArray();
-
-    // Sort by dateTime in descending order
-    // data.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime));
-
-    // Print the sorted array
-    // data.forEach(event => {
-    //     console.log(`${event.eventName} - ${event.dateTime}`);
-    // });
-
-    // * Loop ผ่านข้อมูลที่ได้และแสดงค่า missionImg ของแต่ละ document
-    // data.forEach(event => {
-    //     console.log(event.missionImg);
-    // });
-
-}
-
-mongodbExecute().catch(console.dir);
-
 // ------------------------------------------------------------------------------------------------------------------------->
 
 // # Render index page.
@@ -86,9 +56,6 @@ app.get('/', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db(dbName).collection('menu')
-        const Menu = await data.find().toArray()
-
         res.render('pages/index', {
             pageName: Menu[0].enName,
             pageTitle: Menu[0].thName + ' | SPF : Milsim Community',
@@ -97,7 +64,7 @@ app.get('/', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -111,9 +78,6 @@ app.get('/news', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/news', {
             pageName: Menu[1].enName,
             pageTitle: Menu[1].thName + ' | SPF : Milsim Community',
@@ -122,7 +86,7 @@ app.get('/news', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -136,9 +100,6 @@ app.get('/event', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/event', {
             pageName: Menu[2].enName,
             pageTitle: Menu[2].thName + ' | SPF : Milsim Community',
@@ -147,7 +108,7 @@ app.get('/event', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -161,9 +122,6 @@ app.get('/media', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/media', {
             pageName: Menu[3].enName,
             pageTitle: Menu[3].thName + ' | SPF : Milsim Community',
@@ -172,7 +130,7 @@ app.get('/media', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -186,9 +144,6 @@ app.get('/streaming', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/streaming', {
             pageName: Menu[4].enName,
             pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
@@ -197,7 +152,7 @@ app.get('/streaming', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -211,9 +166,6 @@ app.get('/serverrules', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db(dbName).collection('menu')
-        const Menu = await data.find().toArray()
-
         res.render('pages/rules', {
             pageName: Menu[5].enName,
             pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
@@ -222,7 +174,7 @@ app.get('/serverrules', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -236,9 +188,6 @@ app.get('/articles', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/articles', {
             pageName: Menu[6].enName,
             pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
@@ -247,7 +196,7 @@ app.get('/articles', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -261,9 +210,6 @@ app.get('/about', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db(dbName).collection('menu')
-        const Menu = await data.find().toArray()
-
         res.render('pages/about', {
             pageName: Menu[7].enName,
             pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
@@ -272,7 +218,7 @@ app.get('/about', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -286,9 +232,6 @@ app.get('/contact', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data1 = client.db(dbName).collection('menu')
-        const Menu = await data1.find().toArray()
-
         res.render('pages/contact', {
             pageName: Menu[8].enName,
             pageTitle: Menu[8].thName + ' | SPF : Milsim Community',
@@ -297,7 +240,7 @@ app.get('/contact', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -311,9 +254,6 @@ app.get('/cookie-policy', async (req, res) => {
     getPath_Consoler(req)
 
     try {
-        const data = client.db(dbName).collection('menu')
-        const Menu = await data.find().toArray()
-
         res.render('pages/cookie-policy', {
             pageName: 'cookie-policy',
             pageTitle: 'นโยบายการใช้คุกกี้ | SPF : MilSim Community',
@@ -322,7 +262,7 @@ app.get('/cookie-policy', async (req, res) => {
         })
 
     } catch (err) {
-        consoler('#ff4747', `MongoDB error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`)
 
     }
 
@@ -366,14 +306,13 @@ io.on('connection', (socket) => {
 
     socket.on('request-events-data', async () => {
         try {
-            // console.log('== Send events data ==> Start');
 
-            const allData = client.db(dbName).collection('events');
-            const data = await allData.find({}).toArray();
+            const eventPath = path.join(__dirname, 'public', 'json', 'events.json');
+            const eventData = fs.readFileSync(eventPath, 'utf-8');
+            const events = JSON.parse(eventData);
 
-            socket.emit('Events-data', data);  // Send the retrieved data to the client
+            socket.emit('Events-data', events);
 
-            // console.log('== Send events data ==> End');
         } catch (err) {
             consoler('#ff4747', `== Send events data ==> Error : ${err}`);
         }
@@ -384,10 +323,11 @@ io.on('connection', (socket) => {
     socket.on('request-articles-data', async () => {
         try {
 
-            const allData = client.db(dbName).collection('articles');
-            const data = await allData.find({}).toArray();
+            const articlePath = path.join(__dirname, 'public', 'json', 'articles.json');
+            const articleData = fs.readFileSync(articlePath, 'utf-8');
+            const articles = JSON.parse(articleData);
 
-            socket.emit('Articles-data', data);
+            socket.emit('Articles-data', articles);
             
         } catch (err) {
             consoler('#ff4747', `== Send articles data ==> Error : ${err}`);
@@ -399,10 +339,11 @@ io.on('connection', (socket) => {
     socket.on('request-rules-data', async () => {
         try {
 
-            const allData = client.db(dbName).collection('rules');
-            const data = await allData.find({}).toArray();
+            const rulePath = path.join(__dirname, 'public', 'json', 'rules.json');
+            const ruleData = fs.readFileSync(rulePath, 'utf-8');
+            const rules = JSON.parse(ruleData);
 
-            socket.emit('rules-data', data);
+            socket.emit('rules-data', rules);
             
         } catch (err) {
             consoler('#ff4747', `== Send rules data ==> Error : ${err}`);
@@ -415,16 +356,6 @@ io.on('connection', (socket) => {
         // consoler('#ffffff', 'Socket.io : user disconnected.')
     })
 })
-
-// ------------------------------------------------------------------------------------------------------------------------->
-
-// - ปิดการเชื่อมต่อเมื่อเซิร์ฟเวอร์หยุดทำงาน
-process.on('SIGINT', async () => {
-    consoler('#ffdc00', `Closing MongoDB connection...`);
-    await client.close();
-    consoler('#ff0000', `MongoDB Disconnected.`);
-    process.exit(0);
-});
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
