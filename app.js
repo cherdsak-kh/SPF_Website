@@ -42,6 +42,10 @@ const Menu = JSON.parse(menuData);
     - DATABASE CONNECTION.
 
 */
+
+// const { query } = require('./public/database/connection.js');
+
+
 // ------------------------------------------------------------------------------------------------------------------------->
 /*
 
