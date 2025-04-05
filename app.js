@@ -32,6 +32,7 @@ app.use(express.json())
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
+// # Pull menu data from JSON file.
 const menuPath = path.join(__dirname, 'public', 'json', 'menu.json');
 const menuData = fs.readFileSync(menuPath, 'utf-8');
 const Menu = JSON.parse(menuData);
