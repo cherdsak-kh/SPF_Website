@@ -98,10 +98,10 @@ socket.on('Events-data', (getEvents) => {
             col.innerHTML = `${day}`;
 
             for (const event of events) {
+                // event.eventDateTime = '2025-03-09T20:30:00.000Z' จากฐานข้อมูล ซึ่งเซิร์ฟเวอร์อยู่ในไทย
                 const eventDate = new Date(event.eventDateTime);
-                eventDate.setHours(eventDate.getHours() - 7);
-                console.log(event.eventDateTime); // 2025-03-09T20:30:00.000Z
-                console.log(eventDate); // Mon Mar 10 2025 03:30:00 GMT+0700 (เวลาอินโดจีน)
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                console.log('Time Zone:', timeZone);
 
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.eventType === 'Mission Day') {
