@@ -100,8 +100,7 @@ socket.on('Events-data', (getEvents) => {
             for (const event of events) {
                 // event.eventDateTime = '2025-03-09T20:30:00.000Z' จากฐานข้อมูล ซึ่งเซิร์ฟเวอร์อยู่ในไทย
                 const eventDate = new Date(event.eventDateTime);
-                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                console.log('Time Zone:', timeZone);
+                console.log(eventDate);
 
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.eventType === 'Mission Day') {
