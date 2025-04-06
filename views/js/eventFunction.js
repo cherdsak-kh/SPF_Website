@@ -98,8 +98,8 @@ socket.on('Events-data', (getEvents) => {
             col.innerHTML = `${day}`;
 
             for (const event of events) {
-                // event.eventDateTime = '2025-03-09T20:30:00.000Z' จากฐานข้อมูล ซึ่งเซิร์ฟเวอร์อยู่ในไทย
                 const eventDate = new Date(event.eventDateTime);
+                eventDate.setHours(eventDate.getHours() - 7);
                 console.log(eventDate);
 
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
