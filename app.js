@@ -4,31 +4,31 @@
 // ------------------------------------------------------------------------------------------------------------------------->
 
 require('dotenv').config();
-const express = require('express')
-const { createServer } = require('http')
-const { Server } = require('socket.io')
+const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
 const fs = require('fs');
 const path = require('path');
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
-const consoler = require('./public/function/consoler')
-const getPath_Consoler = require('./public/function/getPath-Consoler')
+const consoler = require('./public/function/consoler');
+const getPath_Consoler = require('./public/function/getPath-Consoler');
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
 const port = process.env.PORT || process.env.LOCAL_PORT;
-const app = express()
-const server = createServer(app)
-const io = new Server(server)
+const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
-app.set('view engine', 'ejs')
-app.use(express.static('views'))
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.set('view engine', 'ejs');
+app.use(express.static('views'));
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
@@ -44,7 +44,7 @@ const Menu = JSON.parse(menuData);
 
 */
 
-// const { query } = require('./public/database/connection.js');
+const { query } = require('./public/database/connection.js');
 
 
 // ------------------------------------------------------------------------------------------------------------------------->
@@ -58,7 +58,7 @@ const Menu = JSON.parse(menuData);
 // # Render index page.
 app.get('/', async (req, res) => {
 
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/index', {
@@ -66,21 +66,21 @@ app.get('/', async (req, res) => {
             pageTitle: Menu[0].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render news page.
 app.get('/news', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/news', {
@@ -88,21 +88,21 @@ app.get('/news', async (req, res) => {
             pageTitle: Menu[1].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render event page.
 app.get('/event', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/event', {
@@ -110,21 +110,21 @@ app.get('/event', async (req, res) => {
             pageTitle: Menu[2].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render gallery page.
 app.get('/media', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/media', {
@@ -132,21 +132,21 @@ app.get('/media', async (req, res) => {
             pageTitle: Menu[3].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render streaming page.
 app.get('/streaming', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/streaming', {
@@ -154,21 +154,21 @@ app.get('/streaming', async (req, res) => {
             pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render rules page.
 app.get('/serverrules', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/rules', {
@@ -176,21 +176,21 @@ app.get('/serverrules', async (req, res) => {
             pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render articles page.
 app.get('/articles', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/articles', {
@@ -198,21 +198,21 @@ app.get('/articles', async (req, res) => {
             pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render about page.
 app.get('/about', async (req, res) => {
 
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/about', {
@@ -220,21 +220,21 @@ app.get('/about', async (req, res) => {
             pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render contact page.
 app.get('/contact', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/contact', {
@@ -242,21 +242,21 @@ app.get('/contact', async (req, res) => {
             pageTitle: Menu[8].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render cookie-policy page.
 app.get('/cookie-policy', async (req, res) => {
     
-    getPath_Consoler(req)
+    getPath_Consoler(req);
 
     try {
         res.render('pages/cookie-policy', {
@@ -264,32 +264,39 @@ app.get('/cookie-policy', async (req, res) => {
             pageTitle: 'นโยบายการใช้คุกกี้ | SPF : MilSim Community',
             menu: Menu,
             req: req
-        })
+        });
 
     } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`)
+        consoler('#ff4747', `File read error: ${err}`);
 
     }
 
-})
+});
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
 // # Render 404 Not found.
 app.get('*', (req, res) => {
 
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
-    consoler('#ff4747', `Server >> : Client >> ${ip} | 404 Not found >> ${req.originalUrl} | Redirecting...`)
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    consoler('#ff4747', `Server >> : Client >> ${ip} | 404 Not found >> ${req.originalUrl} | Redirecting...`);
 
     res.status(404).render('pages/404NotFound', {
         curTitle: '404 Not Found'
-    })
-})
+    });
+});
 
+// ------------------------------------------------------------------------------------------------------------------------->
+/*
+
+    - SOCKET.IO CONNECTION.
+    - Socket.io is a library that enables real-time, bidirectional and event-based communication between the browser and the server.
+
+*/
 // ------------------------------------------------------------------------------------------------------------------------->
 
 io.on('connection', (socket) => {
-    // consoler('#ffffff', 'Socket.io : user connected.')
+    // consoler('#ffffff', 'Socket.io : user connected.');
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
@@ -312,11 +319,14 @@ io.on('connection', (socket) => {
     socket.on('request-events-data', async () => {
         try {
 
-            const eventPath = path.join(__dirname, 'public', 'json', 'events.json');
-            const eventData = fs.readFileSync(eventPath, 'utf-8');
-            const events = JSON.parse(eventData);
-
-            socket.emit('Events-data', events);
+            const sql = 'SELECT * FROM events WHERE del = 0';
+            query(sql, [], (err, events) => {
+                if (err) {
+                    consoler('#ff4747', `== Database error ==> Error : ${err}`);
+                    return;
+                }
+                socket.emit('Events-data', events);
+            });
 
         } catch (err) {
             consoler('#ff4747', `== Send events data ==> Error : ${err}`);
@@ -337,7 +347,7 @@ io.on('connection', (socket) => {
         } catch (err) {
             consoler('#ff4747', `== Send articles data ==> Error : ${err}`);
         }
-    })
+    });
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
@@ -353,21 +363,21 @@ io.on('connection', (socket) => {
         } catch (err) {
             consoler('#ff4747', `== Send rules data ==> Error : ${err}`);
         }
-    })
+    });
     
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
     socket.on('disconnect', () => {
-        // consoler('#ffffff', 'Socket.io : user disconnected.')
-    })
-})
+        // consoler('#ffffff', 'Socket.io : user disconnected.');
+    });
+});
 
 // ------------------------------------------------------------------------------------------------------------------------->
 
 server.listen(port, () => {
 
-    console.log('---------------------------------------------------------------------------------------------------------')
-    consoler('#49ff00', `Server is running on port ${port}`)
-})
+    console.log('---------------------------------------------------------------------------------------------------------');
+    consoler('#49ff00', `Server is running on port ${port}`);
+});
 
 // ------------------------------------------------------------------------------------------------------------------------->

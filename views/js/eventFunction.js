@@ -48,6 +48,7 @@ socket.on('Events-data', (getEvents) => {
 
     // ! สร้างสำเนาของ events
     const events = getEvents.map(event => ({ ...event }));
+    // console.log(events);
 
     // ! รับวันเดือนปีปัจจุบัน
     const curDate = new Date();
@@ -97,19 +98,19 @@ socket.on('Events-data', (getEvents) => {
             col.innerHTML = `${day}`;
 
             for (const event of events) {
-                const eventDate = new Date(event.dateTime);
+                const eventDate = new Date(event.eventDateTime);
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
-                    if (event.type === 'Mission Day') {
+                    if (event.eventType === 'Mission Day') {
                         col.classList.add('position-relative');
                         col.innerHTML += `
                             <span class="position-absolute bottom-0 start-0 w-100 bg-primary bg-opacity-50 fs-6 text-white rounded-top">Mission Day</span>
                         `;
-                    } else if (event.type === 'Event') {
+                    } else if (event.eventType === 'Event') {
                         col.classList.add('position-relative');
                         col.innerHTML += `
                             <span class="position-absolute bottom-0 start-0 w-100 bg-warning bg-opacity-50 fs-6 text-white rounded-top">Event</span>
                         `;
-                    } else if (event.type === 'Training') {
+                    } else if (event.eventType === 'Training') {
                         col.classList.add('position-relative');
                         col.innerHTML += `
                             <span class="position-absolute bottom-0 start-0 w-100 bg-light bg-opacity-50 fs-6 text-white rounded-top">Training</span>
@@ -248,24 +249,25 @@ socket.on('Events-data', (getEvents) => {
         `;
 
         for (const event of events) {
-            const eventDate = new Date(event.dateTime);
+            const eventDate = new Date(event.eventDateTime);
             // const eventImg = '../images/' + event.eventImg;
-            const eventImg = event.eventImg;
+            const eventImg = event.eventImage;
             const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${eventDate.getMinutes()} น.`;
             let eventType = '';
             let eventTypeClass = '';
             const eventName = event.eventName;
-            const eventAuthor = event.author;
+            const eventDescription = event.eventDescription;
+            const eventAuthor = event.eventAuthor;
 
-            if (event.type === 'Mission Day') {
+            if (event.eventType === 'Mission Day') {
                 eventType = `Mission Day`;
                 eventTypeClass = 'bg-primary';
 
-            } else if (event.type === 'Event') {
+            } else if (event.eventType === 'Event') {
                 eventType = `Event`;
                 eventTypeClass = 'bg-warning';
 
-            } else if (event.type === 'Training') {
+            } else if (event.eventType === 'Training') {
                 eventType = `Training`;
                 eventTypeClass = 'bg-secondary';
             }
@@ -290,7 +292,7 @@ socket.on('Events-data', (getEvents) => {
                             <div class="row card-body">
                                 <h2 class="text-lg-start fw-bold p-0">${eventName}</h2>
                                 <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                    ${eventDescription}
                                 </p>
                             </div>
                             <div class="row card-footer">
@@ -380,11 +382,6 @@ socket.on('Events-data', (getEvents) => {
 
     // -------------------------------------------------------------------------------------------------->
 
-    const eventDesc = getEvents.map(event => ({ ...event }));
-    eventDesc.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime)); // Sort by Desc
-
-    let numEvents = 3;
-
     function renderPastEvent(events, numDisplay) {
         const pastEvents = document.getElementById('past-event-content');
         pastEvents.innerHTML = '';
@@ -393,36 +390,35 @@ socket.on('Events-data', (getEvents) => {
         const newPastEvents = [];
 
         for (const event of events) {
-            const eventDateTime = new Date(event.dateTime);
+            const eventDateTime = new Date(event.eventDateTime);
             if (isPast(eventDateTime)) {
                 newPastEvents.push(event);
             }
         }
 
-        // console.log(newPastEvents.length);
-
         if (newPastEvents.length > 0) {
 
             for (const event of newPastEvents) {
 
-                const eventDateTime = new Date(event.dateTime); 
+                const eventDateTime = new Date(event.eventDateTime); 
                 // let pastEvent_image = '../images/' + event.eventImg;
-                let pastEvent_image = event.eventImg;
+                let pastEvent_image = event.eventImage;
                 let pastEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
                 let pastEvent_type = '';
                 let pastEvent_name = event.eventName;
-                let pastEvent_author = event.author;
+                let pastEvent_description = event.eventDescription;
+                let pastEvent_author = event.eventAuthor;
                 let pastTypeClass = '';
     
-                if (event.type === 'Mission Day') {
+                if (event.eventType === 'Mission Day') {
                     pastEvent_type = `Mission Day`;
                     pastTypeClass = 'bg-primary';
 
-                } else if (event.type === 'Event') {
+                } else if (event.eventType === 'Event') {
                     pastEvent_type = `Event`;
                     pastTypeClass = 'bg-warning';
 
-                } else if (event.type === 'Training') {
+                } else if (event.eventType === 'Training') {
                     pastEvent_type = `Training`;
                     pastTypeClass = 'bg-secondary';
                 }
@@ -447,7 +443,7 @@ socket.on('Events-data', (getEvents) => {
                             <div class="row card-body">
                                 <h2 class="text-lg-start fw-bold p-0">${pastEvent_name}</h2>
                                 <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                    ${pastEvent_description}
                                 </p>
                             </div>
                             <div class="row card-footer">
@@ -503,11 +499,13 @@ socket.on('Events-data', (getEvents) => {
         }
     }
 
+    const eventDesc = getEvents.map(event => ({ ...event }));
+    eventDesc.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime)); // Sort by Desc
+
+    let numEvents = 3;
     renderPastEvent(eventDesc, numEvents);
 
     // -------------------------------------------------------------------------------------------------->
-
-    const icmEvents = getEvents.map(event => ({ ...event }));
 
     function icmEventDisplay(events) {
 
@@ -518,28 +516,30 @@ socket.on('Events-data', (getEvents) => {
         let icmEvent_image = '';
         let icmEvent_type = '';
         let icmEvent_name = '';
+        let icmEvent_description = '';
         let icmEvent_author = '';
         let hasEvent = '';
 
         for (const event of events) {
-            const eventDateTime = new Date(event.dateTime);
+            const eventDateTime = new Date(event.eventDateTime);
 
             icmEvent_dateTime = '';
             // icmEvent_image = '../images/' + event.eventImg;
-            icmEvent_image = event.eventImg;
+            icmEvent_image = event.eventImage;
             icmEvent_type = '';
             icmEvent_name = event.eventName;
-            icmEvent_author = event.author;
+            icmEvent_description = event.eventDescription;
+            icmEvent_author = event.eventAuthor;
 
-            if (event.type === 'Mission Day') {
+            if (event.eventType === 'Mission Day') {
                 icmEvent_type = `Mission Day`;
                 icmTypeClass = 'bg-primary';
 
-            } else if (event.type === 'Event') {
+            } else if (event.eventType === 'Event') {
                 icmEvent_type = `Event`;
                 icmTypeClass = 'bg-warning';
 
-            } else if (event.type === 'Training') {
+            } else if (event.eventType === 'Training') {
                 icmEvent_type = `Training`;
                 icmTypeClass = 'bg-secondary';
             }
@@ -594,7 +594,7 @@ socket.on('Events-data', (getEvents) => {
                         <div class="row card-body">
                             <h2 class="text-lg-start fw-bold p-0">${icmEvent_name}</h2>
                             <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                ${icmEvent_description}
                             </p>
                         </div>
                         <div class="row card-footer">
@@ -622,6 +622,7 @@ socket.on('Events-data', (getEvents) => {
 
     }
 
+    const icmEvents = getEvents.map(event => ({ ...event }));
     icmEventDisplay(icmEvents);
 
 })
