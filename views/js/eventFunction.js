@@ -99,6 +99,7 @@ socket.on('Events-data', (getEvents) => {
 
             for (const event of events) {
                 const eventDate = new Date(event.eventDateTime);
+                console.log(event.eventDateTime);
                 console.log(eventDate);
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.eventType === 'Mission Day') {
