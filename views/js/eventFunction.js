@@ -100,7 +100,7 @@ socket.on('Events-data', (getEvents) => {
             for (const event of events) {
                 const eventDate = new Date(event.eventDateTime);
                 eventDate.setHours(eventDate.getHours() - 7);
-                console.log(eventDate);
+                // console.log(eventDate);
 
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.eventType === 'Mission Day') {
@@ -253,6 +253,7 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
             const eventDate = new Date(event.eventDateTime);
+            eventDate.setHours(eventDate.getHours() - 7);
             // const eventImg = '../images/' + event.eventImg;
             const eventImg = event.eventImage;
             const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${eventDate.getMinutes()} น.`;
