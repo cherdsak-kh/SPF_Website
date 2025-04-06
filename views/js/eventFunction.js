@@ -405,6 +405,7 @@ socket.on('Events-data', (getEvents) => {
             for (const event of newPastEvents) {
 
                 const eventDateTime = new Date(event.eventDateTime); 
+                eventDateTime.setHours(eventDateTime.getHours() - 7);
                 // let pastEvent_image = '../images/' + event.eventImg;
                 let pastEvent_image = event.eventImage;
                 let pastEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
@@ -526,7 +527,7 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
             const eventDateTime = new Date(event.eventDateTime);
-
+            eventDateTime.setHours(eventDateTime.getHours() - 7);
             icmEvent_dateTime = '';
             // icmEvent_image = '../images/' + event.eventImg;
             icmEvent_image = event.eventImage;
