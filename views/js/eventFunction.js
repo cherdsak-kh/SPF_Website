@@ -98,9 +98,10 @@ socket.on('Events-data', (getEvents) => {
             col.innerHTML = `${day}`;
 
             for (const event of events) {
-                const eventDate = new Date(new Date(event.eventDateTime).toLocaleString("en-US", { timeZone: "Asia/Bangkok" }));
+                const eventDate = new Date(event.eventDateTime);
                 console.log(event.eventDateTime); // 2025-03-09T20:30:00.000Z
                 console.log(eventDate); // Mon Mar 10 2025 03:30:00 GMT+0700 (เวลาอินโดจีน)
+                
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                     if (event.eventType === 'Mission Day') {
                         col.classList.add('position-relative');
