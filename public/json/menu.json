@@ -20,11 +20,6 @@
     "href": "/media"
   },
   {
-    "enName": "Streaming",
-    "thName": "ถ่ายทอดสด",
-    "href": "/streaming"
-  },
-  {
     "enName": "Server Rules",
     "thName": "กฎระเบียบเซิร์ฟเวอร์",
     "href": "/serverrules"

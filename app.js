@@ -143,28 +143,6 @@ app.get('/media', async (req, res) => {
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
 
-// # Render streaming page.
-app.get('/streaming', async (req, res) => {
-    
-    getPath_Consoler(req);
-
-    try {
-        res.render('pages/streaming', {
-            pageName: Menu[4].enName,
-            pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
-            menu: Menu,
-            req: req
-        });
-
-    } catch (err) {
-        consoler('#ff4747', `File read error: ${err}`);
-
-    }
-
-});
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
-
 // # Render rules page.
 app.get('/serverrules', async (req, res) => {
     
@@ -172,8 +150,8 @@ app.get('/serverrules', async (req, res) => {
 
     try {
         res.render('pages/rules', {
-            pageName: Menu[5].enName,
-            pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
+            pageName: Menu[4].enName,
+            pageTitle: Menu[4].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         });
@@ -194,8 +172,8 @@ app.get('/articles', async (req, res) => {
 
     try {
         res.render('pages/articles', {
-            pageName: Menu[6].enName,
-            pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
+            pageName: Menu[5].enName,
+            pageTitle: Menu[5].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         });
@@ -216,8 +194,8 @@ app.get('/about', async (req, res) => {
 
     try {
         res.render('pages/about', {
-            pageName: Menu[7].enName,
-            pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
+            pageName: Menu[6].enName,
+            pageTitle: Menu[6].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         });
@@ -238,8 +216,8 @@ app.get('/contact', async (req, res) => {
 
     try {
         res.render('pages/contact', {
-            pageName: Menu[8].enName,
-            pageTitle: Menu[8].thName + ' | SPF : Milsim Community',
+            pageName: Menu[7].enName,
+            pageTitle: Menu[7].thName + ' | SPF : Milsim Community',
             menu: Menu,
             req: req
         });
@@ -338,12 +316,15 @@ io.on('connection', (socket) => {
     socket.on('request-articles-data', async () => {
         try {
 
-            const articlePath = path.join(__dirname, 'public', 'json', 'articles.json');
-            const articleData = fs.readFileSync(articlePath, 'utf-8');
-            const articles = JSON.parse(articleData);
+            const sql = 'SELECT * FROM articles WHERE del = 0';
+            query(sql, [], (err, articles) => {
+                if (err) {
+                    consoler('#ff4747', `== Database error ==> Error : ${err}`);
+                    return;
+                }
+                socket.emit('Articles-data', articles);
+            });
 
-            socket.emit('Articles-data', articles);
-            
         } catch (err) {
             consoler('#ff4747', `== Send articles data ==> Error : ${err}`);
         }
