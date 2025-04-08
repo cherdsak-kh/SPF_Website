@@ -73,66 +73,148 @@
         </div>
     </div>
 
-    <div class="container position-relative z-2 px-2">
+    <div class="container position-relative z-2 px-2 my-5">
         <div class="row">
             <div class="col-lg-12">
-                <div class="container-fluid pt-5 rounded-top-5 bg-gradient">
-                    <h2 class="text-shadow fw-bold text-center">ข่าวสาร/ประชาสัมพันธ์ <i class="bi bi-megaphone ms-2"></i></h2>
+                <div class="container-fluid pt-5">
+                    <h4 class="text-shadow fw-bold"><i class="bi bi-megaphone me-2"></i> ประกาศจากทีมงาน</h4>
                 </div>
             </div>
         </div>
-        <hr class="border border-2 border-light rounded opacity-50">
+        <hr class="border border-1 border-light rounded opacity-50">
+        <div class="row">
+            
+            <% for (let i = 0; i < 4; i++) { %>
+                <div class="col-lg-3 p-2">
+                    <div class="card mb-2 p-2 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">News Title</h5>
+                            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+        </div>
+    </div>
+
+    <div class="container position-relative z-2 px-2 my-5">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="row p-2">
-                        <div class="col-lg-8">
-                            <img src="https://dummyimage.com/1920x1080/000/fff" class="img-fluid rounded" alt="image">
-                        </div>
-                        <div class="col-lg-4 d-flex flex-column justify-content-between">
-                            <div class="card-body">
-                                <h3 class="card-title fw-bold">News Title</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita corrupti, aspernatur perferendis incidunt hic laborum id debitis dolorem doloribus. Natus architecto nisi id, quam ea doloribus modi officia adipisci quia temporibus pariatur ratione accusantium velit nemo perferendis animi ipsam eos maiores fugiat. Consectetur quibusdam laudantium voluptas! Deleniti iusto expedita at?</p>
-                            </div>
-                            <div class="card-footer ">
-                                2 days ago
-                            </div>
-                        </div>
-                    </div>
+                <div class="container-fluid pt-5">
+                    <h4 class="text-shadow fw-bold"><i class="bi bi-hdd-stack me-2"></i> SPF : Arma 3 Milsim Community</h4>
                 </div>
             </div>
-
-            <div class="col-lg-4 p-2">
+        </div>
+        <hr class="border border-1 border-light rounded opacity-50">
+        <div class="row">
+            
+            <div class="col-lg-12 p-2">
                 <div class="card mb-2 p-2 ">
-                    <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">News Title</h5>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 p-2">
-                <div class="card mb-2 p-2 ">
-                    <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">News Title</h5>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 p-2">
-                <div class="card mb-2 p-2 ">
-                    <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">News Title</h5>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        <script type="application/javascript">
+                            window.addEventListener('message', function (e) { 
+                                if (e.data.uid && e.data.type === 'sizeUpdate') { 
+                                    var i = document.querySelector('iframe[name="' + e.data.uid + '"]'); 
+                                    i.style.width = e.data.payload.width; 
+                                    i.style.height = e.data.payload.height; 
+                                } 
+                            });
+                        </script>
+                        <iframe
+                            src="https://cdn.battlemetrics.com/b/horizontal500x80px/32787212.html?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700"
+                            frameborder=0 style="border:0" name="ueyhc">
+                        </iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="border border-2 border-light rounded opacity-50">
+    </div>
+
+    <div class="container position-relative z-2 px-2 my-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container-fluid pt-5">
+                    <h4 class="text-shadow fw-bold"><i class="bi bi-calendar2-week me-2"></i> กิจกรรมประจำสัปดาห์</h4>
+                </div>
+            </div>
+        </div>
+        <hr class="border border-1 border-light rounded opacity-50">
+        <div class="row">
+            
+            <% for (let i = 0; i < 4; i++) { %>
+                <div class="col-lg-3 p-2">
+                    <div class="card mb-2 p-2 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">News Title</h5>
+                            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+        </div>
+    </div>
+
+    <div class="container position-relative z-2 px-2 my-5">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="container-fluid pt-5">
+                            <h4 class="text-shadow fw-bold"><i class="bi bi-images me-2"></i> ภาพกิจกรรม</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border border-1 border-light rounded opacity-50">
+                <div class="row">
+                    
+                    <% for (let i = 0; i < 4; i++) { %>
+                        <div class="col-lg-6 p-2">
+                            <div class="card mb-2 p-2 ">
+                                <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">News Title</h5>
+                                    <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="container-fluid pt-5">
+                            <h4 class="text-shadow fw-bold"><i class="bi bi-film me-2"></i> วิดีโอไฮไลต์</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border border-1 border-light rounded opacity-50">
+                <div class="row">
+                    
+                    <% for (let i = 0; i < 4; i++) { %>
+                        <div class="col-lg-6 p-2">
+                            <div class="card mb-2 p-2 ">
+                                <img src="https://dummyimage.com/1920x1080/000/fff" class="card-img-top" alt="image">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">News Title</h5>
+                                    <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+
+                </div>
+            </div>
+
+        </div>
+        <hr class="border border-1 border-light rounded opacity-0 my-5">
     </div>
     
 <%- include('../components/footer.ejs') %>
