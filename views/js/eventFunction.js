@@ -256,7 +256,8 @@ socket.on('Events-data', (getEvents) => {
             eventDate.setHours(eventDate.getHours() - 7);
             // const eventImg = '../images/' + event.eventImg;
             const eventImg = event.eventImage;
-            const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${eventDate.getMinutes()} น.`;
+            const minutes = eventDateTime.getMinutes().toString().padStart(2, '0');
+            const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${minutes} น.`;
             let eventType = '';
             let eventTypeClass = '';
             const eventName = event.eventName;
@@ -408,7 +409,8 @@ socket.on('Events-data', (getEvents) => {
                 eventDateTime.setHours(eventDateTime.getHours() - 7);
                 // let pastEvent_image = '../images/' + event.eventImg;
                 let pastEvent_image = event.eventImage;
-                let pastEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
+                const minutes = eventDateTime.getMinutes().toString().padStart(2, '0');
+                let pastEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${minutes} น.`;
                 let pastEvent_type = '';
                 let pastEvent_name = event.eventName;
                 let pastEvent_description = event.eventDescription;
@@ -558,18 +560,20 @@ socket.on('Events-data', (getEvents) => {
             // console.log('Future ? : ' + isFuture(eventDateTime));
             // console.log('-----------------------------------------------------------------');
 
+            const minutes = eventDateTime.getMinutes().toString().padStart(2, '0');
+
             if (isToday(eventDateTime)) {
-                icmEvent_dateTime = `วันนี้เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
+                icmEvent_dateTime = `วันนี้เวลา ${eventDateTime.getHours()}.${minutes} น.`;
                 hasEvent = true;
                 break;
 
             } else if (isTomorrow(eventDateTime)) {
-                icmEvent_dateTime = `พรุ่งนี้เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
+                icmEvent_dateTime = `พรุ่งนี้เวลา ${eventDateTime.getHours()}.${minutes} น.`;
                 hasEvent = true;
                 break;
 
             } else if (isFuture(eventDateTime)) {
-                icmEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${eventDateTime.getMinutes()} น.`;
+                icmEvent_dateTime = `วัน${getDayName(eventDateTime.getDay())}ที่ ${eventDateTime.getDate()} ${getMonthName(eventDateTime.getMonth())} ${eventDateTime.getFullYear()+543} เวลา ${eventDateTime.getHours()}.${minutes} น.`;
                 hasEvent = true;
                 break;
 
