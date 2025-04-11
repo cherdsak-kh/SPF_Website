@@ -256,7 +256,7 @@ socket.on('Events-data', (getEvents) => {
             eventDate.setHours(eventDate.getHours() - 7);
             // const eventImg = '../images/' + event.eventImg;
             const eventImg = event.eventImage;
-            const minutes = eventDateTime.getMinutes().toString().padStart(2, '0');
+            const minutes = eventDate.getMinutes().toString().padStart(2, '0');
             const eventDateTime = `วัน${getDayName(eventDate.getDay())}ที่ ${eventDate.getDate()} ${getMonthName(eventDate.getMonth())} ${eventDate.getFullYear()+543} เวลา ${eventDate.getHours()}.${minutes} น.`;
             let eventType = '';
             let eventTypeClass = '';
