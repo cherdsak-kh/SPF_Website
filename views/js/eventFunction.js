@@ -382,6 +382,8 @@ socket.on('Events-data', (getEvents) => {
         const targetDate = new Date(date); // สร้างตัวแปรวันที่เป้าหมาย
         targetDate.setHours(0, 0, 0, 0); // ตั้งเวลาเป็น 0:00:00
 
+        console.log(`${targetDate} < ${today} = ${targetDate < today}`);
+
         return targetDate < today;
     }
 
