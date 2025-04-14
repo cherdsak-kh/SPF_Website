@@ -27,6 +27,7 @@ const io = new Server(server);
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.use(express.static('public'));
+app.use(express.static('config'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -44,7 +45,7 @@ const Menu = JSON.parse(menuData);
 
 */
 
-const { query } = require('./public/database/connection.js');
+const { query } = require('./config/database/connection.js');
 
 
 // ------------------------------------------------------------------------------------------------------------------------->
