@@ -397,11 +397,10 @@ socket.on('Events-data', (getEvents) => {
         for (const event of events) {
             const eventDateTime = new Date(event.eventDateTime);
             if (isPast(eventDateTime)) {
+                console.log(event);
                 newPastEvents.push(event);
             }
         }
-
-        console.log(newPastEvents);
 
         if (newPastEvents.length > 0) {
 
