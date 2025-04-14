@@ -33,6 +33,13 @@ socket.on('rules-data', (rules) => {
         </div>
     `;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
+    const rulesDisplay_3 = document.getElementById('rule-3');
+    rulesDisplay_3.innerHTML = `
+        <div class="col-lg-9 bg-dark rounded-2 p-1 pb-0 mx-auto mt-3 overflow-hidden">
+            <iframe src="${rulesDisplay[2].linkSharing}" width="100%" height="1200"></iframe>
+        </div>
+    `;
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>
 
 });
 
