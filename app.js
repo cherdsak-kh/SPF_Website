@@ -34,7 +34,7 @@ app.use(express.json());
 // ------------------------------------------------------------------------------------------------------------------------->
 
 // # Pull menu data from JSON file.
-const menuPath = path.join(__dirname, 'public', 'json', 'menu.json');
+const menuPath = path.join(__dirname, 'config', 'json', 'menu.json');
 const menuData = fs.readFileSync(menuPath, 'utf-8');
 const Menu = JSON.parse(menuData);
   
@@ -336,7 +336,8 @@ io.on('connection', (socket) => {
     socket.on('request-rules-data', async () => {
         try {
 
-            const rulePath = path.join(__dirname, 'public', 'json', 'rules.json');
+            // # Pull rule data from JSON file.
+            const rulePath = path.join(__dirname, 'config', 'json', 'rules.json');
             const ruleData = fs.readFileSync(rulePath, 'utf-8');
             const rules = JSON.parse(ruleData);
 
