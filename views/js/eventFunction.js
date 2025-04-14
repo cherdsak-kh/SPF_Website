@@ -395,7 +395,10 @@ socket.on('Events-data', (getEvents) => {
         const newPastEvents = [];
 
         for (const event of events) {
+            
             const eventDateTime = new Date(event.eventDateTime);
+            eventDateTime.setHours(eventDateTime.getHours() - 7);
+
             if (isPast(eventDateTime)) {
                 console.log(event);
                 newPastEvents.push(event);
