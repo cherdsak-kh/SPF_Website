@@ -24,11 +24,11 @@ socket.on('server-info-data', (data) => {
         document.getElementById('server-info-title').innerHTML = `<i class="bi bi-hdd-stack me-2"></i> ${serverInfo.name}`;
 
         const pingLevel = [
-            '<i class="bi bi-reception-0 me-2"></i>',
-            '<i class="bi bi-reception-1 me-2"></i>',
-            '<i class="bi bi-reception-2 me-2"></i>',
-            '<i class="bi bi-reception-3 me-2"></i>',
-            '<i class="bi bi-reception-4 me-2"></i>'
+            '<i class="bi bi-reception-0 me-2 text-danger"></i>',
+            '<i class="bi bi-reception-1 me-2 text-danger"></i>',
+            '<i class="bi bi-reception-2 me-2 text-warning"></i>',
+            '<i class="bi bi-reception-3 me-2 text-success"></i>',
+            '<i class="bi bi-reception-4 me-2 text-success"></i>'
         ];
 
         // คำนวณ ping level โดยใช้ Math.min เพื่อไม่ให้เกิน index ที่มีใน array
