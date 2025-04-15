@@ -23,17 +23,15 @@ socket.on('server-info-data', (data) => {
         const serverInfo = data.results;
         document.getElementById('server-info-title').innerHTML = `<i class="bi bi-hdd-stack me-2"></i> ${serverInfo.name}`;
 
-        const pingLevel = [
-            '<i class="bi bi-reception-0 me-2 text-danger"></i>',
-            '<i class="bi bi-reception-1 me-2 text-danger"></i>',
-            '<i class="bi bi-reception-2 me-2 text-warning"></i>',
-            '<i class="bi bi-reception-3 me-2 text-success"></i>',
-            '<i class="bi bi-reception-4 me-2 text-success"></i>'
+        const pingRanges = [
+            { max: 70, icon: '<i class="bi bi-reception-4 me-2 text-success"></i>' },
+            { max: 140, icon: '<i class="bi bi-reception-3 me-2 text-success"></i>' },
+            { max: 210, icon: '<i class="bi bi-reception-2 me-2 text-warning"></i>' },
+            { max: 280, icon: '<i class="bi bi-reception-1 me-2 text-danger"></i>' },
+            { max: Infinity, icon: '<i class="bi bi-reception-0 me-2 text-danger"></i>' },
         ];
 
-        // คำนวณ ping level โดยใช้ Math.min เพื่อไม่ให้เกิน index ที่มีใน array
-        const pingIndex = Math.min(Math.floor(serverInfo.ping / 70), 4);
-        const serverPingIcon = pingLevel[4 - pingIndex]; // ยิ่ง ping ต่ำ index ยิ่งสูง
+        const serverPingIcon = pingRanges.find(range => serverInfo.ping <= range.max).icon;
 
         const players = serverInfo.players;
         let player_list_content = '';
@@ -131,7 +129,7 @@ socket.on('server-info-data', (data) => {
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="row">
+                        <div class="row ps-lg-2">
                             <div class="col-12">
                                 <p>
                                     <i class="bi bi-person-lines-fill me-2"></i>
