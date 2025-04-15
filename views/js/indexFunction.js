@@ -78,7 +78,7 @@ socket.on('server-info-data', (data) => {
                         </div>
                         <div class="col-4">
                             <i class="bi bi-clock-history me-2"></i>
-                            <span class="me-2"><strong>ping</strong>:</span>
+                            <span class="me-2"><strong>เวลา</strong>:</span>
                             <span>${formattedTime}</span>
                         </div>
                     </div>
