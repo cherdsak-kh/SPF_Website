@@ -102,7 +102,7 @@ socket.on('server-info-data', (data) => {
                                 <p>
                                     ${serverPingIcon}
                                     <span class="me-2"><strong>ping</strong>:</span>
-                                    <span>${serverInfo.ping}</span>
+                                    <span>${serverInfo.ping} ms</span>
                                 </p>
                             </div>
                             <div class="col-6">
