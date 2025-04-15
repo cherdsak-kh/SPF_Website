@@ -48,7 +48,7 @@ socket.on('server-info-data', (data) => {
             player_list_content = '';
             for (const player of players) {
 
-                let time = player.time; // หน่วยเป็นวินาที
+                let time = player.raw.time; // หน่วยเป็นวินาที
                 let hours = Math.floor(time / 3600);
                 let minutes = Math.floor((time % 3600) / 60);
                 let seconds = Math.floor(time % 60);
@@ -64,17 +64,17 @@ socket.on('server-info-data', (data) => {
                 }
 
                 player_list_content += `
-                    <div class="row">
+                    <div class="row p-0">
                         <div class="col-4">
                             <i class="bi bi-person-fill me-2"></i>
                             <span>${player.name}</span>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <i class="bi bi-lightning-charge-fill me-2"></i>
                             <span class="me-2"><strong>คะแนน</strong>:</span>
-                            <span>${player.score}</span>
+                            <span>${player.raw.score}</span>
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
                             <i class="bi bi-clock-history me-2"></i>
                             <span class="me-2"><strong>เวลา</strong>:</span>
                             <span>${formattedTime}</span>
