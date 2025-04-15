@@ -32,7 +32,7 @@ socket.on('server-info-data', (data) => {
         ];
 
         // คำนวณ ping level โดยใช้ Math.min เพื่อไม่ให้เกิน index ที่มีใน array
-        const pingIndex = Math.min(Math.floor(serverInfo.ping / 60), 4);
+        const pingIndex = Math.min(Math.floor(serverInfo.ping / 70), 4);
         const serverPingIcon = pingLevel[4 - pingIndex]; // ยิ่ง ping ต่ำ index ยิ่งสูง
 
         const players = serverInfo.players;
@@ -86,10 +86,12 @@ socket.on('server-info-data', (data) => {
             }
         }
 
+        const borderClass = window.innerWidth > 992 ? 'border-end border-2 border-opacity-10' : '';
+
         document.getElementById('server-info-box').innerHTML = `
             <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6 border-end border-2 border-opacity-25">
+                <div class="row px-3">
+                    <div class="col-lg-6 ${borderClass}">
                         <div class="row">
                             <div class="col-6">
                                 <p>
@@ -144,15 +146,15 @@ socket.on('server-info-data', (data) => {
                 </div>
             </div>
             <div class="card-footer">
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="row px-3">
+                    <div class="col-lg-6 text-center text-lg-start mb-2 mb-lg-0">
                         <p id="server-info-game-version" class="py-2 m-0">
                             <i class="bi bi-diagram-2 me-2"></i> ${serverInfo.connect}
                             <span class="mx-2">|</span>
                             <i class="bi bi-controller me-2"></i> เกมเวอร์ชัน: ${serverInfo.version}
                         </p>
                     </div>
-                    <div class="col-lg-6 text-end p-0 m-0 pe-2">
+                    <div class="col-lg-6 text-lg-end text-center p-0 m-0 pe-2">
                         <button class="btn btn-secondary px-3" type="button" onclick="serverInfoReload();">
                             <i class="bi bi-arrow-clockwise me-2"></i>
                             รีเฟรช
