@@ -100,33 +100,97 @@
     </div>
 
     <div class="container position-relative z-2 px-2 my-5">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="container-fluid pt-5">
-                    <h4 class="text-shadow fw-bold"><i class="bi bi-hdd-stack me-2"></i> SPF : Arma 3 Milsim Community</h4>
-                </div>
+        <div class="row card">
+            <div class="card-header">
+                <h4 id="server-info-title" class="text-shadow fw-bold py-2 m-0"><i class="bi bi-hdd-stack me-2"></i> SPF : Arma 3 Milsim Community</h4>
             </div>
-        </div>
-        <hr class="border border-1 border-light rounded opacity-50">
-        <div class="row">
-            
-            <div class="col-lg-12 p-2">
-                <div class="card mb-2 p-2 ">
-                    <div class="card-body">
-                        <script type="application/javascript">
-                            window.addEventListener('message', function (e) { 
-                                if (e.data.uid && e.data.type === 'sizeUpdate') { 
-                                    var i = document.querySelector('iframe[name="' + e.data.uid + '"]'); 
-                                    i.style.width = e.data.payload.width; 
-                                    i.style.height = e.data.payload.height; 
-                                } 
-                            });
-                        </script>
-                        <iframe
-                            src="https://cdn.battlemetrics.com/b/horizontal500x80px/32787212.html?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700"
-                            frameborder=0 style="border:0" name="ueyhc">
-                        </iframe>
+            <div id="server-info-box" class="m-0 p-0 text-shadow">
+                <!-- <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 border-end border-2 border-opacity-25">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>
+                                        <i class="bi bi-hdd-network me-2"></i>
+                                        <span class="me-2"><strong>สถานะเซิร์ฟเวอร์</strong>:</span>
+                                        <span>ออนไลน์</span>
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        <i class="bi bi-reception-4 me-2"></i>
+                                        <span class="me-2"><strong>ping</strong>:</span>
+                                        <span>35</span>
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        <i class="bi bi-journal-richtext me-2"></i>
+                                        <span class="me-2"><strong>ภารกิจ</strong>:</span>
+                                        <span>Operation Test TTTTT</span>
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        <i class="bi bi-map me-2"></i>
+                                        <span class="me-2"><strong>แผนที่</strong>:</span>
+                                        <span>Altis</span>
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <p>
+                                        <i class="bi bi-people me-2"></i>
+                                        <span class="me-2"><strong>จำนวนผู้เล่น</strong>:</span>
+                                        <span>0/64</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>
+                                        <i class="bi bi-person-lines-fill me-2"></i>
+                                        <strong>รายชื่อผู้เล่นในเซิร์ฟเวอร์</strong>
+                                    </p>
+                                </div>
+                                <div class="row ps-lg-5 ps-4 overflow-y-auto" style="height: 100px;">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-12 text-center">
+                                            ไม่มีผู้เล่นออนไลน์ในขณะนี้
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <i class="bi bi-person-fill me-2"></i>
+                                            <span>Player Name</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <i class="bi bi-lightning-charge-fill me-2"></i>
+                                            <span class="me-2"><strong>คะแนน</strong>:</span>
+                                            <span>23</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <i class="bi bi-reception-4 me-2"></i>
+                                            <span class="me-2"><strong>ping</strong>:</span>
+                                            <span>45</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="card-footer">
+                    <p id="server-info-game-version" class="py-2 m-0">
+                        <i class="bi bi-diagram-2 me-2"></i> ip.address.com
+                        <span class="mx-2">|</span>
+                        <i class="bi bi-controller me-2"></i> เกมเวอร์ชัน: 2.18.25654
+                    </p>
+                </div> -->
+                <div class="card-body">
+                    <h4 class="fw-bold text-shadow text-center py-5">กำลังโหลด...</h4>
                 </div>
             </div>
         </div>
@@ -216,5 +280,7 @@
         </div>
         <hr class="border border-1 border-light rounded opacity-0 my-5">
     </div>
+
+    <script src="../js/indexFunction.js"></script>
     
 <%- include('../components/footer.ejs') %>

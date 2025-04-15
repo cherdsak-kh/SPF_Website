@@ -40,20 +40,28 @@ const Menu = JSON.parse(menuData);
   
 // ------------------------------------------------------------------------------------------------------------------------->
 /*
-
     - DATABASE CONNECTION.
-
 */
 
 const { query } = require('./config/database/connection.js');
 
-
 // ------------------------------------------------------------------------------------------------------------------------->
 /*
-
-    - MongoDB CONNECTION.
-
+    - GameDig CONNECTION.
 */
+
+const { a3ServerInfo } = require('./config/gamedig/connection.js');
+
+// a3ServerInfo((err, state) => {
+//     if (err) {
+//         consoler('#ff4747', `== GameDig connection ==> Error : ${err}`);
+//     } else {
+//         consoler('#ffffff', '== GameDig connection ==> State : ' + JSON.stringify(state, null, 2));
+//         const players = state.players;
+//         console.log(players);
+//     }
+// });
+
 // ------------------------------------------------------------------------------------------------------------------------->
 
 // # Render index page.
@@ -345,6 +353,26 @@ io.on('connection', (socket) => {
             
         } catch (err) {
             consoler('#ff4747', `== Send rules data ==> Error : ${err}`);
+        }
+    });
+    
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
+
+    socket.on('request-server-info-data', async () => {
+        try {
+
+            // # Pull server info data from game dig.
+            a3ServerInfo((err, state) => {
+                if (err) {
+                    consoler('#ff4747', `== GameDig error ==> Error: ${err}`);
+                    socket.emit('server-info-data', { error: `Failed to fetch server info: ${err.message}`, results: null });
+                } else {
+                    socket.emit('server-info-data', { error: null, results: state });
+                }
+            });
+
+        } catch (err) {
+            consoler('#ff4747', `== Send server info data ==> Error : ${err}`);
         }
     });
     
