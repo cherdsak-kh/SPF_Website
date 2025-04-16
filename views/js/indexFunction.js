@@ -64,7 +64,7 @@ socket.on('server-info-data', (data) => {
                 }
 
                 player_list_content += `
-                    <div class="row p-0">
+                    <div class="row p-0 mb-2">
                         <div class="col-4">
                             <i class="bi bi-person-fill me-2"></i>
                             <span>${player.name}</span>
@@ -136,7 +136,7 @@ socket.on('server-info-data', (data) => {
                                     <strong>รายชื่อผู้เล่นในเซิร์ฟเวอร์</strong>
                                 </p>
                             </div>
-                            <div class="row ps-lg-5 ps-4 overflow-y-auto" style="height: 100px;">
+                            <div id="player-list-box" class="row ps-lg-5 ps-4 overflow-y-auto">
                                 ${player_list_content}
                             </div>
                         </div>
@@ -161,6 +161,14 @@ socket.on('server-info-data', (data) => {
                 </div>
             </div>
         `;
+
+        if (serverInfo.numplayers < 5) {
+            document.getElementById('player-list-box').style.height = "100px";
+        } else if (serverInfo.numplayers < 10) {
+            document.getElementById('player-list-box').style.height = "150px";
+        } else {
+            document.getElementById('player-list-box').style.height = "200px";
+        }
 
     }
 });
