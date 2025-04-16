@@ -136,7 +136,7 @@ socket.on('server-info-data', (data) => {
                                     <strong>รายชื่อผู้เล่นในเซิร์ฟเวอร์</strong>
                                 </p>
                             </div>
-                            <div id="player-list-box" class="col-12 ps-4 overflow-y-auto">
+                            <div id="player-list-box" class="col-12 overflow-y-auto">
                                 ${player_list_content}
                             </div>
                         </div>
