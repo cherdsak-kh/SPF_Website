@@ -65,16 +65,16 @@ socket.on('server-info-data', (data) => {
 
                 player_list_content += `
                     <div class="row p-0 mb-2 mx-0">
-                        <div class="col-4">
+                        <div class="col-4 pe-0">
                             <i class="bi bi-person-fill me-2"></i>
                             <span>${player.name}</span>
                         </div>
-                        <div class="col">
+                        <div class="col pe-0">
                             <i class="bi bi-lightning-charge-fill me-2"></i>
                             <span class="me-2"><strong>คะแนน</strong>:</span>
                             <span>${player.raw.score}</span>
                         </div>
-                        <div class="col-5">
+                        <div class="col-5 pe-0">
                             <i class="bi bi-clock-history me-2"></i>
                             <span class="me-2"><strong>เวลา</strong>:</span>
                             <span>${formattedTime}</span>
