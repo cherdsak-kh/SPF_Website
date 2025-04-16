@@ -64,12 +64,12 @@ socket.on('server-info-data', (data) => {
                 }
 
                 player_list_content += `
-                    <div class="row p-0 mb-2">
+                    <div class="row p-0 mb-2 mx-0">
                         <div class="col-4">
                             <i class="bi bi-person-fill me-2"></i>
                             <span>${player.name}</span>
                         </div>
-                        <div class="col-3">
+                        <div class="col">
                             <i class="bi bi-lightning-charge-fill me-2"></i>
                             <span class="me-2"><strong>คะแนน</strong>:</span>
                             <span>${player.raw.score}</span>
@@ -89,30 +89,30 @@ socket.on('server-info-data', (data) => {
         document.getElementById('server-info-box').innerHTML = `
             <div class="card-body">
                 <div class="row px-3">
-                    <div class="col-lg-6 ${borderClass}">
+                    <div class="col-lg-5 ${borderClass}">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-7">
                                 <p>
                                     <i class="bi bi-hdd-network me-2"></i>
                                     <span class="me-2"><strong>สถานะเซิร์ฟเวอร์</strong>:</span>
                                     <span>ออนไลน์</span>
                                 </p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p>
                                     ${serverPingIcon}
                                     <span class="me-2"><strong>ping</strong>:</span>
                                     <span>${serverInfo.ping} ms</span>
                                 </p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-7">
                                 <p>
                                     <i class="bi bi-journal-richtext me-2"></i>
                                     <span class="me-2"><strong>ภารกิจ</strong>:</span>
                                     <span>${serverInfo.raw.game}</span>
                                 </p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p>
                                     <i class="bi bi-map me-2"></i>
                                     <span class="me-2"><strong>แผนที่</strong>:</span>
@@ -128,7 +128,7 @@ socket.on('server-info-data', (data) => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="row ps-lg-2">
                             <div class="col-12">
                                 <p>
@@ -136,7 +136,7 @@ socket.on('server-info-data', (data) => {
                                     <strong>รายชื่อผู้เล่นในเซิร์ฟเวอร์</strong>
                                 </p>
                             </div>
-                            <div id="player-list-box" class="row ps-lg-5 ps-4 overflow-y-auto">
+                            <div id="player-list-box" class="row ps-4 overflow-y-auto">
                                 ${player_list_content}
                             </div>
                         </div>
