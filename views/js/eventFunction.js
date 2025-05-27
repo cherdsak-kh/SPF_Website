@@ -99,7 +99,7 @@ socket.on('Events-data', (getEvents) => {
 
             for (const event of events) {
                 const eventDate = new Date(event.eventDateTime);
-                eventDate.setHours(eventDate.getHours() - 7);
+                // eventDate.setHours(eventDate.getHours() - 7);
                 // console.log(eventDate);
 
                 if (eventDate.getDate() === day && eventDate.getMonth() === month && eventDate.getFullYear() === year) {
@@ -253,7 +253,7 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
             const eventDate = new Date(event.eventDateTime);
-            eventDate.setHours(eventDate.getHours() - 7);
+            // eventDate.setHours(eventDate.getHours() - 7);
             // const eventImg = '../images/' + event.eventImg;
             const eventImg = event.eventImage;
             const minutes = eventDate.getMinutes().toString().padStart(2, '0');
@@ -397,7 +397,7 @@ socket.on('Events-data', (getEvents) => {
         for (const event of events) {
 
             const eventDateTime = new Date(event.eventDateTime);
-            eventDateTime.setHours(eventDateTime.getHours() - 7);
+            // eventDateTime.setHours(eventDateTime.getHours() - 7);
 
             if (isPast(eventDateTime)) {
                 newPastEvents.push(event);
@@ -409,7 +409,7 @@ socket.on('Events-data', (getEvents) => {
             for (const event of newPastEvents) {
 
                 const eventDateTime = new Date(event.eventDateTime); 
-                eventDateTime.setHours(eventDateTime.getHours() - 7);
+                // eventDateTime.setHours(eventDateTime.getHours() - 7);
                 // let pastEvent_image = '../images/' + event.eventImg;
                 let pastEvent_image = event.eventImage;
                 const minutes = eventDateTime.getMinutes().toString().padStart(2, '0');
@@ -532,7 +532,7 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
             const eventDateTime = new Date(event.eventDateTime);
-            eventDateTime.setHours(eventDateTime.getHours() - 7);
+            // eventDateTime.setHours(eventDateTime.getHours() - 7);
             icmEvent_dateTime = '';
             // icmEvent_image = '../images/' + event.eventImg;
             icmEvent_image = event.eventImage;
