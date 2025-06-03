@@ -396,13 +396,27 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
 
-            const eventDateTime = new Date(event.eventDateTime).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-            console.log(eventDateTime);
+            const eventDateTime = new Date(event.eventDateTime);
             // eventDateTime.setHours(eventDateTime.getHours() - 7);
 
             if (isPast(eventDateTime)) {
                 newPastEvents.push(event);
             }
+
+            const date = new Date(event.eventDateTime);
+
+            // แสดงเวลาและ time zone
+            console.log("Current date and time:", date.toString());
+            console.log("UTC time:", date.toUTCString());
+
+            // Time zone offset
+            const offset = date.getTimezoneOffset();
+            console.log("Time zone offset in minutes:", offset);
+
+            // Time zone name (ถ้ามี)
+            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            console.log("IANA Time zone name:", timeZone);
+            console.log("-----------------------------------------------------");
         }
 
         if (newPastEvents.length > 0) {
