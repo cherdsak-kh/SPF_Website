@@ -396,7 +396,8 @@ socket.on('Events-data', (getEvents) => {
 
         for (const event of events) {
 
-            const eventDateTime = new Date(event.eventDateTime);
+            const eventDateTime = new Date(event.eventDateTime).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+            console.log(eventDateTime);
             // eventDateTime.setHours(eventDateTime.getHours() - 7);
 
             if (isPast(eventDateTime)) {
