@@ -652,6 +652,6 @@ socket.on('Events-data', (getEvents) => {
     const icmEvents = getEvents.map(event => ({ ...event }));
     icmEventDisplay(icmEvents);
 
-})
+});
 
 // ------------------------------------------------------------------------------------------------------>
