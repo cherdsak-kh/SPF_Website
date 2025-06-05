@@ -403,20 +403,20 @@ socket.on('Events-data', (getEvents) => {
                 newPastEvents.push(event);
             }
 
-            const date = new Date(event.eventDateTime);
+            // const date = new Date(event.eventDateTime);
 
-            // แสดงเวลาและ time zone
-            console.log("Current date and time:", date.toString());
-            console.log("UTC time:", date.toUTCString());
+            // // แสดงเวลาและ time zone
+            // console.log("Current date and time:", date.toString());
+            // console.log("UTC time:", date.toUTCString());
 
-            // Time zone offset
-            const offset = date.getTimezoneOffset();
-            console.log("Time zone offset in minutes:", offset);
+            // // Time zone offset
+            // const offset = date.getTimezoneOffset();
+            // console.log("Time zone offset in minutes:", offset);
 
-            // Time zone name (ถ้ามี)
-            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            console.log("IANA Time zone name:", timeZone);
-            console.log("-----------------------------------------------------");
+            // // Time zone name (ถ้ามี)
+            // const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            // console.log("IANA Time zone name:", timeZone);
+            // console.log("-----------------------------------------------------");
         }
 
         if (newPastEvents.length > 0) {
