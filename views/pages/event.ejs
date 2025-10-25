@@ -1,0 +1,313 @@
+<%- include('../components/header.ejs') %>
+
+    <div class="container position-relative z-2 text-center px-2 rounded">
+
+        <!-- - Event coming soon - -->
+        <div class="row bg-gradient m-0 pt-4 pb-5 px-2 p-lg-5 rounded">
+
+            <!-- - Event coming soon title. - -->
+            <div class="row p-0 m-0">
+                <div class="col-lg-6 text-lg-start mb-3 mb-lg-0">
+                    <h3 class="fw-bold text-shadow my-auto">กิจกรรมที่กำลังจะมาถึง</h3>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <button id="calendarToggleBtn" class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#event-calendar-main" aria-expanded="false" aria-controls="event-calendar-main"><i class="bi bi-calendar-week"></i> ปฏิทินกิจกรรม</i></button>
+                </div>
+            </div>
+
+            <hr class="border border-2 border-light rounded opacity-50 my-2">
+
+            <div id="event-soon-content" class="p-0">
+                <!-- - Event coming soon content. - -->
+                <!-- <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img my-auto">
+                    </div>
+                    <div class="col-lg card text-shadow">
+                        <div class="row card-header">
+                            <div class="col-lg-8 text-danger fw-bold p-0">
+                                <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                            </div>
+                            <div class="col-lg-4 fw-bold my-auto p-0">
+                                [ Event ]
+                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                            <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                            </p>
+                        </div>
+                        <div class="row card-footer">
+                            <div class="col-lg-8 fw-bold p-0">
+                                <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- - Event coming soon empty. - -->
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                        <h4>ไม่มีกิจกรรมที่กำลังจะมาถึง</h4>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border border-2 border-light rounded opacity-50 my-2">
+
+        </div>
+
+        <!-- - Calendar / event on click - -->
+        <div class="row bg-gradient m-0 rounded">
+            <!-- - Event calendar main box - -->
+            <div id="event-calendar-main" class="collapse position-relative pt-4 pb-5 px-2 p-lg-5">
+
+                <!-- - Event calendar close - -->
+                <button id="event-calendar-close" type="button" class="btn-close position-absolute top-0 end-0 me-3 mt-3" aria-label="Close" data-bs-toggle="collapse" data-bs-target="#event-calendar-main" aria-expanded="false" aria-controls="event-calendar-main"></button>
+
+                <!-- - Event calendar - -->
+                <div id="event-calendar" class="row my-5 mx-0 p-0">
+                    <div class="col-lg-12">
+                        <h2 class="fw-bold text-shadow">ปฏิทินกิจกรรม</h2>
+                    </div>
+                </div>
+
+                <!-- - Event calendar : Month / button <- -> - -->
+                <div class="row mx-0 px-2 px-lg-3">
+                    <div class="col text-start p-0 my-auto">
+                        <h4 class="text-shadow m-0" id="calendar-month">ตุลาคม 2567</h4>
+                    </div>
+                    <div class="col text-end p-0">
+                        <button id="prevMonthBtn" class="btn btn-secondary me-1" type="button"><i class="bi bi-arrow-left-circle"></i></button>
+                        <button id="nextMonthBtn" class="btn btn-secondary ms-1" type="button"><i class="bi bi-arrow-right-circle"></i></button>
+                    </div>
+                </div>
+
+                <!-- - Event calendar : Table day / date - -->
+                <div class="row mx-0 p-0 mt-3 flex-nowrap">
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">อาทิตย์</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">จันทร์</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">อังคาร</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">พุธ</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">พฤหัสบดี</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">ศุกร์</div>
+                    <div class="col text-center text-shadow border border-secondary py-3 overflow-hidden fw-bold bg-gradient">เสาร์</div>
+                </div>
+
+                <div id="calendar-date" class="p-0">
+                    <div class="row mx-0 p-0 flex-nowrap">
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5 position-relative">1 <span class="position-absolute bottom-0 start-0 w-100 bg-danger bg-opacity-50 fs-6">Event</span></div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5 border-2 border-warning fw-bolder">2</div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5">3</div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5">4</div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5">5</div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5">6</div>
+                        <div class="col text-center text-shadow border border-secondary py-5 overflow-hidden fs-5">7</div>
+                    </div>
+                    <div class="row mx-0 p-0 flex-nowrap">
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                        <div class="col text-center border border-secondary py-5 overflow-hidden fs-5" style="color: transparent;">0</div>
+                    </div>
+                </div>
+
+                <div id="calendar-event-click" class="p-0">
+                    <!-- - Event calendar on click. : Title / Close box - -->
+                    <!-- ปิดตัวอย่าง --><!--
+                    <div class="row p-0 m-0 mt-5 flex-nowrap">
+                        <div class="col text-start">
+                            <h5 class="fw-bold text-shadow my-auto">15 ตุลาคม 2567</h5>
+                        </div>
+                        <div class="col text-end">
+                            <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    <hr class="border border-1 border-light rounded opacity-50 my-2">
+                    -->
+
+                    <!-- - Event calendar on click. : Content - -->
+                    <!-- ปิดตัวอย่าง --><!--
+                    <div class="row p-0 m-0 flex-lg-nowrap">
+                        <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                            <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img my-auto">
+                        </div>
+                        <div class="col-lg card text-shadow">
+                            <div class="row card-header">
+                                <div class="col-lg-8 text-danger fw-bold p-0">
+                                    <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                                </div>
+                                <div class="col-lg-4 fw-bold my-auto p-0">
+                                    [ Event ]
+                                </div>
+                            </div>
+                            <div class="row card-body">
+                                <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                                <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                                </p>
+                            </div>
+                            <div class="row card-footer">
+                                <div class="col-lg-8 fw-bold p-0">
+                                    <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                
+                <hr class="border border-2 border-light rounded opacity-50 my-2">
+
+            </div>
+        </div>
+
+        <!-- - Past events - -->
+        <div class="row bg-gradient m-0 pt-4 pb-5 px-2 p-lg-5 rounded">
+
+            <!-- - Past events : Title - -->
+            <div class="row p-0 m-0">
+                <div class="col-lg-12 text-lg-start mb-3 mb-lg-0">
+                    <h4 class="fw-bold text-shadow my-auto">กิจกรรมที่ผ่านมา</h4>
+                </div>
+            </div>
+
+            <hr class="border border-2 border-light rounded opacity-50 my-2">
+
+            <div id="past-event-content" class="p-0">
+                <!-- - Past events : Content 1 - -->
+                <!-- ปิดตัวอย่าง -->
+                <!--
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img my-auto">
+                    </div>
+                    <div class="col-lg card text-shadow">
+                        <div class="row card-header">
+                            <div class="col-lg-8 text-danger fw-bold p-0">
+                                <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                            </div>
+                            <div class="col-lg-4 fw-bold my-auto p-0">
+                                [ Event ]
+                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                            <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                            </p>
+                        </div>
+                        <div class="row card-footer">
+                            <div class="col-lg-8 fw-bold p-0">
+                                <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border border-1 border-light rounded opacity-50 my-2">
+                -->
+
+                <!-- - Past events : Content 2 - -->
+                <!-- ปิดตัวอย่าง -->
+                <!--
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img my-auto">
+                    </div>
+                    <div class="col-lg card text-shadow">
+                        <div class="row card-header">
+                            <div class="col-lg-8 text-danger fw-bold p-0">
+                                <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                            </div>
+                            <div class="col-lg-4 fw-bold my-auto p-0">
+                                [ Event ]
+                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                            <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                            </p>
+                        </div>
+                        <div class="row card-footer">
+                            <div class="col-lg-8 fw-bold p-0">
+                                <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border border-1 border-light rounded opacity-50 my-2">
+                -->
+
+                <!-- - Past events : Content 3 - -->
+                <!-- ปิดตัวอย่าง -->
+                <!--
+                <div class="row p-0 m-0 flex-lg-nowrap">
+                    <div class="col-lg-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                        <img src="https://dummyimage.com/1920x1080/000/fff" alt="event-soon" class="card-img my-auto">
+                    </div>
+                    <div class="col-lg card text-shadow">
+                        <div class="row card-header">
+                            <div class="col-lg-8 text-danger fw-bold p-0">
+                                <p class="my-auto text-lg-start">วันเสาร์ที่ 29 มีนาคม 2568 เวลา 20.30 น.</p>
+                            </div>
+                            <div class="col-lg-4 fw-bold my-auto p-0">
+                                [ Event ]
+                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h2 class="text-lg-start fw-bold p-0">Operation Milsim Community</h2>
+                            <p class="text-lg-start p-0 m-0 text-justify" style="text-indent: 10%;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima error praesentium explicabo facere omnis ab provident voluptate atque ducimus laudantium quidem delectus, veritatis pariatur magni?
+                            </p>
+                        </div>
+                        <div class="row card-footer">
+                            <div class="col-lg-8 fw-bold p-0">
+                                <p class="text-lg-start my-auto">สร้างโดย BentsuKun</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border border-1 border-light rounded opacity-50 my-2">
+                -->
+
+            </div>
+
+            <!-- - Past events : Empty - -->
+            <!-- ปิดตัวอย่าง -->
+            <!--
+            <div class="row p-0 m-0 flex-lg-nowrap">
+                <div class="col-lg-12 py-5 card p-1 me-lg-1 mb-lg-0 mb-1 ">
+                    <h2 class="mb-3"><i class="bi bi-calendar-x"></i></h2>
+                    <h4>ไม่มีกิจกรรมที่ผ่านมา</h4>
+                </div>
+            </div>
+
+            <hr class="border border-1 border-light rounded opacity-50 my-2">
+            -->
+
+            <!-- - Past events : Button more events - -->
+            <!-- ปิดตัวอย่าง -->
+            <!--
+            <div class="row p-0 m-0">
+                <div class="col-lg-12 text-center p-0 mt-2">
+                    <button class="btn btn-outline-light w-100" type="button">ดูเพิ่มเติม</button>
+                </div>
+            </div>
+            -->
+
+        </div>
+    </div>
+
+    <script src="../js/eventFunction.js"></script>
+
+<%- include('../components/footer.ejs') %>

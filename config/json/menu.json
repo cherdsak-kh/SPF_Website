@@ -1,0 +1,42 @@
+[
+  {
+    "enName": "Home",
+    "thName": "หน้าหลัก",
+    "href": "/"
+  },
+  {
+    "enName": "News",
+    "thName": "ประกาศจากทีมงาน",
+    "href": "/news"
+  },
+  {
+    "enName": "Event",
+    "thName": "กิจกรรม",
+    "href": "/event"
+  },
+  {
+    "enName": "Gallery and Video",
+    "thName": "แกลเลอรี & วิดีโอ",
+    "href": "/media"
+  },
+  {
+    "enName": "Server Rules",
+    "thName": "กฎระเบียบเซิร์ฟเวอร์",
+    "href": "/serverrules"
+  },
+  {
+    "enName": "Articles",
+    "thName": "เอกสาร/คู่มือ",
+    "href": "/articles"
+  },
+  {
+    "enName": "About Us",
+    "thName": "รู้จักกับเรา",
+    "href": "/about"
+  },
+  {
+    "enName": "Contact",
+    "thName": "ติดต่อทีมงาน",
+    "href": "/contact"
+  }
+]

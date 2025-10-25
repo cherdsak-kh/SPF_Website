@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= curTitle %></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- - Font - -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'K2D', sans-serif;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row min-vh-100 justify-content-center flex-column">
+            <div class="col-lg-12 text-center">
+                <h1 class="fw-bold text-shadow">404</h1>
+                <h2 class="fw-bold text-shadow">PAGE NOT FOUND</h2>
+            </div>
+
+            <hr class="border border-2 rounded opacity-100 my-3">
+
+            <div class="col-lg-12 text-center">
+                <p>This will return to normal page in <span id="countdown" class="mx-2">5</span> seconds</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/404Function.js"></script>
+    
+</body>
+</html>
